@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xmlns="http://maven.apache.org/POM/4.0.0"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>ming</groupId>
+    <artifactId>parent</artifactId>
+    <version>${ming.project.version}</version>
+
+    <modules>
+        <module>user</module>
+    </modules>
+    <packaging>pom</packaging>
+    <name>ming</name>
+
+    <parent>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-parent</artifactId>
+        <version>1.4.3.RELEASE</version>
+    </parent>
+
+    <properties>
+        <ming.project.version>1.0.0</ming.project.version>
+        <ming.module.version>4.0.0</ming.module.version>
+        <!--项目属性覆盖-->
+        <project.build.encoding>UTF-8</project.build.encoding>
+        <spring.cloud.version>Camden.SR4</spring.cloud.version>
+        <!--依赖jar 版本-->
+        <junit.version>4.12</junit.version>
+        <lombok.version>1.16.16</lombok.version>
+        <apache.http.cilent.version>4.4.1</apache.http.cilent.version>
+        <apache.common.lang.version>3.6</apache.common.lang.version>
+        <apache.common.io.version>2.5</apache.common.io.version>
+        <apache.lucene.version>6.6.0</apache.lucene.version>
+        <guava.version>22.0</guava.version>
+        <alibaba.fastjson.version>1.2.33</alibaba.fastjson.version>
+
+        <!--插件版本-->
+        <maven.docker.version>0.4.13</maven.docker.version>
+        <docker.image.prefix>ming</docker.image.prefix>
+    </properties>
+
+
+    <dependencies>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-jpa</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.h2database</groupId>
+            <artifactId>h2</artifactId>
+        </dependency>
+
+
+        <!--lombok-->
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <version>${lombok.version}</version>
+            <scope>provided</scope>
+        </dependency>
+
+        <!-- guava utils-->
+        <dependency>
+            <groupId>com.google.guava</groupId>
+            <artifactId>guava</artifactId>
+            <version>${guava.version}</version>
+        </dependency>
+
+        <!-- alibaba  fastjson-->
+        <dependency>
+            <groupId>com.alibaba</groupId>
+            <artifactId>fastjson</artifactId>
+            <version>${alibaba.fastjson.version}</version>
+        </dependency>
+
+    </dependencies>
+
+
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>org.springframework.cloud</groupId>
+                <artifactId>spring-cloud-dependencies</artifactId>
+                <version>${spring.cloud.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+
+    <!--仓库-->
+    <repositories>
+        <!--aliyun -->
+        <repository>
+            <id>aliyun</id>
+            <name>local private nexus</name>
+            <url>http://maven.aliyun.com/nexus/content/groups/public/</url>
+        </repository>
+    </repositories>
+
+    <!--构建插件-->
+    <build>
+        <pluginManagement>
+            <plugins>
+                <!--docker 插件-->
+                <plugin>
+                    <groupId>com.spotify</groupId>
+                    <artifactId>docker-maven-plugin</artifactId>
+                    <version>${maven.docker.version}</version>
+                    <configuration>
+                        <!--镜像名称-->
+                        <imageName>${docker.image.prefix}/${project.artifactId}</imageName>
+                        <!--docker file位置-->
+                        <dockerDirectory>src/main/docker</dockerDirectory>
+                        <resources>
+                            <resource>
+                                <!-- 编译jar路径 -->
+                                <targetPath>/</targetPath>
+                                <!--编译jar 所在文件夹-->
+                                <directory>${project.build.directory}</directory>
+                                <!--编译的jar 名称-->
+                                <include>${project.build.finalName}.jar</include>
+                            </resource>
+                        </resources>
+                    </configuration>
+                </plugin>
+            </plugins>
+        </pluginManagement>
+
+        <plugins>
+
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+            </plugin>
+            <!--&lt;!&ndash;指定编译jdk版本 默认为1.5&ndash;&gt;
+            <plugin>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <configuration>
+                    <source>1.8</source>
+                    <target>1.8</target>
+                    <encoding>UTF-8</encoding>
+                </configuration>
+            </plugin>
+            &lt;!&ndash; 解决资源文件的编码问题 &ndash;&gt;
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-resources-plugin</artifactId>
+                <configuration>
+                    <encoding>UTF-8</encoding>
+                </configuration>
+            </plugin>-->
+        </plugins>
+    </build>
+
+</project>
