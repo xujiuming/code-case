@@ -10,6 +10,7 @@
 
     <modules>
         <module>user</module>
+        <module>common</module>
     </modules>
     <packaging>pom</packaging>
     <name>ming</name>
@@ -49,7 +50,7 @@
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-jpa</artifactId>
+            <artifactId>spring-boot-starter-data-jpa</artifactId>
         </dependency>
         <dependency>
             <groupId>com.h2database</groupId>
