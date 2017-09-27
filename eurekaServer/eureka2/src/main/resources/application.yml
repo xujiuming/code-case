@@ -5,7 +5,7 @@ spring:
     name: eureka-server2
 eureka:
   instance:
-    hostname: ek2
+    hostname: eureka-server2
   client:
     # 不向注册中心注册 自己
     #register-with-eureka: false

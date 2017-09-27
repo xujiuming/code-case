@@ -1,8 +1,7 @@
 #info 端点的信息
 info:
  app:
-  name: ming
-
+  name: user-service
 #server:
   # 随机端口 port：${random.int[8080,8090]} port = 0
   #port: ${random.int[8080,8089]}
@@ -18,6 +17,31 @@ endpoints:
 spring:
   application:
     name: user-service
+  cloud:
+    loadbalancer:
+      retry:
+        #开启自动重试
+        enabled: true
+user-service:
+  ribbon:
+    #链接超时时间
+    ConnectTimeOut: 1000
+    # 请求处理超时时间
+    ReadTimeOut: 1000
+    #对所有请求重试
+    OkToRetryOnAllOperations: true
+    # 切换实例重试次数
+    MaxAutoRetriesNextServer: 3
+    #当前实例重试次数
+    MaxAutoRetries: 3
+#断路器设置
+hystrix:
+  command:
+    default:
+      execution:
+        isolation:
+          thread:
+            timeoutInMilliseconds: 10000
 eureka:
   client:
     service-url:

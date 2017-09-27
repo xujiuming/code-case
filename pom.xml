@@ -13,6 +13,7 @@
         <module>core</module>
         <module>eurekaServer</module>
         <module>user</module>
+        <module>hystrixdashboard</module>
     </modules>
     <packaging>pom</packaging>
     <name>ming</name>
@@ -154,6 +155,11 @@
                     <encoding>UTF-8</encoding>
                 </configuration>
             </plugin>
+
+                <plugin>
+                    <groupId>org.springframework.boot</groupId>
+                    <artifactId>spring-boot-maven-plugin</artifactId>
+                </plugin>
         </plugins>
     </build>
 
