@@ -1,0 +1,15 @@
+spring:
+  application:
+    name: common
+#server:
+  # 随机端口 port：${random.int[8080,8090]} port = 0
+  #port: ${random.int[8090,8099]}
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:10001/eureka/
+    #使用 actuator 做健康检测
+    healthcheck:
+      enable: true
+    # 客户端注册信息缓存时间
+    registry-fetch-interval-seconds: 10

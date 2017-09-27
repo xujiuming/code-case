@@ -1,0 +1,41 @@
+#info 端点的信息
+info:
+ app:
+  name: ming
+
+#server:
+  # 随机端口 port：${random.int[8080,8090]} port = 0
+  #port: ${random.int[8080,8089]}
+#开启 控制类端点
+endpoints:
+  shutdown:
+    enabled: true
+  #修改 监控端点路径  必须修改 eureka的注册的监控端点信息
+  info:
+    path: /appInfo
+  health:
+    path: /appHealth
+spring:
+  application:
+    name: user-service
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:10001/eureka/
+    # 使用 actuator 做健康检测
+    healthcheck:
+      enable: true
+    # 客户端 注册信息缓存时间
+    registry-fetch-interval-seconds: 10
+  instance:
+    #心跳 1s一次  本地测试使用
+    lease-renewal-interval-in-seconds: 1
+    #配置 监控端点
+    status-page-url-path: ${endpoints.info.path}
+    #status-page-url-path: https://${endpoints.instance.hostname}/${endpoints.info.path}
+    health-check-url-path: ${endpoints.info.path}
+    #health-check-url-path: https://${endpoints.instance.hostname}/${endpoints.info.path}
+
+  #指定 eureka客户端的 格式  和server.port配合使用
+#  instance:
+ #   instance-id: ${spring.application.name}:${server.port}

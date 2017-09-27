@@ -6,10 +6,15 @@
 
     <groupId>ming</groupId>
     <artifactId>parent</artifactId>
-    <version>${ming.project.version}</version>
+    <version>1.0.0</version>
 
     <modules>
+        <module>core</module>
+        <module>eureka1</module>
+        <module>eureka2</module>
+        <module>common</module>
         <module>user</module>
+        <module>eurekaServer</module>
     </modules>
     <packaging>pom</packaging>
     <name>ming</name>
@@ -21,8 +26,6 @@
     </parent>
 
     <properties>
-        <ming.project.version>1.0.0</ming.project.version>
-        <ming.module.version>4.0.0</ming.module.version>
         <!--项目属性覆盖-->
         <project.build.encoding>UTF-8</project.build.encoding>
         <spring.cloud.version>Camden.SR4</spring.cloud.version>
@@ -43,19 +46,15 @@
 
 
     <dependencies>
-        <dependency>
+
+       <!-- <dependency>
             <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-web</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-jpa</artifactId>
+            <artifactId>spring-boot-starter-data-jpa</artifactId>
         </dependency>
         <dependency>
             <groupId>com.h2database</groupId>
             <artifactId>h2</artifactId>
-        </dependency>
-
+        </dependency>-->
 
         <!--lombok-->
         <dependency>
@@ -91,6 +90,8 @@
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
+
+
         </dependencies>
     </dependencyManagement>
 
@@ -130,16 +131,15 @@
                         </resources>
                     </configuration>
                 </plugin>
+
+
+
             </plugins>
         </pluginManagement>
 
         <plugins>
 
-            <plugin>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-maven-plugin</artifactId>
-            </plugin>
-            <!--&lt;!&ndash;指定编译jdk版本 默认为1.5&ndash;&gt;
+            <!--指定编译jdk版本 默认为1.5-->
             <plugin>
                 <artifactId>maven-compiler-plugin</artifactId>
                 <configuration>
@@ -148,14 +148,14 @@
                     <encoding>UTF-8</encoding>
                 </configuration>
             </plugin>
-            &lt;!&ndash; 解决资源文件的编码问题 &ndash;&gt;
+            <!-- 解决资源文件的编码问题 -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-resources-plugin</artifactId>
                 <configuration>
                     <encoding>UTF-8</encoding>
                 </configuration>
-            </plugin>-->
+            </plugin>
         </plugins>
     </build>
 
