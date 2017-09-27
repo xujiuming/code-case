@@ -9,11 +9,10 @@
     <version>1.0.0</version>
 
     <modules>
+        <module>common</module>
         <module>core</module>
         <module>eurekaServer</module>
-        <module>common</module>
         <module>user</module>
-        <module>eurekaServer</module>
     </modules>
     <packaging>pom</packaging>
     <name>ming</name>

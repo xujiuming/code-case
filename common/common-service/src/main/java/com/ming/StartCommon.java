@@ -9,7 +9,7 @@ import org.springframework.web.client.RestTemplate;
 
 @EnableDiscoveryClient
 @SpringBootApplication
-public class StratCommon {
+public class StartCommon {
 
     @Bean
     @LoadBalanced
@@ -18,6 +18,6 @@ public class StratCommon {
     }
 
     public static void main(String[] args) {
-        SpringApplication.run(StratCommon.class,args);
+        SpringApplication.run(StartCommon.class,args);
     }
 }
