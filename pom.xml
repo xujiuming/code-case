@@ -10,8 +10,7 @@
 
     <modules>
         <module>core</module>
-        <module>eureka1</module>
-        <module>eureka2</module>
+        <module>eurekaServer</module>
         <module>common</module>
         <module>user</module>
         <module>eurekaServer</module>
