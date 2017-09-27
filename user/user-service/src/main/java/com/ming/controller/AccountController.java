@@ -18,6 +18,7 @@ public class AccountController {
 
     @Autowired
     private DiscoveryClient discoveryClient;
+
     @GetMapping(value = "login")
     public String login(String username) throws InterruptedException {
         System.out.println(username);
@@ -25,6 +26,6 @@ public class AccountController {
         list.sort(Date::compareTo);
         //长时间休眠  触发熔断
         //Thread.sleep(30000);
-        return username+ JSON.toJSONString(discoveryClient.getLocalServiceInstance());
+        return username + JSON.toJSONString(discoveryClient.getLocalServiceInstance());
     }
 }

@@ -9,6 +9,6 @@ import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 public class StartUser {
 
     public static void main(final String[] args) {
-        SpringApplication.run(StartUser.class,args);
+        SpringApplication.run(StartUser.class, args);
     }
 }

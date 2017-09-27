@@ -13,7 +13,6 @@
     <name>user::service</name>
 
     <dependencies>
-        <!-- 所有模块版本管理在顶级pom管理 -->
 
         <dependency>
             <groupId>org.springframework.cloud</groupId>
@@ -28,12 +27,5 @@
             <artifactId>spring-boot-starter-actuator</artifactId>
         </dependency>
     </dependencies>
-    <build>
-        <plugins>
-            <plugin>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-maven-plugin</artifactId>
-            </plugin>
-        </plugins>
-    </build>
+
 </project>

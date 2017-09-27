@@ -7,6 +7,7 @@ import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 import org.springframework.cloud.client.loadbalancer.LoadBalanced;
 import org.springframework.context.annotation.Bean;
 import org.springframework.web.client.RestTemplate;
+
 //开启注册
 @EnableDiscoveryClient
 //开启熔断器
@@ -16,13 +17,13 @@ import org.springframework.web.client.RestTemplate;
 //@SpringCloudApplication
 public class StartCommon {
 
-    @Bean
-    @LoadBalanced
-    RestTemplate restTemplate(){
-        return new RestTemplate();
+    public static void main(String[] args) {
+        SpringApplication.run(StartCommon.class, args);
     }
 
-    public static void main(String[] args) {
-        SpringApplication.run(StartCommon.class,args);
+    @Bean
+    @LoadBalanced
+    RestTemplate restTemplate() {
+        return new RestTemplate();
     }
 }
