@@ -13,7 +13,11 @@
     <name>user::service</name>
 
     <dependencies>
-
+        <dependency>
+            <groupId>ming</groupId>
+            <artifactId>user-api</artifactId>
+            <version>1.0.0</version>
+        </dependency>
         <dependency>
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-starter-eureka</artifactId>

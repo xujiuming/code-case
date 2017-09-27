@@ -2,6 +2,7 @@ package com.ming.controller;
 
 import com.alibaba.fastjson.JSON;
 import com.google.common.collect.Lists;
+import com.ming.api.user.AccountControllerInterface;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cloud.client.discovery.DiscoveryClient;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -14,13 +15,14 @@ import java.util.List;
 
 @RestController
 @RequestMapping("account")
-public class AccountController {
+public class AccountController implements AccountControllerInterface{
 
     @Autowired
     private DiscoveryClient discoveryClient;
 
     @GetMapping(value = "login")
-    public String login(String username) throws InterruptedException {
+    @Override
+    public String login(String username) {
         System.out.println(username);
         List<Date> list = Lists.newArrayList();
         list.sort(Date::compareTo);
