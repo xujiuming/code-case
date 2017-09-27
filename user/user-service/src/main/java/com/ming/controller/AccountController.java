@@ -24,8 +24,6 @@ public class AccountController implements AccountControllerInterface{
     @Override
     public String login(String username) {
         System.out.println(username);
-        List<Date> list = Lists.newArrayList();
-        list.sort(Date::compareTo);
         //长时间休眠  触发熔断
         //Thread.sleep(30000);
         return username + JSON.toJSONString(discoveryClient.getLocalServiceInstance());

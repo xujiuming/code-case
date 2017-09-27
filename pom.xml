@@ -14,6 +14,7 @@
         <module>eurekaServer</module>
         <module>user</module>
         <module>hystrixDashboard</module>
+        <module>turbine</module>
     </modules>
     <packaging>pom</packaging>
     <name>ming</name>
