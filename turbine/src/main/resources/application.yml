@@ -2,7 +2,7 @@ spring:
   application:
     name: turbine-server
 management:
-  port: 11001
+  port: 11000
 server:
   port: 11000
 eureka:

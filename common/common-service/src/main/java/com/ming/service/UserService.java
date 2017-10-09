@@ -10,10 +10,11 @@ public class UserService {
     @Autowired
     private RestTemplate restTemplate;
 
-    //服务降级 顶级服务---》次级服务 v2--------》最低级别v1
+    //服务降级 顶级服务---》次级服务 v2--------》最低级别v1  是调用端 运行时间来做熔断
     //设定 这个服务使用熔断机制  熔断回调方法 是v2  忽略runtimeexception
     @HystrixCommand(fallbackMethod = "v2", ignoreExceptions = RuntimeException.class)
-    public String userService() {
+    public String userService() throws InterruptedException {
+        //Thread.sleep(30000);
         return restTemplate.getForObject("http://USER-SERVICE/account/login?username=ming", String.class);
     }
 

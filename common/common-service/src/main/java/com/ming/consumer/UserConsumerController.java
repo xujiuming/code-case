@@ -13,7 +13,7 @@ public class UserConsumerController {
     private UserService userService;
 
     @GetMapping(value = "/common")
-    public String common() {
+    public String common() throws InterruptedException {
         System.out.println(1111111);
         return userService.userService();
     }
