@@ -21,9 +21,4 @@ public class StartCommon {
         SpringApplication.run(StartCommon.class, args);
     }
 
-    @Bean
-    @LoadBalanced
-    RestTemplate restTemplate() {
-        return new RestTemplate();
-    }
 }
