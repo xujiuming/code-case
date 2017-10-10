@@ -11,5 +11,10 @@
     <packaging>jar</packaging>
     <artifactId>common-api</artifactId>
     <name>common::api</name>
-
+    <dependencies>
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-feign</artifactId>
+        </dependency>
+    </dependencies>
 </project>

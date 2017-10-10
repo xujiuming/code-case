@@ -1,11 +1,13 @@
 package com.ming.consumer;
 
+import com.ming.entity.Dict;
+import com.ming.service.CommonRefactorService;
 import com.ming.service.DictService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RestController;
-import rx.Observable;
+import org.springframework.web.bind.annotation.*;
 
+import java.util.Collection;
+import java.util.List;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.TimeoutException;
@@ -16,6 +18,10 @@ public class DictConsumerController {
 
     @Autowired
     private DictService dictService;
+
+    @Autowired
+    private CommonRefactorService.DictRefactorService dictRefactorService;
+
 
     @GetMapping(value = "/dict")
     public String dict() throws InterruptedException {
@@ -29,19 +35,19 @@ public class DictConsumerController {
     }
 
     @GetMapping(value = "/async-dict-observable")
-    public Observable<String> asyncDictToObservable() {
-        return dictService.observableDictAll();
+    public String asyncDictToObservable() throws ExecutionException, InterruptedException {
+        return dictService.observableDictAll().toBlocking().toFuture().get();
     }
 
 
     @GetMapping(value = "/dict/observe")
-    public Observable<String> dictObserve() throws InterruptedException, TimeoutException, ExecutionException {
-        return dictService.dictByObservableCommandObserve();
+    public String dictObserve() throws InterruptedException, TimeoutException, ExecutionException {
+        return dictService.dictByObservableCommandObserve().toBlocking().toFuture().get();
     }
 
     @GetMapping(value = "/dict/to-observable")
-    public Observable<String> dictToObservable() throws InterruptedException, TimeoutException, ExecutionException {
-        return dictService.dictByObservableCommandToObservable();
+    public String dictToObservable() throws InterruptedException, TimeoutException, ExecutionException {
+        return dictService.dictByObservableCommandToObservable().toBlocking().toFuture().get();
     }
 
 
@@ -54,5 +60,38 @@ public class DictConsumerController {
     public String dictCommandQueue() throws ExecutionException, InterruptedException {
         return dictService.dictByCommandQueue();
     }
+
+
+
+    @GetMapping(value = "dict/{id}")
+    public Dict findDictById(Long id){
+        return dictService.findDictById(id);
+    }
+
+    @GetMapping(value = "dict/{ids")
+    public List findDictListByIds(Collection<Long> ids){
+        return dictService.findDictListByIds(ids);
+    }
+
+    //----------------feign 调用 begin--------------
+
+    @GetMapping(value = "feign-dict/all")
+    public Dict findDict(){
+        return dictRefactorService.all();
+    }
+
+    @GetMapping(value = "feign-dict/detail")
+    public Dict findDictByIdFeign(Long id){
+        return dictRefactorService.findDictById(id);
+    }
+
+
+    @GetMapping(value = "feign-dict/list")
+    public List<Dict> findDictByIdsFeign(@RequestParam("ids") List<Long> ids){
+        return dictRefactorService.findDictListByIds(ids);
+    }
+
+    //----------------feign 调用 end--------------
+
 
 }

@@ -2,14 +2,20 @@ package com.ming.service;
 
 import com.ming.command.DictCommand;
 import com.ming.command.DictObservableCommand;
+import com.ming.entity.Dict;
 import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
 import com.netflix.hystrix.contrib.javanica.annotation.ObservableExecutionMode;
+import com.netflix.hystrix.contrib.javanica.cache.annotation.CacheKey;
+import com.netflix.hystrix.contrib.javanica.cache.annotation.CacheRemove;
+import com.netflix.hystrix.contrib.javanica.cache.annotation.CacheResult;
 import com.netflix.hystrix.contrib.javanica.command.AsyncResult;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 import rx.Observable;
 
+import java.util.Collection;
+import java.util.List;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.Future;
 
@@ -21,18 +27,61 @@ public class DictService {
     //服务降级 顶级服务---》次级服务 v2--------》最低级别v1  是调用端 运行时间来做熔断
     //设定 这个服务使用熔断机制  熔断回调方法 是v2  忽略runtimeexception
 
+  /*  *//**
+     * 注解实现 同步访问
+     *
+     * @author ming
+     * @date 2017-10-09 15:40
+     *//*
+    @CacheResult(cacheKeyMethod = "cacheKey")
+    @HystrixCommand(fallbackMethod = "v2", ignoreExceptions = RuntimeException.class)
+    public String dictAll() throws InterruptedException {
+        return restTemplate.getForObject("http://COMMON-SERVICE/dict/all?username=ming", String.class);
+    }
+    *//**
+     * CacheResult 的cacheKeyMethod 指定key的方法
+    *@author ming
+    *@date 2017-10-10 13:54
+    *//*
+    private String cacheKey(String str){
+        return str;
+    }*/
+
+
+
+    @CacheResult
+    @HystrixCommand(fallbackMethod = "v2")
+    public Dict findDictById(Long id){
+        return restTemplate.getForObject("http://COMMON-SERVICE/dict/"+id,Dict.class);
+    }
+
+    @CacheResult
+    @HystrixCommand(fallbackMethod = "v2")
+    public List findDictListByIds(Collection<Long> ids){
+        return restTemplate.getForObject("http://COMMON-SERVICE/dict/"+ids,List.class);
+    }
+
     /**
      * 注解实现 同步访问
      *
      * @author ming
      * @date 2017-10-09 15:40
      */
+    @CacheResult
     @HystrixCommand(fallbackMethod = "v2", ignoreExceptions = RuntimeException.class)
     public String dictAll() throws InterruptedException {
-        //Thread.sleep(30000);
         return restTemplate.getForObject("http://COMMON-SERVICE/dict/all?username=ming", String.class);
     }
 
+    /**更新的时候 清除请求缓存
+    *@author ming
+    *@date 2017-10-10 14:01
+    */
+    @CacheRemove(commandKey = "dictAll")
+    @HystrixCommand
+    public void update(@CacheKey("str")String str){
+         restTemplate.getForObject("http://COMMON-SERVICE/dict/update?username=ming", String.class);
+    }
     /**
      * 通过 @HystrixCommand 实现异步访问
      *

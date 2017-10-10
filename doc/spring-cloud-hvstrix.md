@@ -232,6 +232,71 @@ toObservable() 尝试从缓存中获取--》获取不到 调用依赖服务 然�
 |@CacheResult|标记改请求结果需要金像缓存 和@HystrixCommand结合使用|cacheKeyMethod|
 |@CacheRemove|标记请求命令缓存失效|commandKey、cacheKeyMethod|
 |@CacheKey|标记那个参数作为key 如果使用了@CacheResutl+@CacheRemove 的cacheKeyMethod 这个注解不会起作用|
+使用CacheResult 指定key和开启请求缓存:  
+```
+    /**
+     * 注解实现 同步访问
+     *
+     * @author ming
+     * @date 2017-10-09 15:40
+     */
+    @CacheResult(cacheKeyMethod = "cacheKey")
+    @HystrixCommand(fallbackMethod = "v2", ignoreExceptions = RuntimeException.class)
+    public String dictAll() throws InterruptedException {
+        return restTemplate.getForObject("http://COMMON-SERVICE/dict/all?username=ming", String.class);
+    }
+    /**
+     * CacheResult 的cacheKeyMethod 指定key的方法
+    *@author ming
+    *@date 2017-10-10 13:54
+    */
+    private String cacheKey(String str){
+        return str;
+    }
+```
+使用CacheResult开启请求缓存 使用@CacheKey指定key @CacheKey可以使用对象的属性来做缓存key
+```
+    /**
+     * 注解实现 同步访问
+     *
+     * @author ming
+     * @date 2017-10-09 15:40
+     */
+    @CacheResult
+    @HystrixCommand(fallbackMethod = "v2", ignoreExceptions = RuntimeException.class)
+    public String dictAll(@CacheKey("str") String str) throws InterruptedException {
+        return restTemplate.getForObject("http://COMMON-SERVICE/dict/all?username=ming", String.class);
+    }
+    
+    
+    使用对象的属性缓存key
+    '@CacheKey("id") User user'
+```
+@CacheRemove再执行的时候 清除相应的请求缓存 commandKey必须存在 
+```
+ /**
+     * 注解实现 同步访问
+     *
+     * @author ming
+     * @date 2017-10-09 15:40
+     */
+    @CacheResult
+    @HystrixCommand(fallbackMethod = "v2", ignoreExceptions = RuntimeException.class)
+    public String dictAll(@CacheKey("str") String str) throws InterruptedException {
+        return restTemplate.getForObject("http://COMMON-SERVICE/dict/all?username=ming", String.class);
+    }
 
+    /**更新的时候 清除请求缓存
+    *@author ming
+    *@date 2017-10-10 14:01
+    */
+    @CacheRemove(commandKey = "dictAll")
+    @HystrixCommand
+    public void update(@CacheKey("str")String str){
+         restTemplate.getForObject("http://COMMON-SERVICE/dict/update?username=ming", String.class);
+    }
+```
+#### 请求合并
+例如 多个 findById 可以合并成一个请求去调用远程服务 findByIds 减少通信消耗、线程占用
 
 
