@@ -1,6 +1,6 @@
 package com.ming.api.user;
 
-public interface AccountControllerInterface {
+public interface IAccountController {
 
     String login(String username);
 }

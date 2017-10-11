@@ -8,7 +8,7 @@ public class DictCommand extends HystrixCommand<String> {
     private RestTemplate restTemplate;
     private String str;
 
-    public DictCommand( RestTemplate restTemplate,String str) {
+    public DictCommand(RestTemplate restTemplate, String str) {
         super(HystrixCommand.Setter
                 //设置分组key
                 .withGroupKey(HystrixCommandGroupKey.Factory.asKey("mingGroupCommandKey"))
@@ -22,7 +22,7 @@ public class DictCommand extends HystrixCommand<String> {
 
     @Override
     protected String run() throws Exception {
-        return restTemplate.getForObject("http://COMMON-SERVICE/dict/all?username="+str,String.class,str);
+        return restTemplate.getForObject("http://COMMON-SERVICE/dict/all?username=" + str, String.class, str);
     }
 
 
@@ -38,12 +38,12 @@ public class DictCommand extends HystrixCommand<String> {
     }
 }
 
-class DictGetCommand extends HystrixCommand<String>{
+class DictGetCommand extends HystrixCommand<String> {
     private static final HystrixCommandKey GETTER_KEY = HystrixCommandKey.Factory.asKey("ming");
     private RestTemplate restTemplate;
     private String str;
 
-    public DictGetCommand( RestTemplate restTemplate,String str) {
+    public DictGetCommand(RestTemplate restTemplate, String str) {
         super(HystrixCommand.Setter
                 //设置分组key
                 .withGroupKey(HystrixCommandGroupKey.Factory.asKey("mingGroupCommandKey"))
@@ -55,11 +55,20 @@ class DictGetCommand extends HystrixCommand<String>{
         this.str = str;
     }
 
-    @Override
-    protected String run() throws Exception {
-        return restTemplate.getForObject("http://COMMON-SERVICE/dict/all?username="+str,String.class,str);
+    /**
+     * 根据  cache key 清除缓存
+     *
+     * @author ming
+     * @date 2017-10-09 17:58
+     */
+    public static void flushCache(String str) {
+        HystrixRequestCache.getInstance(GETTER_KEY, HystrixConcurrencyStrategyDefault.getInstance()).clear(str);
     }
 
+    @Override
+    protected String run() throws Exception {
+        return restTemplate.getForObject("http://COMMON-SERVICE/dict/all?username=" + str, String.class, str);
+    }
 
     @Override
     protected String getFallback() {
@@ -71,21 +80,13 @@ class DictGetCommand extends HystrixCommand<String>{
     protected String getCacheKey() {
         return str;
     }
-
-    /**根据  cache key 清除缓存
-    *@author ming
-    *@date 2017-10-09 17:58
-    */
-    public static void flushCache(String str){
-        HystrixRequestCache.getInstance(GETTER_KEY, HystrixConcurrencyStrategyDefault.getInstance()).clear(str);
-    }
 }
 
 class DictPostCommand extends HystrixCommand<String> {
     private RestTemplate restTemplate;
     private String str;
 
-    public DictPostCommand( RestTemplate restTemplate,String str) {
+    public DictPostCommand(RestTemplate restTemplate, String str) {
         super(HystrixCommand.Setter
                 //设置分组key
                 .withGroupKey(HystrixCommandGroupKey.Factory.asKey("mingGroupCommandKey"))
@@ -100,7 +101,7 @@ class DictPostCommand extends HystrixCommand<String> {
     @Override
     protected String run() throws Exception {
         DictGetCommand.flushCache(str);
-        return restTemplate.getForObject("http://COMMON-SERVICE/dict/all?username="+str,String.class,str);
+        return restTemplate.getForObject("http://COMMON-SERVICE/dict/all?username=" + str, String.class, str);
     }
 
 

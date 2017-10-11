@@ -298,5 +298,178 @@ toObservable() 尝试从缓存中获取--》获取不到 调用依赖服务 然�
 ```
 #### 请求合并
 例如 多个 findById 可以合并成一个请求去调用远程服务 findByIds 减少通信消耗、线程占用
+public abstract class HystrixCollapser<BatchReturnType, ResponseType, RequestArgumentType> implements HystrixExecutable<ResponseType>, HystrixObservable<ResponseType> {...}
+BatchReturnType：合并后批量请求的类型
+ResponseType ： 单个请求的返回类型
+RequestArgumentType： 请求参数类型
+注解方式实现 
+```
+ @HystrixCollapser(batchMethod = "findByIds"
+            ,collapserProperties = {@HystrixProperty(name = "timerDelayInMilliseconds", value = "100")}
+            ,scope = com.netflix.hystrix.HystrixCollapser.Scope.GLOBAL)
+    //直接写log 对象 map无法转换成log对象  因为findByIds获取结果的时候 格式是List<Map>方式返回 而不是 List<Log>
+    public Object findById(Long id){
+        throw new RuntimeException("findById由 findByIds统一执行");
+        //return  restTemplate.getForObject("http://COMMON-SERVICE/log/detail?id="+id,Log.class);
+    }
+
+    @HystrixCommand
+    public List<Object> findByIds(List<Long> ids){
+        StringBuffer sb= new StringBuffer();
+        for (Long id : ids) {
+            sb.append("ids=");
+            sb.append(id);
+            sb.append("&");
+        }
+        //sb.append("ids=1&ids=2");
+        return  restTemplate.getForObject("http://COMMON-SERVICE/log/list?"+sb.toString(),List.class);
+    }
+```
+实现HystrixCollapserCommand 方式
+1:实现批量查询的命令
+```
+/**批量查询的 命令
+ * @see com.netflix.hystrix.HystrixCommand
+*@author ming
+*@date 2017-10-11 18:14
+*/
+public class LogBatchCommand extends HystrixCommand<List<Log>>{
+
+    private ILogController logController;
+    private List<Long> ids;
+    protected LogBatchCommand(ILogController logController,List<Long> ids) {
+        super(Setter.withGroupKey(HystrixCommandGroupKey.Factory.asKey("logBatch")));
+        this.logController = logController;
+        this.ids= ids;
+    }
+
+
+    @Override
+    protected List<Log> run() throws Exception {
+        return logController.findLogListByIds(ids);
+    }
+}
+```
+2:实现请求合并处理的命令
+```
+/**实现 请求合并 命令
+ * @see com.netflix.hystrix.contrib.javanica.collapser.CommandCollapser
+*@author ming
+*@date 2017-10-11 18:15
+*/
+public class LogCollapseCommand extends HystrixCollapser<List<Log>,Log,Long> {
+    /**
+     * 请求接口
+     * */
+    private ILogController logController;
+    /**
+     *  单个id
+     * */
+    private Long id;
+
+    public LogCollapseCommand(ILogController logController, Long id) {
+        super(HystrixCollapser.Setter.withCollapserKey(HystrixCollapserKey.Factory.asKey("collapse")));
+        this.logController = logController;
+        this.id = id;
+    }
+
+    /** 需要合并的请求参数
+    *@author ming
+    *@date 2017-10-11 14:40
+    */
+    @Override
+    public Long getRequestArgument() {
+        return id;
+    }
+
+    /**
+     * 创建合并请求命令 并且发起请求
+    *@author ming
+    *@date 2017-10-11 14:39
+    */
+    @Override
+    protected HystrixCommand<List<Log>> createCommand(Collection<CollapsedRequest<Log, Long>> collapsedRequests) {
+        List<Long> ids = Lists.newArrayList();
+        ids.addAll(collapsedRequests.stream().map(CollapsedRequest::getArgument).collect(Collectors.toSet()));
+        return new LogBatchCommand(logController,ids);
+    }
+
+    /**
+     * 将返回结果拆分到 每个请求
+    *@author ming
+    *@date 2017-10-11 14:39
+    */
+    @Override
+    protected void mapResponseToRequests(List<Log> batchResponse, Collection<CollapsedRequest<Log, Long>> collapsedRequests) {
+        int count = 0 ;
+        for (CollapsedRequest<Log, Long> request : collapsedRequests) {
+            Log log = batchResponse.get(count++);
+            request.setResponse(log);
+        }
+    }
+}
+```
+3:调用
+```
+
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 

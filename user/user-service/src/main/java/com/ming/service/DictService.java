@@ -38,27 +38,27 @@ public class DictService {
     public String dictAll() throws InterruptedException {
         return restTemplate.getForObject("http://COMMON-SERVICE/dict/all?username=ming", String.class);
     }
-    *//**
+    */
+
+    /**
      * CacheResult 的cacheKeyMethod 指定key的方法
-    *@author ming
-    *@date 2017-10-10 13:54
-    *//*
+     *
+     * @author ming
+     * @date 2017-10-10 13:54
+     *//*
     private String cacheKey(String str){
         return str;
     }*/
-
-
-
     @CacheResult
     @HystrixCommand(fallbackMethod = "v2")
-    public Dict findDictById(Long id){
-        return restTemplate.getForObject("http://COMMON-SERVICE/dict/"+id,Dict.class);
+    public Dict findDictById(Long id) {
+        return restTemplate.getForObject("http://COMMON-SERVICE/dict/" + id, Dict.class);
     }
 
     @CacheResult
     @HystrixCommand(fallbackMethod = "v2")
-    public List findDictListByIds(Collection<Long> ids){
-        return restTemplate.getForObject("http://COMMON-SERVICE/dict/"+ids,List.class);
+    public List findDictListByIds(Collection<Long> ids) {
+        return restTemplate.getForObject("http://COMMON-SERVICE/dict/" + ids, List.class);
     }
 
     /**
@@ -73,15 +73,18 @@ public class DictService {
         return restTemplate.getForObject("http://COMMON-SERVICE/dict/all?username=ming", String.class);
     }
 
-    /**更新的时候 清除请求缓存
-    *@author ming
-    *@date 2017-10-10 14:01
-    */
+    /**
+     * 更新的时候 清除请求缓存
+     *
+     * @author ming
+     * @date 2017-10-10 14:01
+     */
     @CacheRemove(commandKey = "dictAll")
     @HystrixCommand
-    public void update(@CacheKey("str")String str){
-         restTemplate.getForObject("http://COMMON-SERVICE/dict/update?username=ming", String.class);
+    public void update(@CacheKey("str") String str) {
+        restTemplate.getForObject("http://COMMON-SERVICE/dict/update?username=ming", String.class);
     }
+
     /**
      * 通过 @HystrixCommand 实现异步访问
      *
@@ -108,9 +111,9 @@ public class DictService {
      */
     @HystrixCommand(fallbackMethod = "v2"
             , observableExecutionMode = ObservableExecutionMode.LAZY
-            ,commandKey = "commandKey"
-            ,groupKey = "groupKey"
-            ,threadPoolKey = "threadPoolKey"
+            , commandKey = "commandKey"
+            , groupKey = "groupKey"
+            , threadPoolKey = "threadPoolKey"
     )
     public Observable<String> observableDictAll() {
         return Observable.create(subscriber -> {
@@ -167,6 +170,10 @@ public class DictService {
     public Observable<String> dictByObservableCommandToObservable() {
         return new DictObservableCommand(restTemplate).toObservable();
     }
+
+
+
+
 
 
     @HystrixCommand(fallbackMethod = "v1")

@@ -18,12 +18,12 @@ public class DictObservableCommand extends HystrixObservableCommand {
     protected Observable<String> construct() {
         return Observable.create(subscriber -> {
             try {
-                if (subscriber.isUnsubscribed()){
-                    String str = restTemplate.getForObject("http://COMMON-SERVICE/dict/all?username=",String.class);
+                if (subscriber.isUnsubscribed()) {
+                    String str = restTemplate.getForObject("http://COMMON-SERVICE/dict/all?username=", String.class);
                     subscriber.onNext(str);
                     subscriber.onCompleted();
                 }
-            }catch (Exception e){
+            } catch (Exception e) {
                 subscriber.onError(e);
             }
         });
