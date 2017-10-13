@@ -406,6 +406,62 @@ public class LogCollapseCommand extends HystrixCollapser<List<Log>,Log,Long> {
 ```
 
 ```
+####属性配置
+配置优先级 从低到高  高优先级覆盖低优先级设置
+* 全局默认值  全局设定的默认值 优先级最低
+* 全局配置属性 通过配置文件定义全局属性  可以通过 config + bus 动态覆盖全局默认值
+* 实例默认值 通过代码为实例定义默认值  覆盖全局配置和全局默认值
+* 实例配置属性 通过配置文件 为指定实例配置属性 覆盖默认值 通过config + bus 动态覆盖实例默认值
+
+command属性(HystrixCommand):
+* execution
+1:execution.isolation.strategy:  
+设置command.run执行隔离策略  
+THREAD:通过线程池隔离策略，独立的线程上执行，并发限制受线程池线程数量限制  
+SEMAPHORE:通过信号量隔离策略，再调用的线程上执行，并发受信号量计数限制    
+|级别|默认值或者使用方式|备注|
+|:--|:--------------|:---|
+|全局默认值|THREAD| 使用线程池策略|
+|全局配置属性|hystrix.command.default.execution.isolation.strategy|设定全局配置属性 THREAD(线程池隔离策略)或者SEMAPHORE(信号量隔离策略)|
+|实例默认值|自定义command中设定HystrixCommandProperties.Setter().withExecutionIsOlationStrategy(ExecutionIsolationStrategy.THREAD(SEMAPHORE))、注解中使用@HystrixProperity(name="execution.isolation.strategy",value="THREAD(SEMAPHORE)")|设定指定实例的默认值|
+|实例配置属性|hystrix.command.HystrixCommandKey.excution.isolation.strategy|设定实例配置属性 |
+
+2:execution.isolation.thread.timeoutInMilliseconds:
+设置命令执行超时熔断时间 单位ms 
+|级别|默认值或者使用方式|备注|
+|:--|:--------------|:--|
+|全局默认值|1000ms|不设定  默认超过1000ms的请求 熔断|
+|全局配置属性|hystrix.command.execution.isolation.thread.timeoutInMilliseconds|全局设定 命令超时熔断时间|
+|实例默认值|自定义command中通过设定HystrixCommandProperties.Setter().withExecutionTimeoutInMilliseconds()、注解中使用@HystrixProperty(name="execution.isolatin.thread.timeoutInMilliseconds",value="2000")设定|设定指定命令实例默认值|
+|实例配置属性|hystrix.command.HystrixCommandKey.execution.isolatin.thread.tiemoutInMilliseconds|设定实例配置属性|
+
+3：execution.timeout.enabled:
+设置command.run是否启用超时时间  也就是 是否超时熔断 默认true  如果是false 那么timeoutInMilliseconds不起作用
+设置命令执行超时熔断时间 单位ms 
+|级别|默认值或者使用方式|备注|
+|:--|:--------------|:--|
+|全局默认值|true|默认是开启超时熔断|
+|全局配置属性|hystrix.command.default.execution.timeout.enabled|全局设定 是否开启超时熔断|
+|实例默认值|自定义command中通过设定HystrixCommandProperties.Setter().withExecutionTimeoutEnable()、注解中使用@HystrixProperty(name="execution.timeout.enable",value="false")|设定指定命令实例默认是否开启超时熔断|
+|实例配置属性|hystrix.command.HystrixCommandKey.execution.timeout.enable|设定实例配置属性|
+
+4：execution.isolation.thread.interruptOnTimeOut:
+command.run超时后是否中断  停止执行此次请求
+|级别|默认值或者使用方式|备注|
+|:--|:--------------|:--|
+|全局默认值|true|默认超时之后 这个请求中断|
+|全局配置属性|hystrix.command.default.execution.isolation.thread.interruptOnTimeout|设定全局配置属性|
+|实例默认值|自定义command中通过设定HystrixCommandProperties.Setter().withExecutionIsolationthreadInterruptOnTimeout、注解中使用@HystrixProperty(name"execution.isolation.thread.interruptOnTimeout",value"false")|设定实例超时是否中断|
+|实例配置属性|hystrix.command.HystrixCommandKey.execution.isolation.thread.interruptOnTimeout|设定指定实例配置属性|
+
+5:
+
+
+
+* 
+*
+*
+*
 
 
 
