@@ -51,7 +51,8 @@ public class DictService {
     }*/
     @CacheResult
     @HystrixCommand(fallbackMethod = "v2")
-    public Dict findDictById(Long id) {
+    public Dict findDictById(Long id) throws InterruptedException {
+        Thread.sleep(30000L);
         return restTemplate.getForObject("http://COMMON-SERVICE/dict/" + id, Dict.class);
     }
 
@@ -176,14 +177,13 @@ public class DictService {
 
 
 
-    @HystrixCommand(fallbackMethod = "v1")
-    public String v2(Throwable e) throws InterruptedException {
+    public void v2(Long obj,Throwable e) throws InterruptedException {
         //降级
         //Thread.sleep(30000);
-        return "v2级别 降级" + e.getMessage();
+        //return "v2级别 降级" + e.getMessage();
     }
 
-    public String v1(Throwable e) {
-        return "v1级别 最终级别 熔断" + e.getMessage();
+    public void v1(Throwable e) {
+      //  return "v1级别 最终级别 熔断" + e.getMessage();
     }
 }

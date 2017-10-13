@@ -77,6 +77,14 @@ command 中支持信号量的地方
 类似 hystrixObservableCommand 方式
 
 #### 服务降级
+
+fallBack方法 必须是参数列表相同 可以多一个Throwable 参数 返回值也必须相同 
+参数列表必须相同的原因:
+MethodProvider 中获取fallBack方法是通过 getFallbackMethod -->getMethod(Class<?> type, String name, Class<?>... parameterTypes) 去获取  虽然它会递归自己 但是不能使用fallBack方法形参使用Object去写公共处理方法
+返回值必须相同的原因:
+    FallbackMethod#validateReturnType 校验降级方法 的返回类型 
+    
+    
 在实现的command 中重写 getFallBack方法 
 ```
   @Override
@@ -88,21 +96,6 @@ command 中支持信号量的地方
 ```
 
 @HystrixCommand(fallbackMethod = "v2")
-```
-#### 异常处理
-通过@HystrixCommand中的ignoreExceptions 来忽略不用降级的的异常 否则 除HystrixBadrequestException以外的异常都导致降级
-```
-@HystrixCommand(fallbackMethod = "v2", ignoreExceptions = RuntimeException.class)
-```
-获取异常:  
-在降级方法中 添加Throwable 形参即可
-```
-    @HystrixCommand(fallbackMethod = "v1")
-    public String v2(Throwable e) throws InterruptedException {
-        //降级
-        //Thread.sleep(30000);
-        return "v2级别 降级" + e.getMessage();
-    }
 ```
 #### 命令名称、分组、线程池划分
 自定义实现command 名称分组 线程池划分

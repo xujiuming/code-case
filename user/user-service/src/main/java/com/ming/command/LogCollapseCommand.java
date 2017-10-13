@@ -6,6 +6,7 @@ import com.ming.server.ILogController;
 import com.netflix.hystrix.HystrixCollapser;
 import com.netflix.hystrix.HystrixCollapserKey;
 import com.netflix.hystrix.HystrixCommand;
+import org.springframework.web.client.RestTemplate;
 
 import java.util.Collection;
 import java.util.List;
@@ -21,14 +22,16 @@ public class LogCollapseCommand extends HystrixCollapser<List<Log>,Log,Long> {
      * 请求接口
      * */
     private ILogController logController;
+
+    private RestTemplate restTemplate;
     /**
      *  单个id
      * */
     private Long id;
 
-    public LogCollapseCommand(ILogController logController, Long id) {
+    public LogCollapseCommand(RestTemplate restTemplate, Long id) {
         super(HystrixCollapser.Setter.withCollapserKey(HystrixCollapserKey.Factory.asKey("collapse")));
-        this.logController = logController;
+        this.restTemplate = restTemplate;
         this.id = id;
     }
 
@@ -50,7 +53,7 @@ public class LogCollapseCommand extends HystrixCollapser<List<Log>,Log,Long> {
     protected HystrixCommand<List<Log>> createCommand(Collection<CollapsedRequest<Log, Long>> collapsedRequests) {
         List<Long> ids = Lists.newArrayList();
         ids.addAll(collapsedRequests.stream().map(CollapsedRequest::getArgument).collect(Collectors.toSet()));
-        return new LogBatchCommand(logController,ids);
+        return new LogBatchCommand(restTemplate,ids);
     }
 
     /**

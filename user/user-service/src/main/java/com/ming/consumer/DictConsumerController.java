@@ -65,7 +65,7 @@ public class DictConsumerController {
 
 
     @GetMapping(value = "dict/{id}")
-    public Dict findDictById(Long id) {
+    public Dict findDictById(Long id) throws InterruptedException {
         return dictService.findDictById(id);
     }
 

@@ -1,8 +1,10 @@
 package com.ming.controller;
 
 import com.alibaba.fastjson.JSON;
+import com.google.common.collect.Lists;
 import com.google.common.collect.Maps;
 import com.ming.api.user.IAccountController;
+import com.ming.command.LogBatchCommand;
 import com.ming.command.LogCollapseCommand;
 import com.ming.entity.Log;
 import com.ming.service.CommonFeignClient;
@@ -10,8 +12,10 @@ import com.ming.service.LogService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cloud.client.discovery.DiscoveryClient;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.client.RestTemplate;
 
 import java.util.Collection;
+import java.util.List;
 import java.util.Map;
 import java.util.concurrent.ExecutionException;
 
@@ -29,6 +33,9 @@ public class AccountController implements IAccountController {
     private CommonFeignClient.LogFeignClient logFeignClient;
     @Autowired
     private LogService logService;
+
+    @Autowired
+    private RestTemplate restTemplate;
 
 
     @GetMapping(value = "login")
@@ -62,7 +69,8 @@ public class AccountController implements IAccountController {
 
     @RequestMapping(value = "command-log",method = RequestMethod.GET)
     public Object getCommand(Long id) throws ExecutionException, InterruptedException {
-        return new LogCollapseCommand(logFeignClient,id).queue().get();
+        //return new LogCollapseCommand(restTemplate,id).queue().get();
+        return new LogBatchCommand(restTemplate, Lists.newArrayList(1L,2L)).queue().get();
     }
 
 }

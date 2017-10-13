@@ -1,6 +1,5 @@
 package com.ming.service;
 
-import com.ming.entity.Log;
 import com.netflix.hystrix.contrib.javanica.annotation.HystrixCollapser;
 import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
 import com.netflix.hystrix.contrib.javanica.annotation.HystrixProperty;
@@ -8,9 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
-import java.util.Collection;
 import java.util.List;
-import java.util.concurrent.Future;
 
 @Service
 public class LogService {
