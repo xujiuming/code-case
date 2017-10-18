@@ -2,7 +2,7 @@
 info:
  app:
   name: user-service
-#server:
+#service:
   # 随机端口 port：${random.int[8080,8090]} port = 0
   #port: ${random.int[8080,8089]}
 #开启 控制类端点
@@ -62,4 +62,4 @@ eureka:
 
   #指定 eureka客户端的 格式  和server.port配合使用
 #  instance:
- #   instance-id: ${spring.application.name}:${server.port}
+ #   instance-id: ${spring.application.name}:${service.port}

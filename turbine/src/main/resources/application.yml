@@ -1,6 +1,6 @@
 spring:
   application:
-    name: turbine-server
+    name: turbine-service
 management:
   port: 11000
 server:

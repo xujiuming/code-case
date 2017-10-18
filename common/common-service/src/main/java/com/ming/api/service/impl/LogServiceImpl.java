@@ -1,10 +1,8 @@
-package com.ming.controller;
+package com.ming.api.service.impl;
 
 import com.google.common.collect.Lists;
+import com.ming.api.service.LogService;
 import com.ming.entity.Log;
-import com.ming.server.ILogController;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -12,8 +10,7 @@ import java.util.Collection;
 import java.util.List;
 
 @RestController
-@RequestMapping("log")
-public class LogController implements ILogController {
+public class LogServiceImpl implements LogService {
 
     @Override
     public Log findLogById(@RequestParam("id") Long id) {

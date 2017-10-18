@@ -32,7 +32,7 @@ hystrix:
           thread:
             timeoutInMilliseconds: 10000
 
-#server:
+#service:
   # 随机端口 port：${random.int[8080,8090]} port = 0
   #port: ${random.int[8090,8099]}
 eureka:
@@ -44,3 +44,5 @@ eureka:
       enable: true
     # 客户端注册信息缓存时间
     registry-fetch-interval-seconds: 10
+
+#数据库设置

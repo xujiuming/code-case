@@ -2,22 +2,26 @@ package com.ming.core.orm;
 
 import lombok.Data;
 
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.MappedSuperclass;
 import java.io.Serializable;
 
 /**
- * 继承映射父类  所有entity 继承这个类 使用long类型id
+ * 继承映射父类  所有entity 继承这个类  无特殊需求 尽量使用Long
  *
  * @author ming
  * @date 2017-08-28 11点
  */
-//@MappedSuperclass
+@MappedSuperclass
 @Data
-public class InId implements Serializable {
+public class InId<T extends Number> implements Serializable {
 
 
-    //@Id
-    //@GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private T id;
 
     private Long lastUpdateTimeMillis = System.currentTimeMillis();
 

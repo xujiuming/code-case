@@ -1,3 +1,2 @@
-
-# info
-由于接口的多继承 用起来很麻烦 所以在写方法名的时候带上实体或者vo的名称 例如 findDictById 这样 避免方法名称重复 导致菱形继承错误 
+内部调用接口使用service定义  Impl后缀为实现 Clietn后缀 为feignclient 
+当远程调用其他模块服务的时候定义feignclient 需要再client包下建立模块service  内部定义client服务继承service接口

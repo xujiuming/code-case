@@ -1,8 +1,6 @@
-package com.ming.service;
+package com.ming.api.service;
 
-import com.ming.command.DictCommand;
-import com.ming.command.DictObservableCommand;
-import com.ming.entity.Dict;
+import com.ming.entity.DataDict;
 import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
 import com.netflix.hystrix.contrib.javanica.annotation.ObservableExecutionMode;
 import com.netflix.hystrix.contrib.javanica.cache.annotation.CacheKey;
@@ -16,11 +14,11 @@ import rx.Observable;
 
 import java.util.Collection;
 import java.util.List;
-import java.util.concurrent.ExecutionException;
 import java.util.concurrent.Future;
 
 @Service
-public class DictService {
+@Deprecated
+public class DictServiceX {
     @Autowired
     private RestTemplate restTemplate;
 
@@ -51,9 +49,9 @@ public class DictService {
     }*/
     @CacheResult
     @HystrixCommand(fallbackMethod = "v2")
-    public Dict findDictById(Long id) throws InterruptedException {
+    public DataDict findDictById(Long id) throws InterruptedException {
         Thread.sleep(30000L);
-        return restTemplate.getForObject("http://COMMON-SERVICE/dict/" + id, Dict.class);
+        return restTemplate.getForObject("http://COMMON-SERVICE/dict/" + id, DataDict.class);
     }
 
     @CacheResult
@@ -129,61 +127,61 @@ public class DictService {
             }
         });
     }
+/*
 
-    /**
-     * 通过自定义command 实现同步调用
-     *
-     * @author ming
-     * @date 2017-10-09 15:38
-     */
+    */
+/**
+ * 通过自定义command 实现同步调用
+ *
+ * @author ming
+ * @date 2017-10-09 15:38
+ *//*
+
     public String dictByCommandExecute() {
         return new DictCommand(restTemplate, "ming").execute();
     }
 
+*/
 
-    /**
+   /* *//**
      * 通过自定义command 实现异步调用
      *
      * @author ming
      * @date 2017-10-09 15:39
-     */
+     *//*
     public String dictByCommandQueue() throws ExecutionException, InterruptedException {
         return new DictCommand(restTemplate, "ming").queue().get();
     }
 
 
-    /**
+    *//**
      * 通过自定义 observableCommand 响应式
      *
      * @author ming
      * @date 2017-10-09 16:05
-     */
+     *//*
     public Observable<String> dictByObservableCommandObserve() {
         return new DictObservableCommand(restTemplate).observe();
     }
 
+    */
+
     /**
      * 通过自定义 observableCommand 响应式
      *
      * @author ming
      * @date 2017-10-09 16:05
-     */
+     *//*
     public Observable<String> dictByObservableCommandToObservable() {
         return new DictObservableCommand(restTemplate).toObservable();
-    }
-
-
-
-
-
-
-    public void v2(Long obj,Throwable e) throws InterruptedException {
+    }*/
+    public void v2(Long obj, Throwable e) throws InterruptedException {
         //降级
         //Thread.sleep(30000);
         //return "v2级别 降级" + e.getMessage();
     }
 
     public void v1(Throwable e) {
-      //  return "v1级别 最终级别 熔断" + e.getMessage();
+        //  return "v1级别 最终级别 熔断" + e.getMessage();
     }
 }
