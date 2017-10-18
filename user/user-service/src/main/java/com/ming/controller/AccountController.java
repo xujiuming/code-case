@@ -43,7 +43,6 @@ public class AccountController implements IAccountController {
     public String login(String username) {
         System.out.println(username);
         //长时间休眠  触发熔断
-        //Thread.sleep(30000);
         return username + JSON.toJSONString(discoveryClient.getLocalServiceInstance());
     }
 
@@ -69,7 +68,6 @@ public class AccountController implements IAccountController {
 
     @RequestMapping(value = "command-log",method = RequestMethod.GET)
     public Object getCommand(Long id) throws ExecutionException, InterruptedException {
-        //return new LogCollapseCommand(restTemplate,id).queue().get();
         return new LogBatchCommand(restTemplate, Lists.newArrayList(1L,2L)).queue().get();
     }
 

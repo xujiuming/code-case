@@ -25,7 +25,6 @@ public class LogBatchCommand extends HystrixCommand<List<Log>>{
 
     @Override
     protected List<Log> run() throws Exception {
-        //return logController.findLogListByIds(ids);
         return  restTemplate.getForObject("http://COMMON-SERVICE/log/list?ids=1&ids=2",List.class);
     }
 }

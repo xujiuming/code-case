@@ -32,7 +32,6 @@ public class LogService {
             sb.append(id);
             sb.append("&");
         }
-        //sb.append("ids=1&ids=2");
         return  restTemplate.getForObject("http://COMMON-SERVICE/log/list?"+sb.toString(),List.class);
     }
 }

@@ -15,13 +15,11 @@ import java.util.List;
 @RequestMapping("log")
 public class LogController implements ILogController {
 
-    @RequestMapping(value = "detail", method = RequestMethod.GET)
     @Override
     public Log findLogById(@RequestParam("id") Long id) {
         return new Log(id, "log");
     }
 
-    @RequestMapping(value = "list", method = RequestMethod.GET)
     @Override
     public List<Log> findLogListByIds(@RequestParam("ids") Collection<Long> ids) {
         List<Log> result = Lists.newArrayList();

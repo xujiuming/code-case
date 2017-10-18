@@ -19,24 +19,21 @@ public class DictController implements IDictController {
     @Autowired
     private DiscoveryClient discoveryClient;
 
-    @GetMapping(value = "all")
+    @Override
     public Dict all() {
         //长时间休眠  触发熔断
-        //Thread.sleep(30000);
         return new Dict(1L, JSON.toJSONString(discoveryClient.getLocalServiceInstance()));
     }
 
-    @RequestMapping(value = "detail",method = RequestMethod.GET)
+    @Override
     public Dict findDictById(@RequestParam("id") Long id) {
         //长时间休眠  触发熔断
-        //Thread.sleep(30000);
         return new Dict(id, JSON.toJSONString(discoveryClient.getLocalServiceInstance()));
     }
 
-    @RequestMapping(value = "list",method = RequestMethod.GET)
+    @Override
     public List<Dict> findDictListByIds(@RequestParam("ids") Collection<Long> ids) {
         //长时间休眠  触发熔断
-        //Thread.sleep(30000);
         List<Dict> result = Lists.newArrayList();
         for (Long id : ids) {
             result.add(new Dict(id, JSON.toJSONString(discoveryClient.getLocalServiceInstance())));
