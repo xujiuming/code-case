@@ -1,0 +1,37 @@
+spring:
+  application:
+    name: api-gateway
+server:
+  port: 5555
+#路由规则配置
+zuul:
+  routes:
+   #面向ip 的路由user rest服务接口
+   api-user:
+    path: "/api-user/**"
+    url: "http://localhost:8080/"
+    #对指定路由开启自定义敏感头
+    customSensitiveHeaders: true
+   #面向eureka 服务的路由 没有负载均衡方式
+   api-user-eureka:
+    path: "/api-user-eureka/**"
+    url: "USER-SERVICE"
+    #将指定路由的敏感包头为空
+    sensitiveHeaders:
+   #禁止自动创建 路由规则
+   # 简洁方式设定路由规则 服务名称: path
+   USER-SERVICE: "/user-service/**"
+   #forward方式
+   api-common-forward:
+    path: "/api-common-forward/**"
+    url: "forward:/user-service"
+  # 全局覆盖默认headers  默认有"Cookie", "Set-Cookie", "Authorization"  不会被传递全局设置为空 这些headers 可以传递
+  sensitive-headers:
+  # 转发请求host信息
+  add-host-header: true
+  #不自动创建路由规则的服务
+  #ignoredServices: "USER-SERVICE"
+eureka:
+  client:
+    service-url:
+     defaultZone: "http://localhost:10001/eureka/"

@@ -2,10 +2,6 @@ package com.ming.core.orm;
 
 import lombok.Data;
 
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.MappedSuperclass;
 import java.io.Serializable;
 
 /**
@@ -14,13 +10,13 @@ import java.io.Serializable;
  * @author ming
  * @date 2017-08-28 11点
  */
-@MappedSuperclass
+//@MappedSuperclass
 @Data
 public class InId<T extends Number> implements Serializable {
 
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+   // @Id
+   // @GeneratedValue(strategy = GenerationType.IDENTITY)
     private T id;
 
     private Long lastUpdateTimeMillis = System.currentTimeMillis();

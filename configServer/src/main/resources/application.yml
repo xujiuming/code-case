@@ -1,0 +1,14 @@
+spring:
+  application:
+    name: config-server
+  cloud:
+    config:
+      server:
+        git:
+          uri: "https://github.com/xuxianyu/config.git"
+          #仓库的搜索路径
+          search-paths: springcloud/config-repo
+          #username: 18120580001@163.com
+          #password:
+server:
+  port: 6666

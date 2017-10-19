@@ -15,6 +15,8 @@
         <module>user</module>
         <module>hystrixDashboard</module>
         <module>turbine</module>
+        <module>apiGateway</module>
+        <module>configServer</module>
     </modules>
     <packaging>pom</packaging>
     <name>ming</name>

@@ -3,7 +3,7 @@ info:
     name: common-service
 spring:
   application:
-    name: common-service
+    name: didispace
   cloud:
     loadbalancer:
       retry:
@@ -11,6 +11,10 @@ spring:
           retry:
             #开启自动重试
             enabled: true
+    config:
+      profile: dev
+      label: master
+      uri: "http://localhost:7001/"
 common-service:
   ribbon:
     #链接超时时间
@@ -45,4 +49,4 @@ eureka:
     # 客户端注册信息缓存时间
     registry-fetch-interval-seconds: 10
 
-#数据库设置
+#config 设置
