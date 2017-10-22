@@ -1,6 +1,6 @@
 spring:
   application:
-    name: config-server
+    name: config
   cloud:
     config:
       server:
@@ -10,5 +10,3 @@ spring:
           search-paths: springcloud/config-repo
           #username: 18120580001@163.com
           #password:
-server:
-  port: 6666

@@ -1,11 +1,11 @@
 info:
   app:
-    name: eureka-server1
+    name: eureka1
 server:
   port: 10001
 spring:
   application:
-    name: eureka-server1
+    name: eureka1
 eureka:
   instance:
     hostname: eureka-server1

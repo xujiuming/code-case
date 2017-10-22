@@ -1,9 +1,6 @@
-info:
-  app:
-    name: common-service
 spring:
   application:
-    name: didispace
+    name: common
   cloud:
     loadbalancer:
       retry:
