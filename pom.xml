@@ -17,6 +17,8 @@
         <module>turbine</module>
         <module>apiGateway</module>
         <module>configServer</module>
+        <module>mq</module>
+        <module>timer</module>
     </modules>
     <packaging>pom</packaging>
     <name>ming</name>

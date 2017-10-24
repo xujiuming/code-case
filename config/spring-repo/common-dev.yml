@@ -1,5 +1,5 @@
 from: common::dev
-common-service:
+common:
   ribbon:
     #链接超时时间
     ConnectTimeOut: 1000

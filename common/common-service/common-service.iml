@@ -17,7 +17,7 @@
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="module" module-name="user-api" />
-    <orderEntry type="module" module-name="common-api" />
+    <orderEntry type="library" name="Maven: ming:common-api:1.0.0" level="project" />
     <orderEntry type="library" name="Maven: org.springframework.cloud:spring-cloud-starter-feign:1.2.4.RELEASE" level="project" />
     <orderEntry type="library" name="Maven: org.springframework.cloud:spring-cloud-commons:1.1.7.RELEASE" level="project" />
     <orderEntry type="library" name="Maven: org.springframework.security:spring-security-crypto:4.1.4.RELEASE" level="project" />
