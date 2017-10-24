@@ -33,4 +33,12 @@ eureka:
     # 客户端注册信息缓存时间
     registry-fetch-interval-seconds: 10
 
-#config 设置
+#config 设
+spring:
+   cloud:
+     loadbalancer:
+       retry:
+         enabled:
+           retry:
+             #开启自动重试
+             enabled: true

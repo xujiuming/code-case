@@ -1,13 +1,6 @@
 spring:
   application:
     name: common
-  cloud:
-    loadbalancer:
-      retry:
-        enabled:
-          retry:
-            #开启自动重试
-            enabled: true
     config:
       profile: dev
       label: master
