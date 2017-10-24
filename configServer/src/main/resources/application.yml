@@ -5,8 +5,8 @@ spring:
     config:
       server:
         git:
-          uri: "https://github.com/xuxianyu/config.git"
+          uri: "https://github.com/xuxianyu/springcloud.git"
           #仓库的搜索路径
-          search-paths: springcloud/config-repo
+          search-paths: config/spring-repo
           #username: 18120580001@163.com
           #password:

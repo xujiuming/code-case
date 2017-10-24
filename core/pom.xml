@@ -13,14 +13,10 @@
     <name>core</name>
     <packaging>jar</packaging>
     <version>1.0.0</version>
-    <!--<dependencies>
+    <dependencies>
         <dependency>
             <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-data-jpa</artifactId>
+            <artifactId>spring-boot</artifactId>
         </dependency>
-        <dependency>
-            <groupId>mysql</groupId>
-            <artifactId>mysql-connector-java</artifactId>
-        </dependency>
-</dependencies>-->
+</dependencies>
 </project>

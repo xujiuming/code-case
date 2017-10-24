@@ -11,39 +11,4 @@ spring:
     config:
       profile: dev
       label: master
-      uri: "http://localhost:7001/"
-common-service:
-  ribbon:
-    #链接超时时间
-    ConnectTimeOut: 1000
-    # 请求处理超时时间
-    ReadTimeOut: 1000
-    #对所有请求重试
-    OkToRetryOnAllOperations: true
-    # 切换实例重试次数
-    MaxAutoRetriesNextServer: 3
-    #当前实例重试次数
-    MaxAutoRetries: 3
-#断路器设置
-hystrix:
-  command:
-    default:
-      execution:
-        isolation:
-          thread:
-            timeoutInMilliseconds: 10000
-
-#service:
-  # 随机端口 port：${random.int[8080,8090]} port = 0
-  #port: ${random.int[8090,8099]}
-eureka:
-  client:
-    serviceUrl:
-      defaultZone: http://localhost:10002/eureka/
-    #使用 actuator 做健康检测
-    healthcheck:
-      enable: true
-    # 客户端注册信息缓存时间
-    registry-fetch-interval-seconds: 10
-
-#config 设置
+      uri: "http://localhost:7001"
