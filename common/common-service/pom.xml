@@ -48,10 +48,11 @@
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-starter-config</artifactId>
         </dependency>
-        <!--spring boot 配置加载-->
+        <!--spring boot  todo ming  此处版本 寻求解决方法  配置加载-->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-configuration-processor</artifactId>
+            <version>1.5.6.RELEASE</version>
             <optional>true</optional>
         </dependency>
         <!--自动重试-->
