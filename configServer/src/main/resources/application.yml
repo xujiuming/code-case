@@ -13,10 +13,10 @@ eureka:
     serviceUrl:
       defaultZone: http://localhost:10002/eureka/
 #config server 访问账户密码
-#security:
- # user:
-  #  name: ming
-   # password: ming
+security:
+  user:
+    name: ming
+    password: ming
 #设定 对称加密密钥
 #encrypt:
 #  key: ming

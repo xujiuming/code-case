@@ -70,5 +70,5 @@ spring:
 
 
 ##加密信息
-cipher:
- username: {cipher}ming
+#cipher:
+ #username: {cipher}ming
