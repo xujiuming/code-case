@@ -1,1 +1,5 @@
-from: gateway::dev
+from: gatewaydev
+
+##加密信息
+cipher:
+ username: {cipher}ming

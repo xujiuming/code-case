@@ -7,3 +7,7 @@
 {label}分支
 
 是spring-cloud-starter-config  不是spring-cloud-config
+#注意！！！！！
+spring-cloud-config-client 的配置必须在bootstrap.yml中 
+因为 这个才是在启动前加载到env中的  
+application.yml是在config-client加载后才会加载配置

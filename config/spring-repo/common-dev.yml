@@ -1,4 +1,4 @@
-from: common::dev
+from: commondev
 common:
   ribbon:
     #链接超时时间
@@ -42,3 +42,7 @@ spring:
            retry:
              #开启自动重试
              enabled: true
+
+##加密信息
+cipher:
+ username: {cipher}ming

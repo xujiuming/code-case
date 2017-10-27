@@ -1,4 +1,4 @@
-from: user::dev
+from: userdev
 #info 端点的信息
 info:
  app:
@@ -67,3 +67,8 @@ spring:
        retry:
          #开启自动重试
          enabled: true
+
+
+##加密信息
+cipher:
+ username: {cipher}ming

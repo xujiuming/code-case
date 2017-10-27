@@ -1,9 +1,0 @@
-
-spring:
-  application:
-    name: user
-    config:
-     profile: dev
-     label: master
-     uri: "http://localhost:7001"
-

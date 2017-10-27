@@ -1,6 +1,7 @@
 package com.ming.api.service;
 
 import com.ming.entity.DataDict;
+import org.springframework.cloud.context.config.annotation.RefreshScope;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -8,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import java.util.Collection;
 import java.util.List;
 
+@RefreshScope
 @RequestMapping("dict")
 public interface DataDictService {
     @RequestMapping(value = "all", method = RequestMethod.GET)

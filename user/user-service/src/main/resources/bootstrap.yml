@@ -1,0 +1,19 @@
+spring:
+ cloud:
+     config:
+       profile: dev
+       label: master
+       #username: ming
+       #password: ming
+       #uri: "http://localhost:7001"
+       #开启 以服务方式访问配置中心
+       discovery:
+         enabled: true
+         service-id: CONFIG
+       fail-fast: true
+ application:
+   name: user
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:10001/eureka/

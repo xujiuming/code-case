@@ -15,7 +15,7 @@
         <module>user</module>
         <module>hystrixDashboard</module>
         <module>turbine</module>
-        <module>apiGateway</module>
+        <module>gateway</module>
         <module>configServer</module>
         <module>mq</module>
         <module>timer</module>

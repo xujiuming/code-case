@@ -8,5 +8,17 @@ spring:
           uri: "https://github.com/xuxianyu/springcloud.git"
           #仓库的搜索路径
           search-paths: config/spring-repo
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:10002/eureka/
+#config server 访问账户密码
+#security:
+ # user:
+  #  name: ming
+   # password: ming
+#设定 对称加密密钥
+#encrypt:
+#  key: ming
           #username: 18120580001@163.com
           #password:
