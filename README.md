@@ -1,2 +1,5 @@
 内部调用接口使用service定义  Impl后缀为实现 Clietn后缀 为feignclient 
 当远程调用其他模块服务的时候定义feignclient 需要再client包下建立模块service  内部定义client服务继承service接口
+
+启动需要的配置要配置在bootstrap.yml中 这个是第一个加载的    
+其他配置写入config server中 禁止直接在项目中写乱七八糟的配置
