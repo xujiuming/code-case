@@ -130,8 +130,9 @@ public class BeanUtils implements ApplicationContextAware, DisposableBean {
      * @author ming
      * @date 2017-08-28 17点
      */
+    @Override
     public void destroy() throws Exception {
-        this.applicationContext = null;
+        applicationContext = null;
     }
 
     /**
@@ -142,6 +143,6 @@ public class BeanUtils implements ApplicationContextAware, DisposableBean {
      */
     @Override
     public void setApplicationContext(ApplicationContext applicationContext) throws BeansException {
-        this.applicationContext = applicationContext;
+        BeanUtils.applicationContext = applicationContext;
     }
 }
