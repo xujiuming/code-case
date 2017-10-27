@@ -17,3 +17,6 @@ application.yml是在config-client加载后才会加载配置
 post 请求refresh端点 从新访问即可
 
 config server配置优先级最高 覆盖所有配置 ！！！！
+
+
+@RefreshScope只能注释在config中无效 必须在引用的地方注解
