@@ -10,6 +10,19 @@ spring:
        discovery:
          enabled: true
          service-id: CONFIG
+       #开启预检
+       fail-fast: true
+       #重试参数
+       retry:
+         #重试间隔
+         multiplier: 2000
+         #下一个间隔
+         initial-interval: 2000
+         #最大间隔
+         max-interval: 5000
+         #最大重试次数
+         max-attempts: 3
+
  application:
    name: common
        #fail-fast: true

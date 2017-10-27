@@ -54,7 +54,7 @@
             <artifactId>spring-boot-configuration-processor</artifactId>
             <optional>true</optional>
         </dependency>
-        <!--&lt;!&ndash;自动重试&ndash;&gt;
+        <!--自动重试-->
         <dependency>
             <groupId>org.springframework.retry</groupId>
             <artifactId>spring-retry</artifactId>
@@ -62,7 +62,7 @@
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-aop</artifactId>
-        </dependency>-->
+        </dependency>
     </dependencies>
 
 </project>

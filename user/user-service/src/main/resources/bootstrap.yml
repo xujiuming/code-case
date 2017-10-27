@@ -11,6 +11,15 @@ spring:
          enabled: true
          service-id: CONFIG
        fail-fast: true
+       retry:
+         #初始重试间隔
+         multiplier: 2000
+         # 后几次重试间隔
+         initial-interval: 2000
+         #最大重试时间
+         max-interval: 5000
+         # 最大重试次数
+         max-attempts: 3
  application:
    name: user
 eureka:
