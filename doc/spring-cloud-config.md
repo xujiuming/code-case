@@ -15,3 +15,5 @@ application.yml是在config-client加载后才会加载配置
 需要 actuator模块 
 需要在需要刷新的类上注解 @RefreshScope
 post 请求refresh端点 从新访问即可
+
+config server配置优先级最高 覆盖所有配置 ！！！！

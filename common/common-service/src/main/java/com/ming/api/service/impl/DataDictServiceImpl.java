@@ -3,6 +3,7 @@ package com.ming.api.service.impl;
 import com.alibaba.fastjson.JSON;
 import com.google.common.collect.Lists;
 import com.ming.api.service.DataDictService;
+import com.ming.config.Config;
 import com.ming.entity.DataDict;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -33,6 +34,10 @@ public class DataDictServiceImpl implements DataDictService {
 
     @Value("${from}")
     private String from;
+
+    @Autowired
+    private Config config;
+
     @Override
     public DataDict findDictById(@RequestParam("id") Long id) {
         //长时间休眠  触发熔断

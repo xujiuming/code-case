@@ -1,4 +1,4 @@
-from: commondev
+from: commondev::1
 common:
   ribbon:
     #链接超时时间
