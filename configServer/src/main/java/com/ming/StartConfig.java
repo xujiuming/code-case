@@ -6,9 +6,10 @@ import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 import org.springframework.cloud.config.server.EnableConfigServer;
 
 /**
- *config server 启动类
- *@author ming
- *@date 2017-10-30 11:18
+ * config server 启动类
+ *
+ * @author ming
+ * @date 2017-10-30 11:18
  */
 //开启config 服务
 @EnableConfigServer

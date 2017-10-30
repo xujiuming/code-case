@@ -17,9 +17,10 @@ import java.util.List;
 import java.util.concurrent.Future;
 
 /**
- *自定义实现 command 方式访问远程接口
- *@author ming
- *@date 2017-10-30 11:23
+ * 自定义实现 command 方式访问远程接口
+ *
+ * @author ming
+ * @date 2017-10-30 11:23
  */
 @Service
 @Deprecated

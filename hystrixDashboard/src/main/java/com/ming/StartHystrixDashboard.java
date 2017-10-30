@@ -8,9 +8,10 @@ import org.springframework.cloud.netflix.feign.EnableFeignClients;
 import org.springframework.cloud.netflix.hystrix.dashboard.EnableHystrixDashboard;
 
 /**
- *熔断器监控  启动类
- *@author ming
- *@date 2017-10-30 11:20
+ * 熔断器监控  启动类
+ *
+ * @author ming
+ * @date 2017-10-30 11:20
  */
 @SpringBootApplication
 @EnableFeignClients

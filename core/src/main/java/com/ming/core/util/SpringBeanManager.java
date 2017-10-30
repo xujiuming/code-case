@@ -10,9 +10,10 @@ import java.lang.annotation.Annotation;
 import java.util.Map;
 
 /**
- *spring bean 工具类
- *@author ming
- *@date 2017-10-30 11:18
+ * spring bean 工具类
+ *
+ * @author ming
+ * @date 2017-10-30 11:18
  */
 @Component
 public class SpringBeanManager implements ApplicationContextAware, DisposableBean {

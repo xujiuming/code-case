@@ -15,8 +15,8 @@ import java.io.Serializable;
 public class InId<T extends Number> implements Serializable {
 
 
-   // @Id
-   // @GeneratedValue(strategy = GenerationType.IDENTITY)
+    // @Id
+    // @GeneratedValue(strategy = GenerationType.IDENTITY)
     private T id;
 
     private Long lastUpdateTimeMillis = System.currentTimeMillis();

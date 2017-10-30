@@ -9,9 +9,10 @@ import java.util.Collection;
 import java.util.List;
 
 /**
- *日志服务
- *@author ming
- *@date 2017-10-30 11:16
+ * 日志服务
+ *
+ * @author ming
+ * @date 2017-10-30 11:16
  */
 @RequestMapping("log")
 public interface LogService {

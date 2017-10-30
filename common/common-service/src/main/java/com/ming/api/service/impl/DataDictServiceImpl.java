@@ -15,10 +15,12 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.util.Collection;
 import java.util.List;
+
 /**
- *数据字典服务实现
- *@author ming
- *@date 2017-10-30 11:17
+ * 数据字典服务实现
+ *
+ * @author ming
+ * @date 2017-10-30 11:17
  */
 @RefreshScope
 @RestController
@@ -29,25 +31,22 @@ public class DataDictServiceImpl implements DataDictService {
     private DiscoveryClient discoveryClient;
     @Autowired
     private Environment environment;
+    @Value("${from}")
+    private String from;
+    @Autowired
+    private Config config;
+
     @Override
     public DataDict all() {
         //长时间休眠  触发熔断
         return new DataDict(1L, JSON.toJSONString(discoveryClient.getLocalServiceInstance()));
     }
 
-
-
-    @Value("${from}")
-    private String from;
-
-    @Autowired
-    private Config config;
-
     @Override
     public DataDict findDictById(@RequestParam("id") Long id) {
         //长时间休眠  触发熔断
         //return new DataDict(id, JSON.toJSONString(discoveryClient.getLocalServiceInstance()));
-        return new DataDict(id,from);
+        return new DataDict(id, from);
     }
 
     @Override

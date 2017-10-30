@@ -18,5 +18,5 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot</artifactId>
         </dependency>
-</dependencies>
+    </dependencies>
 </project>

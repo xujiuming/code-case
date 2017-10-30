@@ -10,9 +10,10 @@ import org.springframework.web.client.RestTemplate;
 import java.util.List;
 
 /**
- *自定义 command 方式实现远程调用
- *@author ming
- *@date 2017-10-30 11:23
+ * 自定义 command 方式实现远程调用
+ *
+ * @author ming
+ * @date 2017-10-30 11:23
  */
 @Service
 @Deprecated

@@ -11,8 +11,9 @@ import java.util.List;
 
 /**
  * 数据字段 接口
- *@author ming
- *@date 2017-10-30 11:16
+ *
+ * @author ming
+ * @date 2017-10-30 11:16
  */
 @RefreshScope
 @RequestMapping("dict")

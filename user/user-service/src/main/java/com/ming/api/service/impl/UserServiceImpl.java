@@ -14,9 +14,10 @@ import org.springframework.web.client.RestTemplate;
 
 
 /**
- *用户服务实现
- *@author ming
- *@date 2017-10-30 11:23
+ * 用户服务实现
+ *
+ * @author ming
+ * @date 2017-10-30 11:23
  */
 @RestController
 @RequestMapping("account")
