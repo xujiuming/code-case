@@ -9,6 +9,11 @@ import org.springframework.cloud.netflix.feign.EnableFeignClients;
 import org.springframework.context.annotation.Bean;
 import org.springframework.web.client.RestTemplate;
 
+/**
+ *用户模块 启动类
+ *@author ming
+ *@date 2017-10-30 11:24
+ */
 @EnableDiscoveryClient
 @EnableCircuitBreaker
 @EnableFeignClients

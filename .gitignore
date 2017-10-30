@@ -1,3 +1,9 @@
 # Created by .ignore support plugin (hsz.mobi)
 **/target
-**/.idea
+将删除 .idea/compiler.xml
+将删除 .idea/encodings.xml
+将删除 .idea/libraries/
+将删除 .idea/modules.xml
+将删除 .idea/uiDesigner.xml
+将删除 .idea/vcs.xml
+将删除 .idea/workspace.xml

@@ -5,6 +5,11 @@ import org.springframework.util.CollectionUtils;
 import java.util.Collection;
 import java.util.Map;
 
+/**
+ *扩充基本集合工具类
+ *@author ming
+ *@date 2017-10-30 11:19
+ */
 public class CollectionUtil {
 
     public static <T>  boolean isEmpty(Collection<T> collection){

@@ -6,6 +6,11 @@ import org.springframework.cloud.netflix.zuul.EnableZuulProxy;
 import org.springframework.cloud.netflix.zuul.filters.discovery.PatternServiceRouteMapper;
 import org.springframework.context.annotation.Bean;
 
+/**
+ *zuul 路由 启动类
+ *@author ming
+ *@date 2017-10-30 11:20
+ */
 @EnableZuulProxy
 @SpringBootApplication
 public class StartZuul {

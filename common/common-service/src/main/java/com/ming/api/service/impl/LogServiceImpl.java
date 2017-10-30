@@ -9,6 +9,11 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.Collection;
 import java.util.List;
 
+/**
+ *日志服务实现
+ *@author ming
+ *@date 2017-10-30 11:17
+ */
 @RestController
 public class LogServiceImpl implements LogService {
 

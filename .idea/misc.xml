@@ -8,6 +8,8 @@
         <option value="$PROJECT_DIR$/eureka1/pom.xml" />
         <option value="$PROJECT_DIR$/common/pom.xml" />
         <option value="$PROJECT_DIR$/gateway/pom.xml" />
+        <option value="$PROJECT_DIR$/mq/pom.xml" />
+        <option value="$PROJECT_DIR$/mq/rabbit/pom.xml" />
       </list>
     </option>
     <option name="ignoredFiles">

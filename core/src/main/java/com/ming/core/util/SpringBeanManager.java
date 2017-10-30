@@ -9,8 +9,13 @@ import org.springframework.stereotype.Component;
 import java.lang.annotation.Annotation;
 import java.util.Map;
 
+/**
+ *spring bean 工具类
+ *@author ming
+ *@date 2017-10-30 11:18
+ */
 @Component
-public class BeanUtils implements ApplicationContextAware, DisposableBean {
+public class SpringBeanManager implements ApplicationContextAware, DisposableBean {
     /**
      * spring bean上下文
      *
@@ -143,6 +148,6 @@ public class BeanUtils implements ApplicationContextAware, DisposableBean {
      */
     @Override
     public void setApplicationContext(ApplicationContext applicationContext) throws BeansException {
-        BeanUtils.applicationContext = applicationContext;
+        SpringBeanManager.applicationContext = applicationContext;
     }
 }

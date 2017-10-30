@@ -13,6 +13,11 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
 
 
+/**
+ *用户服务实现
+ *@author ming
+ *@date 2017-10-30 11:23
+ */
 @RestController
 @RequestMapping("account")
 public class UserServiceImpl implements UserService {

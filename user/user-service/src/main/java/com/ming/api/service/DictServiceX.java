@@ -16,6 +16,11 @@ import java.util.Collection;
 import java.util.List;
 import java.util.concurrent.Future;
 
+/**
+ *自定义实现 command 方式访问远程接口
+ *@author ming
+ *@date 2017-10-30 11:23
+ */
 @Service
 @Deprecated
 public class DictServiceX {
@@ -171,15 +176,16 @@ public class DictServiceX {
      *
      * @author ming
      * @date 2017-10-09 16:05
-     *//*
-    public Observable<String> dictByObservableCommandToObservable() {
-        return new DictObservableCommand(restTemplate).toObservable();
-    }*/
+     */
     public void v2(Long obj, Throwable e) throws InterruptedException {
         //降级
         //Thread.sleep(30000);
         //return "v2级别 降级" + e.getMessage();
     }
+    /*
+    public Observable<String> dictByObservableCommandToObservable() {
+        return new DictObservableCommand(restTemplate).toObservable();
+    }*/
 
     public void v1(Throwable e) {
         //  return "v1级别 最终级别 熔断" + e.getMessage();
