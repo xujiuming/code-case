@@ -1,5 +1,6 @@
 ###actuator 是spring boot 提供的一个监控的工具  
 直接访问 相应端点(rest 接口)   
+也有相应的ws接口 (web socket接口)  
 端点分为三种:  
 * 应用配置类  
 /autoconfig 获取应用的自动配置相关参数  
@@ -16,4 +17,6 @@
 /trace  返回基本http跟踪 保留100条
 * 操作控制类
 /shutdown 关闭应用   post请求 需要设定开启endpoints.shutdown.enabled: true
+####总结：spring cloud 中很多东西都和这个监控想关联 例如集群健康检测、config server 依赖检测等等 都要这个模块 加上各自的实现去监控或者检测健康程度
+
 
