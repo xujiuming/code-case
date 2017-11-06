@@ -18,9 +18,10 @@ public interface UserService {
 
     /**
      * 根据id 获取用户信息
-     *@param id
-     *@author ming
-     *@date 2017-10-30 11:31
+     *
+     * @param id
+     * @author ming
+     * @date 2017-10-30 11:31
      */
     @RequestMapping(value = "detail", method = RequestMethod.GET)
     User findById(@RequestParam("id") Long id);

@@ -9,10 +9,10 @@ import org.springframework.data.repository.core.support.RepositoryFactorySupport
 
 import javax.persistence.EntityManager;
 import java.io.Serializable;
+
 /**
- *
- *@author ming
- *@date 2017-10-30 11:43
+ * @author ming
+ * @date 2017-10-30 11:43
  */
 public class BaseRepositoryFactoryBean<R extends JpaRepository<T, ID>, T, ID extends Serializable> extends JpaRepositoryFactoryBean<R, T, ID> {
 

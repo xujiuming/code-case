@@ -4,9 +4,10 @@ import com.ming.core.orm.InId;
 import lombok.Data;
 
 /**
- *操作日志 类型
- *@author ming
- *@date 2017-10-30 12:52
+ * 操作日志 类型
+ *
+ * @author ming
+ * @date 2017-10-30 12:52
  */
 @Data
 public class OperationLogType extends InId<Long> {

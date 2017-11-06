@@ -7,9 +7,8 @@ import java.util.Map;
 import java.util.Map.Entry;
 
 /**
- *
- *@author ming
- *@date 2017-10-30 11:43
+ * @author ming
+ * @date 2017-10-30 11:43
  */
 public class SearchFilter {
 

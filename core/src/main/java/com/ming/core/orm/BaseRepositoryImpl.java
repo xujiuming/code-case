@@ -12,9 +12,8 @@ import java.util.Collection;
 import java.util.List;
 
 /**
- *
- *@author ming
- *@date 2017-10-30 11:43
+ * @author ming
+ * @date 2017-10-30 11:43
  */
 public class BaseRepositoryImpl<T, TD extends Serializable> extends SimpleJpaRepository<T, TD> implements BaseRepository<T, TD> {
 
