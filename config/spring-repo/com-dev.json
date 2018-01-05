@@ -1,1 +1,3 @@
-{"endpoints":{"health":{"path":"/appHealth"},"info":{"path":"/appInfo"},"shutdown":{"enabled":true}},"eureka":{"client":{"healthcheck":{"enable":true},"registry-fetch-interval-seconds":10,"service-url":{"defaultZone":"http://localhost:10001/eureka/"}},"instance":{"health-check-url-path":"/appInfo","lease-renewal-interval-in-seconds":1,"status-page-url-path":"/appInfo"}},"from":"userdev::1","hystrix":{"command":{"default":{"execution":{"isolation":{"thread":{"timeoutInMilliseconds":10000}}}}}},"info":{"app":{"name":"user"}},"spring":{"cloud":{"loadbalancer":{"retry":{"enabled":true}}}},"user-service":{"ribbon":{"ConnectTimeOut":1000,"MaxAutoRetries":3,"MaxAutoRetriesNextServer":3,"OkToRetryOnAllOperations":true,"ReadTimeOut":1000}}}
+{
+  "name":"ming"
+}
