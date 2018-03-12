@@ -447,7 +447,7 @@ public class MyUrlPathHelper extends UrlPathHelper {
         String enc = determineEncoding(request);
         try {
             return UriUtils.decode(source, enc);
-        } catch (UnsupportedEncodingException ex) {
+        } catch (Exception ex) {
             if (logger.isWarnEnabled()) {
                 logger.warn("Could not decode request string [" + source + "] with encoding '" + enc +
                         "': falling back to platform default encoding; exception message: " + ex.getMessage());

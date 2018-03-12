@@ -1,6 +1,0 @@
-rootProject.name = 'ming-template'
-include ':api'
-include ':service'
-
-project(':api').projectDir = "$rootDir/api" as File
-project(':service').projectDir = "$rootDir/service" as File

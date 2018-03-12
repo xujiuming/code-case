@@ -7,7 +7,7 @@ mybatis:
   type-aliases-package: com.ming.entity
 #pagehelper分页插件
 pagehelper:
-    helperDialect: mysql
+    helperDialect: postgresql
     reasonable: true
     supportMethodsArguments: true
     params: count=countSql

@@ -9,6 +9,8 @@
         <groupId>com.ming</groupId>
         <version>1.0</version>
     </parent>
+
+
     <modelVersion>4.0.0</modelVersion>
     <artifactId>service</artifactId>
 
@@ -19,6 +21,8 @@
             <artifactId>api</artifactId>
             <version>1.0</version>
         </dependency>
+
+
 
 
         <dependency>
@@ -86,11 +90,11 @@
             <artifactId>pagehelper-spring-boot-starter</artifactId>
         </dependency>
 
-        <!--alibabna的 druid starter-->
-        <dependency>
+        <!--alibabna的 druid starter   spring boot 2.0 版本暂时不支持 -->
+        <!--<dependency>
             <groupId>com.alibaba</groupId>
             <artifactId>druid-spring-boot-starter</artifactId>
-        </dependency>
+        </dependency>-->
 
         <!-- todo ming 根据需要切换 链接数据库jar-->
         <dependency>
@@ -110,6 +114,8 @@
         </dependency>
 
 
+
+
     </dependencies>
 
 
@@ -120,7 +126,7 @@
                 <groupId>org.mybatis.generator</groupId>
                 <artifactId>mybatis-generator-maven-plugin</artifactId>
             </plugin>
-        </plugins>
+            </plugins>
     </build>
 
 

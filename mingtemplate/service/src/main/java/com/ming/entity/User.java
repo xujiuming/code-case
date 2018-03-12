@@ -1,4 +1,4 @@
-package main.java.com.ming.entity;
+package com.ming.entity;
 
 public class User {
     private Integer userId;

@@ -13,9 +13,12 @@ redis
 guava utils  
 apache utils  
 maven   
-gradle   
 groovy   
 docker  
 jenkins  
 
-   
+### 编码规范
+1:关于mybatis sql相关的
+全部采用使用xml方式 禁止使用 注解方式 
+因为虽然现在关联查询少了 但是还是有 注解方式些关联查询太麻烦 不如直接写xml 让代码更加干爽 
+2:
