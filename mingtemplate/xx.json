@@ -1,0 +1,82 @@
+{
+  "kind": "Service",
+  "apiVersion": "v1",
+  "metadata": {
+    "name": "mcc-java-uatxfs",
+    "namespace": "default",
+    "selfLink": "/api/v1/namespaces/default/services/mcc-java-uatxfs",
+    "uid": "b44dcd19-026f-11e8-bcf9-00163e06491d",
+    "resourceVersion": "50020",
+    "creationTimestamp": "2018-01-26T08:05:42Z",
+    "labels": {
+      "app": "mcc-java-uatxfs",
+      "env": "uatxfs"
+    }
+  },
+  "spec": {
+    "ports": [
+      {
+        "name": "tcp-8535-8080-hsqwn",
+        "protocol": "TCP",
+        "port": 8535,
+        "targetPort": 8080,
+        "nodePort": 30035
+      }
+    ],
+    "selector": {
+      "app": "mcc-java-uatxfs",
+      "env": "uatxfs"
+    },
+    "clusterIP": "172.19.12.207",
+    "type": "LoadBalancer",
+    "sessionAffinity": "None",
+    "externalTrafficPolicy": "Cluster"
+  },
+  "status": {
+    "loadBalancer": {
+      "ingress": [
+        {
+          "ip": "139.196.71.61"
+        }
+      ]
+    }
+  }
+}
+
+
+
+{
+  "kind": "Service",
+  "apiVersion": "v1",
+  "metadata": {
+    "name": "mcc-h5-uatxfs",
+    "namespace": "default",
+    "selfLink": "/api/v1/namespaces/default/services/mcc-h5-uatxfs",
+    "uid": "7b487de8-025f-11e8-bcf9-00163e06491d",
+    "resourceVersion": "35597",
+    "creationTimestamp": "2018-01-26T06:09:34Z",
+    "labels": {
+      "app": "mcc-h5-uatxfs"
+    }
+  },
+  "spec": {
+    "ports": [
+      {
+        "name": "tcp-4535-80-lfb5w",
+        "protocol": "TCP",
+        "port": 4535,
+        "targetPort": 80,
+        "nodePort":
+      }
+    ],
+    "selector": {
+      "app": "mcc-h5-uatxfs"
+    },
+    "clusterIP": "172.19.15.92",
+    "type": "ClusterIP",
+    "sessionAffinity": "None"
+  },
+  "status": {
+    "loadBalancer": {}
+  }
+}

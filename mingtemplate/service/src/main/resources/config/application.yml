@@ -1,0 +1,27 @@
+# log 配置  只打印 错误和警告 方便排错
+spring:
+  profiles:
+    active: dev
+mybatis:
+  mapper-locations: classpath:mapping/**.xml
+  type-aliases-package: com.ming.entity
+#pagehelper分页插件
+pagehelper:
+    helperDialect: mysql
+    reasonable: true
+    supportMethodsArguments: true
+    params: count=countSql
+# 控制器全局配置
+controller:
+  prefix: "/ming"
+  # 排除uri 列表
+  exclueUri:
+   # swagger ui界面
+   - "/swagger"
+   # swagger 接口
+   - "/v2/api-docs"
+   # druid 查看界面
+   - "/druid"
+
+
+

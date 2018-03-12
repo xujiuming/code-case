@@ -1,0 +1,104 @@
+GET http://localhost:8080/ming/test/log?userName=ming&password=ming&phone=1111111
+Accept: */*
+Cache-Control: no-cache
+
+<> 2018-02-06T031103.200.txt
+
+###
+
+GET http://localhost:8080/ming/test/log?userName=ming&password=ming&phone=1111111
+Accept: */*
+Cache-Control: no-cache
+
+<> 2018-02-06T020407.200.txt
+
+###
+
+GET http://localhost:8080/ming/test/add?userName=ming&password=ming&phone=1111111
+Accept: */*
+Cache-Control: no-cache
+
+<> 2018-01-24T081932.200.json
+
+###
+
+GET http://localhost:8080/test/add?userName=ming&password=ming&phone=1111111
+Accept: */*
+Cache-Control: no-cache
+
+<> 2018-01-24T081925.404.json
+
+###
+
+GET http://localhost:8080/test/add?userName=ming&password=ming&phone=1111111
+Accept: */*
+Cache-Control: no-cache
+
+<> 2018-01-24T032843.200.json
+
+###
+
+GET http://localhost:8080/test/add?userName=ming&password=ming&phone=1111111
+Accept: */*
+Cache-Control: no-cache
+
+<> 2018-01-24T032822.200.json
+
+###
+
+GET http://localhost:8080/test/add?userName=ming&password=ming&phone=1111111
+Accept: */*
+Cache-Control: no-cache
+
+<> 2018-01-24T032656.200.json
+
+###
+
+GET http://localhost:8080/test/add?userName=ming&password=ming&phone=1111111
+Accept: */*
+Cache-Control: no-cache
+
+<> 2018-01-24T025532.200.json
+
+###
+
+GET http://localhost:8080/test/add?userName=ming&password=ming&phone=1111111
+Accept: */*
+Cache-Control: no-cache
+
+<> 2018-01-24T022802.200.json
+
+###
+
+GET http://localhost:8080/test/add?userId=1&userName=ming&password=ming&phone=1111111
+Accept: */*
+Cache-Control: no-cache
+
+<> 2018-01-24T022743.200.json
+
+###
+
+GET http://localhost:8080/test/add?userId=1&userName=ming&password=ming&phone=1111111
+Accept: */*
+Cache-Control: no-cache
+
+<> 2018-01-24T022712.200.json
+
+###
+
+GET http://localhost:8080/test/add?userId=1&userName=ming&password=ming&phone=1111111
+Accept: */*
+Cache-Control: no-cache
+
+<> 2018-01-24T021503.200.json
+
+###
+
+GET http://localhost:8080/add?userId=1&userName=ming&password=ming&phone=1111111
+Accept: */*
+Cache-Control: no-cache
+
+<> 2018-01-24T021447.404.json
+
+###
+

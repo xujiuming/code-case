@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- log4j2 -->
+<!-- 整体项目使用参考地址:http://blog.csdn.net/autfish/article/details/51203709   http://blog.csdn.net/autfish/article/details/51244787-->
+<!--filter 参考地址:http://blog.csdn.net/fenghuibian/article/details/53395300-->
+<!--  按日志等级输出到不同的文件目录 -->
+<!-- 并且启用异步写入 -->
+<Configuration status="WARN" monitorInterval="300">
+    <!--定义常量使用-->
+    <properties>
+        <property name="LOG_HOME">/logs</property>
+        <property name="fileSize">30MB</property>
+        <property name="rolloverStrategy">100</property>
+    </properties>
+
+    <Appenders>
+        <!-- 控制台 输入日志配置-->
+        <Console name="Console" target="SYSTEM_OUT">
+            <Filters>
+                <ThresholdFilter level="debug" onMatch="ACCEPT" onMismatch="NEUTRAL"/>
+            </Filters>
+            <PatternLayout pattern="%d{HH:mm:ss.SSS} [%t] %-5level %logger{36} - %msg%n"/>
+        </Console>
+        <!-- log file 配置-->
+        <!--error file 配置-->
+        <RollingRandomAccessFile name="ErrorFile"
+                                 fileName="${LOG_HOME}/error.log"
+                                 filePattern="${LOG_HOME}/$${date:yyyy-MM}/error-%d{yyyy-MM-dd}-%i.log">
+            <Filters>
+                <!-- 接受warn级别 并且 接受高于warn的日志 -->
+                <ThresholdFilter level="warn" onMatch="ACCEPT" onMismatch="NEUTRAL"/>
+                <ThresholdFilter level="all" onMatch="DENY"/>
+                <ThresholdFilter level="trace" onMatch="DENY"/>
+                <ThresholdFilter level="debug" onMatch="DENY"/>
+                <ThresholdFilter level="info" onMatch="DENY"/>
+            </Filters>
+            <PatternLayout pattern="%date{yyyy-MM-dd HH:mm:ss.SSS} %level [%thread][%file:%line] - %msg%n"/>
+            <Policies>
+                <!-- 如果启用此配置，则日志会按文件名生成新压缩文件， 即如果filePattern配置的日期格式为 %d{yyyy-MM-dd HH}
+                   ，则每小时生成一个压缩文件， 如果filePattern配置的日期格式为 %d{yyyy-MM-dd} ，则天生成一个压缩文件 -->
+                <TimeBasedTriggeringPolicy interval="1" modulate="true"/>
+
+                <SizeBasedTriggeringPolicy size="${fileSize}"/>
+            </Policies>
+            <DefaultRolloverStrategy max="${rolloverStrategy}"/>
+        </RollingRandomAccessFile>
+
+
+        <!-- info file 配置-->
+        <RollingRandomAccessFile name="InfoFile"
+                                 fileName="${LOG_HOME}/info.log"
+                                 filePattern="${LOG_HOME}/$${date:yyyy-MM}/info-%d{yyyy-MM-dd}-%i.log">
+            <Filters>
+                <!-- 接受info 级别的日志 不接受高于info级别的日志-->
+                <ThresholdFilter level="info" onMatch="ACCEPT" onMismatch="DENY"/>
+            </Filters>
+            <PatternLayout pattern="%date{yyyy-MM-dd HH:mm:ss.SSS} %level [%thread][%file:%line] - %msg%n"/>
+            <Policies>
+                <!-- 如果启用此配置，则日志会按文件名生成新压缩文件， 即如果filePattern配置的日期格式为 %d{yyyy-MM-dd HH}
+                  ，则每小时生成一个压缩文件， 如果filePattern配置的日期格式为 %d{yyyy-MM-dd} ，则天生成一个压缩文件 -->
+                <TimeBasedTriggeringPolicy interval="1" modulate="true"/>
+                <SizeBasedTriggeringPolicy size="${fileSize}"/>
+            </Policies>
+
+            <DefaultRolloverStrategy max="${rolloverStrategy}"/>
+        </RollingRandomAccessFile>
+
+
+        <!--debug file 配置-->
+        <RollingRandomAccessFile name="DebugFile"
+                                 fileName="${LOG_HOME}/debug.log"
+                                 filePattern="${LOG_HOME}/$${date:yyyy-MM}/debug-%d{yyyy-MM-dd}-%i.log">
+            <Filters>
+                <!-- 接受debug 级别日志 但是不保存高于debug 的日志 -->
+                <ThresholdFilter level="debug" onMatch="ACCEPT" onMismatch="DENY"/>
+            </Filters>
+            <PatternLayout pattern="%date{yyyy-MM-dd HH:mm:ss.SSS} %level [%thread][%file:%line] - %msg%n"/>
+            <Policies>
+                <!-- 如果启用此配置，则日志会按文件名生成新压缩文件， 即如果filePattern配置的日期格式为 %d{yyyy-MM-dd HH}
+                  ，则每小时生成一个压缩文件， 如果filePattern配置的日期格式为 %d{yyyy-MM-dd} ，则天生成一个压缩文件 -->
+                <TimeBasedTriggeringPolicy interval="1" modulate="true"/>
+                <SizeBasedTriggeringPolicy size="${fileSize}"/>
+            </Policies>
+            <DefaultRolloverStrategy max="${rolloverStrategy}"/>
+        </RollingRandomAccessFile>
+
+        <!--trace file 配置-->
+        <RollingRandomAccessFile name="TraceFile"
+                                 fileName="${LOG_HOME}/trace.log"
+                                 filePattern="${LOG_HOME}/$${date:yyyy-MM}/trace-%d{yyyy-MM-dd}-%i.log">
+            <Filters>
+                <!-- 接受debug 级别日志 但是不保存高于debug 的日志 -->
+                <ThresholdFilter level="debug" onMatch="ACCEPT" onMismatch="DENY"/>
+            </Filters>
+            <PatternLayout pattern="%date{yyyy-MM-dd HH:mm:ss.SSS} %level [%thread][%file:%line] - %msg%n"/>
+            <Policies>
+                <!-- 如果启用此配置，则日志会按文件名生成新压缩文件， 即如果filePattern配置的日期格式为 %d{yyyy-MM-dd HH}
+                  ，则每小时生成一个压缩文件， 如果filePattern配置的日期格式为 %d{yyyy-MM-dd} ，则天生成一个压缩文件 -->
+                <TimeBasedTriggeringPolicy interval="1" modulate="true"/>
+                <SizeBasedTriggeringPolicy size="${fileSize}"/>
+            </Policies>
+            <DefaultRolloverStrategy max="${rolloverStrategy}"/>
+        </RollingRandomAccessFile>
+
+
+        <!--异步写入日志-->
+        <Async name="Async">
+            <AppenderRef ref="Console"/>
+            <AppenderRef ref="ErrorFile"/>
+            <AppenderRef ref="InfoFile"/>
+            <AppenderRef ref="DebugFile"/>
+            <AppenderRef ref="TraceFile"/>
+        </Async>
+    </Appenders>
+
+
+    <!--优先级从高到低依次为：OFF、FATAL、ERROR、WARN、INFO、DEBUG、TRACE、 ALL-->
+    <Loggers>
+        <Root level="debug">
+            <AppenderRef ref="Console"/>
+            <AppenderRef ref="ErrorFile"/>
+            <AppenderRef ref="InfoFile"/>
+            <AppenderRef ref="DebugFile"/>
+            <AppenderRef ref="TraceFile"/>
+        </Root>
+    </Loggers>
+</Configuration>
+
+
