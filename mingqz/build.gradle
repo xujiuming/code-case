@@ -1,0 +1,148 @@
+/**
+ * * 编号 	命令 	描述
+ 1 	gradle –q help –task 	提供有关指定任务或多个任务的使用信息（如路径，类型，描述，组）。
+ 2 	gradle –q dependencies 	提供所选项目的依赖关系的列表。
+ 3 	gradle -q api:dependencies —configuration 	提供有关配置的有限依赖项的列表。
+ 4 	gradle –q buildEnvironment 	提供构建脚本依赖项的列表
+ 5 	gradle –q dependencyInsight 	提供了一个洞察到一个特定的依赖
+ 6 	gradle –q properties 	提供所选项目的属性列表
+ *
+ * @author ming
+ * @date 2018-01-16 13:14
+ */
+
+//构建脚本 需要的参数
+buildscript {
+    ext {
+        springBootVersion = '1.5.8.RELEASE'
+    }
+    repositories {
+        mavenCentral()
+    }
+    dependencies {
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
+        classpath('se.transmode.gradle:gradle-docker:1.2')
+    }
+}
+
+// java 相关基本功能插件
+apply plugin: 'java'
+// groovy 相关基本功能插件
+apply plugin: "groovy"
+// 添加maven 相关支持
+apply plugin: 'maven'
+apply plugin: 'idea'
+apply plugin: 'docker'
+//添加 spring boot 相关插件
+apply plugin: 'org.springframework.boot'
+
+group = 'com.ming'
+version = '1.0'
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
+// 打包的相关设置
+jar {
+    //指定 main class
+    manifest {
+        attributes 'Main-Class': 'com.ming.StartMing'
+    }
+}
+// 源文件存放 设置 此处设置是默认设置
+sourceSets {
+    // 设置源码存放
+    main {
+        java {
+            srcDir 'main'
+        }
+    }
+    // 设置 测试用例存放
+    test {
+        java {
+            srcDir("test")
+        }
+    }
+}
+//maven 仓库设置
+repositories {
+    maven { url "http://maven.aliyun.com/nexus/content/groups/public/" }
+    maven { url "http://repo.maven.apache.org/maven2" }
+    mavenCentral()
+}
+
+//------------------------------------------------依赖配置---------------------------------------------------------------
+//依赖包设定
+dependencies {
+    //spring boot 监控端点
+    compile('org.springframework.boot:spring-boot-starter-actuator')
+    //spring boot aop
+    compile('org.springframework.boot:spring-boot-starter-aop')
+    //spring boot jpa
+    compile('org.springframework.boot:spring-boot-starter-data-jpa')
+    //spring boot mail
+    compile('org.springframework.boot:spring-boot-starter-mail')
+    //spring boot validation
+    compile('org.springframework.boot:spring-boot-starter-validation')
+    //spring boot web
+    compile('org.springframework.boot:spring-boot-starter-web')
+    compile('org.springframework.boot:spring-boot-starter-cache')
+    //compile('org.springframework.boot:spring-boot-starter-secutiry')
+    //spring boot devtools
+    runtime('org.springframework.boot:spring-boot-devtools')
+    compile(group: 'com.alibaba', name: 'druid', version: "1.1.6")
+    //spring boot test
+    testCompile('org.springframework.boot:spring-boot-starter-test')
+    compile "org.springframework.boot:spring-boot-configuration-processor"
+    // mysql jdbc
+    runtime('mysql:mysql-connector-java')
+    //lom bok http://blog.csdn.net/victor_cindy1/article/details/72772841
+    compile('org.projectlombok:lombok')
+    //  后续提供
+    //compile(group: 'de.codecentric',name:'spring-boot-admin-server',version: '1.5.5')
+    //compile(group: 'de.codecentric',name:'spring-boot-admin-server-ui',version: '1.5.5' )
+    // spring boot qz
+    compile group: 'de.chandre.quartz', name: 'spring-boot-starter-quartz', version: '1.0.1'
+    //swagger  ui使用纯前端技术提供
+    compile group: 'io.springfox', name: 'springfox-swagger2', version: '2.7.0'
+    //groovy 相关 引擎支持
+    compile group: 'org.codehaus.groovy', name: 'groovy', version: '2.4.12'
+
+    //guava utils
+    compile group: 'com.google.guava', name: 'guava', version: '22.0'
+    // a li ba ba fast json
+    compile group: 'com.alibaba', name: 'fastjson', version: '1.2.33'
+    //apache utils
+    compile group: 'org.apache.commons', name: 'commons-lang3', version: '3.6'
+    compile group: 'org.apache.httpcomponents', name: 'httpcore', version: '4.4.6'
+    compile(group: 'org.apache.httpcomponents', name: 'httpclient', version: '4.5.3') {
+        exclude(module: 'commons-logging')
+    }
+    compile group: 'commons-io', name: 'commons-io', version: '2.5'
+    compile group: 'commons-codec', name: 'commons-codec', version: '1.8'
+}
+
+//---------------------------------------task---------------------------------------------------------------------------
+/**
+ * 通过wrapper 使用统一的gradle 版本
+ * 执行此任务会生成./gradel目录
+ * @author ming
+ * @date 2018-01-16 15:20
+ */
+task wrapper(type: Wrapper) {
+    gradleVersion = '4.4.1'
+}
+/**设置 执行test 任务的时候 跳过 test阶段
+ *
+ *
+ * @author ming
+ * @date 2018-01-16 15:24
+ */
+test.doFirst {
+    if (true) {
+        throw new StopExecutionException()
+    }
+}
+
+
+
+
+

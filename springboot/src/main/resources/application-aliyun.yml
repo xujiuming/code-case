@@ -1,0 +1,17 @@
+# aliyun 相关api参数配置 配置
+aliyun:
+    appcode: "f3380000eb944984b63e8a0e41fa4d72"
+    #ip 接口参数
+    ip:
+      host: "https://dm-81.data.aliyun.com"
+      path: "/rest/160601/ip/getIpInfo.json"
+    # 天气 接口参数
+    weather:
+      host: "http://saweather.market.alicloudapi.com"
+      path: "/area-to-id"
+    #oss 相关参数
+    oss:
+      endpoint: oss.xujiuming.com
+      accessKeyId: LTAIa0kf3Ni3EGWe
+      accessKeySecret: Ty930COkFHuW0wAa9sgs3Jys9xWvwm
+      bucket: imgming

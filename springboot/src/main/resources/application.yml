@@ -1,0 +1,28 @@
+spring:
+  datasource:
+    driver-class-name: "org.h2.Driver"
+    url: "jdbc:h2:file:~/workspace/ming/h2/ming"
+    username: "ming"
+    password: "ming"
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+    database: h2
+  jackson:
+    serialization: true
+  mail:
+    host: "smtp.163.com"
+    username: "18120580001@163.com"
+    password: "ming1234"
+    properties:
+      mail:
+        smtp:
+           auth: true
+           timeout: 25000
+# h2数据库控制台
+  h2:
+    console:
+      enabled: true
+
+

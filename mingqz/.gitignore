@@ -1,0 +1,11 @@
+# Created by .ignore support plugin (hsz.mobi)
+将删除 build/
+将删除 logs/
+将删除 out/
+将删除 src/main/java/com/ming/base/annotations/
+将删除 src/main/java/com/ming/entity/security/
+.gradle
+build
+out
+logs
+.idea
