@@ -4,4 +4,21 @@ log4j2 发送日志到es中
 2: 自定义 appender  使用es client 发送  格式比较标准 简单  容易理解  需要自行构建 失败重试  之类的工作   
 
 
-github上的工具 版本有点不太适合 现有的es 集群  只能自行扩展一下 
+github上的工具 看起来可以 
+```
+        <dependency>
+            <groupId>net.inemar.utility</groupId>
+            <artifactId>log4j2elastic</artifactId>
+            <version>3.1.0</version>
+        </dependency>
+```
+复制下来 修改下  用 
+
+
+1:start  es +kibana
+```
+docker run -d -p 9200:9200 -p 5601:5601 nshou/elasticsearch-kibana
+```
+2:use  elastic appender  
+```
+```

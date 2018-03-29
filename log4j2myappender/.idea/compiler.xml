@@ -6,8 +6,7 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="log4j2-elacticSearch" />
-        <module name="log4j2elacticSearch" />
+        <module name="log4j2myappender" />
       </profile>
     </annotationProcessing>
   </component>
