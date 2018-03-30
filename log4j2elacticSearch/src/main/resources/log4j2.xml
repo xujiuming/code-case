@@ -1,5 +1,4 @@
 <?xml version="1.0" encoding="UTF-8"?>
-
 <configuration status="INFO" monitorInterval="30">
     <appenders>
         <!--这个输出控制台的配置-->
@@ -9,17 +8,15 @@
         </console>
 
         <!-- 这个就是自定义的Appender -->
-        <EsAppender name="esAppender" >
+        <ElasticSearchClientAppender name="elasticSearchClientAppender"   >
             <PatternLayout pattern="%d{yyyy-MM-dd HH:mm:ss.SSS} [%t] [%-5p] {%F:%L} - %m%n" />
-        </EsAppender>
-
+        </ElasticSearchClientAppender>
     </appenders>
 
     <loggers>
-        <!--过滤掉spring和mybatis的一些无用的DEBUG信息-->
-        <root level="all">
+        <root level="INFO">
             <appender-ref ref="Console"/>
-            <appender-ref ref="esAppender"/>
+            <appender-ref ref="elasticSearchClientAppender"/>
         </root>
     </loggers>
 </configuration>
