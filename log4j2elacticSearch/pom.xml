@@ -15,6 +15,18 @@
     </properties>
 
 
+    <!--仓库 如果需要区分仓库优先级  直接在这里按顺序 即可  -->
+    <repositories>
+        <!--aliyun -->
+        <repository>
+            <id>aliyun</id>
+            <name>aliyun repository</name>
+            <url>http://maven.aliyun.com/nexus/content/groups/public/</url>
+        </repository>
+    </repositories>
+
+
+
     <dependencies>
         <!-- log4j2 日志-->
         <dependency>

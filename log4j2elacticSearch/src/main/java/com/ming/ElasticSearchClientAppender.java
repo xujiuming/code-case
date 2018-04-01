@@ -113,8 +113,8 @@ public class ElasticSearchClientAppender extends AbstractAppender {
             }
             logResultMap.put("context", event.getContextMap());
             //替换 本身的对象解析  使用fast生成 string  直接 source 成 byte
-            ThreadPoolUtils.executeTask(()->ElasticSearchClientUtils.insertToIndex(ElasticSearchClientUtils.index,ElasticSearchClientUtils.index,logResultMap));
-            //ElasticSearchClientUtils.insertToIndex(ElasticSearchClientUtils.index,ElasticSearchClientUtils.index,logResultMap);
+            //ElasticSearchClientUtils.insertToIndexAsync(ElasticSearchClientUtils.ElasticSearchConfig.index,ElasticSearchClientUtils.ElasticSearchConfig.index,logResultMap);
+            ElasticSearchClientUtils.mergeInsertToIndexAsync(ElasticSearchClientUtils.ElasticSearchConfig.index,ElasticSearchClientUtils.ElasticSearchConfig.index,logResultMap);
         } catch (Exception e) {
             e.printStackTrace();
         }
