@@ -8,8 +8,8 @@
         </console>
 
         <!-- 这个就是自定义的Appender -->
-        <ElasticSearchClientAppender name="elasticSearchClientAppender"   >
-            <PatternLayout pattern="%d{yyyy-MM-dd HH:mm:ss.SSS} [%t] [%-5p] {%F:%L} - %m%n" />
+        <ElasticSearchClientAppender name="elasticSearchClientAppender">
+            <PatternLayout pattern="%d{yyyy-MM-dd HH:mm:ss.SSS} [%t] [%-5p] {%F:%L} - %m%n"/>
         </ElasticSearchClientAppender>
     </appenders>
 

@@ -1,7 +1,6 @@
 package com.ming;
 
 
-import com.alibaba.fastjson.JSON;
 import org.apache.logging.log4j.Level;
 import org.apache.logging.log4j.Logger;
 
@@ -28,12 +27,12 @@ public class Test {
         Long begin = System.currentTimeMillis();
         for (int i = 0; i < 100000; i++) {
             logger.log(Level.ALL, "ming all");
-            logger.trace("ming tarce"+ i);
-            logger.debug("ming debug"+ i);
-            logger.info("ming  info "+ i);
-            logger.warn("ming warn "+ i);
-            logger.error("ming error"+ i);
-            logger.fatal("ming fatal"+ i);
+            logger.trace("ming tarce" + i);
+            logger.debug("ming debug" + i);
+            logger.info("ming  info " + i);
+            logger.warn("ming warn " + i);
+            logger.error("ming error" + i);
+            logger.fatal("ming fatal" + i);
             logger.log(Level.OFF, "ming off" + i);
         }
         System.out.println("---------");

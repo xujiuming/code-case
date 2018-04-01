@@ -21,11 +21,11 @@ import java.util.Map;
 /**
  * log4j2 es 适配器 基于 es client
  * 不使用 transport client  而是使用 http client  这个是官方的支持的  es 将在7.0之后 抛弃 transport client
- * @link https://www.elastic.co/guide/en/elasticsearch/client/java-rest/6.2/java-rest-high.html
- *
- * 暂时不使用 queue  直接 线程池执行
  *
  * @author ming
+ * @link https://www.elastic.co/guide/en/elasticsearch/client/java-rest/6.2/java-rest-high.html
+ * <p>
+ * 暂时不使用 queue  直接 线程池执行
  * @date 2018-03-28 11:39
  */
 @Plugin(name = "elasticSearchClientAppender", category = "core", elementType = "appender", printObject = true)
@@ -37,7 +37,6 @@ public class ElasticSearchClientAppender extends AbstractAppender {
     private String elasticCluster;
     private String indexName;
     private String indexRotate;
-
 
 
     public ElasticSearchClientAppender(String name,
@@ -114,13 +113,12 @@ public class ElasticSearchClientAppender extends AbstractAppender {
             logResultMap.put("context", event.getContextMap());
             //替换 本身的对象解析  使用fast生成 string  直接 source 成 byte
             //ElasticSearchClientUtils.insertToIndexAsync(ElasticSearchClientUtils.ElasticSearchConfig.index,ElasticSearchClientUtils.ElasticSearchConfig.index,logResultMap);
-            ElasticSearchClientUtils.mergeInsertToIndexAsync(ElasticSearchClientUtils.ElasticSearchConfig.index,ElasticSearchClientUtils.ElasticSearchConfig.index,logResultMap);
+            ElasticSearchClientUtils.mergeInsertToIndexAsync(ElasticSearchClientUtils.ElasticSearchConfig.index, ElasticSearchClientUtils.ElasticSearchConfig.index, logResultMap);
         } catch (Exception e) {
             e.printStackTrace();
         }
 
     }
-
 
 
 }

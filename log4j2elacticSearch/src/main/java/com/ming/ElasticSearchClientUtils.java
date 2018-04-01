@@ -35,36 +35,19 @@ import java.util.concurrent.locks.ReentrantLock;
  * @date 2018-03-30 10:51
  */
 public class ElasticSearchClientUtils {
- private static final Logger l = LogManager.getLogger(ElasticSearchClientUtils.class);
+    /**
+     * 重入锁 保证 进行 转化批量插入的时候 result 是原子操作
+     */
+    static final transient ReentrantLock lock = new ReentrantLock();
+    private static final Logger l = LogManager.getLogger(ElasticSearchClientUtils.class);
+    static volatile int isRuning = 0;
+    static List<InsertDao> result = new CopyOnWriteArrayList<>();
+    private static RestHighLevelClient restHighLevelClient;
 
     // 初始化
     static {
         init();
     }
-
-    /**
-     * es 配置
-     *
-     * @author ming
-     * @date 2018-04-01 10:17
-     */
-    static class ElasticSearchConfig {
-        public static final String host = "localhost";
-        public static final int port = 9200;
-        public static final String type = "http";
-        public static final String index = "ming-index-";
-        public static final int maxRetryTimeoutMillis = 5 * 60 * 1000;
-        public static final int requestConfig_ConnectTimeout = 3000;
-        public static final int requestConfig_SocketTimeout = 3000;
-        public static final int requestConfig_ConnectionRequestTimeout = 3000;
-        public static final int httpClientConfig_maxConnPerRoute = 1000;
-        public static final int httpClientConfig_maxConnTotal = 1000;
-
-    }
-
-
-    private static RestHighLevelClient restHighLevelClient;
-
 
     /**
      * 初始化 es client
@@ -105,7 +88,6 @@ public class ElasticSearchClientUtils {
 
 
     }
-
 
     /**
      * 创建 index
@@ -165,7 +147,6 @@ public class ElasticSearchClientUtils {
         }
     }
 
-
     public static void bulkInsert(List<InsertDao> insertDaoList) {
         if (insertDaoList.isEmpty()) {
             l.error("xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx");
@@ -195,6 +176,48 @@ public class ElasticSearchClientUtils {
         ThreadPool.executeTask(() -> insertToIndex(index, type, source));
     }
 
+    /**
+     * 请求合并
+     *
+     * @author ming
+     * @date 2018-04-01 10:55
+     */
+    public static synchronized void mergeInsertToIndexAsync(String index, String type, Object source) {
+        if (ThreadPool.isMerge()) {
+            //todo ming 暂定30  再多容易gg  理论上 在一定限度内 加大此条件 会增加效率 但是会增加丢失日志的风险
+            if (isRuning >= 30) {
+                System.out.println("result::" + JSON.toJSONString(result));
+                ThreadPool.executeTask(() -> bulkInsert(new ArrayList<>(result)));
+                isRuning = 0;
+                result.clear();
+            } else {
+                result.add(new InsertDao(index, type, source));
+                isRuning++;
+            }
+        } else {
+            insertToIndexAsync(index, type, source);
+        }
+    }
+
+    /**
+     * es 配置
+     *
+     * @author ming
+     * @date 2018-04-01 10:17
+     */
+    static class ElasticSearchConfig {
+        public static final String host = "localhost";
+        public static final int port = 9200;
+        public static final String type = "http";
+        public static final String index = "ming-index-";
+        public static final int maxRetryTimeoutMillis = 5 * 60 * 1000;
+        public static final int requestConfig_ConnectTimeout = 3000;
+        public static final int requestConfig_SocketTimeout = 3000;
+        public static final int requestConfig_ConnectionRequestTimeout = 3000;
+        public static final int httpClientConfig_maxConnPerRoute = 1000;
+        public static final int httpClientConfig_maxConnTotal = 1000;
+
+    }
 
     static class InsertDao {
         private String index;
@@ -232,37 +255,6 @@ public class ElasticSearchClientUtils {
             this.source = source;
         }
     }
-
-    static volatile int isRuning = 0;
-    static List<InsertDao> result = new CopyOnWriteArrayList<>();
-    /**
-     * 重入锁 保证 进行 转化批量插入的时候 result 是原子操作
-     */
-    static final transient ReentrantLock lock = new ReentrantLock();
-
-    /**
-     * 请求合并
-     *
-     * @author ming
-     * @date 2018-04-01 10:55
-     */
-    public static synchronized void mergeInsertToIndexAsync(String index, String type, Object source) {
-        if (ThreadPool.isMerge()) {
-            //todo ming 暂定30  再多容易gg  理论上 在一定限度内 加大此条件 会增加效率 但是会增加丢失日志的风险
-            if (isRuning >= 30) {
-                    System.out.println("result::" + JSON.toJSONString(result));
-                    ThreadPool.executeTask(() -> bulkInsert(new ArrayList<>(result)));
-                    isRuning = 0;
-                    result.clear();
-            } else {
-                result.add(new InsertDao(index, type, source));
-                isRuning++;
-            }
-        } else {
-            insertToIndexAsync(index, type, source);
-        }
-    }
-
 
     /**
      * es client 线程池配置
@@ -324,7 +316,7 @@ public class ElasticSearchClientUtils {
             return (maxSize / 2) < poolSize;
         }
 
-        public static ThreadPoolExecutor getExecutorService(){
+        public static ThreadPoolExecutor getExecutorService() {
             return executorService;
         }
     }
