@@ -30,8 +30,8 @@ public class MingAppender extends AbstractAppender {
 
 
     /**
-     * 插件工厂  生产 elasticSearchAppender
-     * 接受 xml中的配置
+     * 插件工厂  生产 appender
+     * 参数是 xml中的配置
      *
      * @author ming
      * @date 2018-03-29 11:18
@@ -48,7 +48,7 @@ public class MingAppender extends AbstractAppender {
 
 
     /**
-     * 具体的 输出日志的方法
+     * 具体的 输出日志的实现方法
      *
      * @author ming
      * @date 2018-03-29 11:24

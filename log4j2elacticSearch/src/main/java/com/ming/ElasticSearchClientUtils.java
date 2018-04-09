@@ -178,6 +178,7 @@ public class ElasticSearchClientUtils {
 
     /**
      * 请求合并
+     * todo  待解决 存在 日志丢失
      *
      * @author ming
      * @date 2018-04-01 10:55

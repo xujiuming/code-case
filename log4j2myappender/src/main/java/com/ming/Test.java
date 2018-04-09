@@ -1,6 +1,8 @@
 package com.ming;
 
+import lombok.extern.log4j.Log4j2;
 import org.apache.logging.log4j.Level;
+import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 /**
@@ -9,9 +11,9 @@ import org.apache.logging.log4j.Logger;
  * @author ming
  * @date 2018-03-29 13:32
  */
-
+@Log4j2
 public class Test {
-    private static final Logger logger = org.apache.logging.log4j.LogManager.getLogger(Test.class);
+    private static final Logger loggerByLogManager = LogManager.getLogger(Test.class);
 
     /**
      * 测试输出日志
@@ -28,13 +30,24 @@ public class Test {
      * @date 2018-03-29 13:02
      */
     public static void main(String[] args) {
-        logger.log(Level.ALL, "ming all");
-        logger.trace("ming tarce");
-        logger.debug("ming debug");
-        logger.info("ming  info ");
-        logger.warn("ming warn ");
-        logger.error("ming error");
-        logger.fatal("ming fatal");
-        logger.log(Level.OFF, "ming off");
+        //logManager 提供的logging
+        loggerByLogManager.log(Level.ALL, "ming all");
+        loggerByLogManager.trace("ming tarce");
+        loggerByLogManager.debug("ming debug");
+        loggerByLogManager.info("ming  info ");
+        loggerByLogManager.warn("ming warn ");
+        loggerByLogManager.error("ming error");
+        loggerByLogManager.fatal("ming fatal");
+        loggerByLogManager.log(Level.OFF, "ming off");
+
+        // lombok 的@log4j2 提供的logger
+        log.log(Level.ALL, "ming all");
+        log.trace("ming tarce");
+        log.debug("ming debug");
+        log.info("ming  info ");
+        log.warn("ming warn ");
+        log.error("ming error");
+        log.fatal("ming fatal");
+        log.log(Level.OFF, "ming off");
     }
 }

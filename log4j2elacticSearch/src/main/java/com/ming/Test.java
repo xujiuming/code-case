@@ -23,9 +23,9 @@ public class Test {
      * @author ming
      * @date 2018-03-29 13:02
      */
-    public static void main(String[] args) throws IOException {
+    public static void main(String[] args) throws IOException, InterruptedException {
         Long begin = System.currentTimeMillis();
-        for (int i = 0; i < 100000; i++) {
+        for (int i = 0; i < 10000; i++) {
             logger.log(Level.ALL, "ming all");
             logger.trace("ming tarce" + i);
             logger.debug("ming debug" + i);
