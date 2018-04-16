@@ -10,6 +10,8 @@
     <modules>
         <module>hello</module>
         <module>time</module>
+        <module>TestCase</module>
+        <module>transportCase</module>
     </modules>
     <packaging>pom</packaging>
 
