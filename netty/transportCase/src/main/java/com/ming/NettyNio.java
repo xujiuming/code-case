@@ -53,7 +53,6 @@ public class NettyNio {
                     });
             ChannelFuture future = serverBootstrap.bind().sync();
             future.channel().closeFuture().sync();
-
         } catch (InterruptedException e) {
             e.printStackTrace();
         } finally {

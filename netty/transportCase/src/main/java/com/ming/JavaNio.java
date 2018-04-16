@@ -64,7 +64,7 @@ public class JavaNio {
                             if (key.isAcceptable()) {
                                 ServerSocketChannel server = (ServerSocketChannel) key.channel();
                                 SocketChannel client = server.accept();
-                                if (null == client){
+                                if (null == client) {
                                     return;
                                 }
                                 client.configureBlocking(false);

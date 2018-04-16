@@ -1,6 +1,5 @@
 package com.ming.server;
 
-import io.netty.bootstrap.Bootstrap;
 import io.netty.bootstrap.ServerBootstrap;
 import io.netty.channel.ChannelFuture;
 import io.netty.channel.ChannelInitializer;
@@ -24,7 +23,6 @@ public class TimeServerBootstrap {
     public static void main(String[] args) throws InterruptedException {
         new TimeServerBootstrap().start();
     }
-
 
 
     /**
@@ -63,7 +61,6 @@ public class TimeServerBootstrap {
             group.shutdownGracefully().sync();
         }
     }
-
 
 
 }
