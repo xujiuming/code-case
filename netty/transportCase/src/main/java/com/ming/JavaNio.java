@@ -7,6 +7,7 @@ import java.nio.ByteBuffer;
 import java.nio.channels.SelectionKey;
 import java.nio.channels.Selector;
 import java.nio.channels.ServerSocketChannel;
+import java.nio.channels.SocketChannel;
 import java.util.Set;
 
 /**
@@ -57,17 +58,41 @@ public class JavaNio {
             }
             //获取所有连接事件的 select key
             Set<SelectionKey> readyKeys = selector.selectedKeys();
-            readyKeys.forEach(key->{
-                try {
-                    //检查时间 是否是一个新的 可以被接受的链接
-                    if (key.isAcceptable()){
-                        ServerSocketChannel server = (ServerSocketChannel) key.channel();
+            readyKeys.forEach(key -> {
+                        try {
+                            //检查时间 是否是一个新的 可以被接受的链接
+                            if (key.isAcceptable()) {
+                                ServerSocketChannel server = (ServerSocketChannel) key.channel();
+                                SocketChannel client = server.accept();
+                                if (null == client){
+                                    return;
+                                }
+                                client.configureBlocking(false);
+                                client.register(selector, SelectionKey.OP_WRITE | SelectionKey.OP_READ, msg.duplicate());
+                                System.out.println("accept from " + client);
+                            }
+                            //检查socket是否准备好写数据
+                            if (key.isWritable()) {
+                                SocketChannel client = (SocketChannel) key.channel();
+                                ByteBuffer byteBuffer = (ByteBuffer) key.attachment();
+                                while (byteBuffer.hasRemaining()) {
+                                    if (client.write(byteBuffer) == 0) {
+                                        break;
+                                    }
+                                }
+                                client.close();
+                            }
+
+                        } catch (IOException e) {
+                            key.cancel();
+                            try {
+                                key.channel().close();
+                            } catch (IOException e1) {
+                                e1.printStackTrace();
+                            }
+                        }
                     }
-                }
-            });
-
+            );
         }
-
-
     }
 }
