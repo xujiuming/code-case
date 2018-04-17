@@ -33,7 +33,9 @@ public class NettyJvmLocalServer {
         try {
             ServerBootstrap serverBootstrap = new ServerBootstrap();
             serverBootstrap.group(eventLoopGroup)
+                    //使用Local server channel
                     .channel(LocalServerChannel.class)
+                    //使用 local 地址
                     .localAddress(new LocalAddress(NettyJvmLocal.LOCAL_ADDRESS))
                     .childHandler(new ChannelInitializer<LocalChannel>() {
                         @Override

@@ -366,8 +366,181 @@ public class NettyEpoll {
 
 ```
 jvm local
+1:jvm local server 
 ```
+package com.ming.JvmLocal;
 
+import io.netty.bootstrap.ServerBootstrap;
+import io.netty.buffer.ByteBuf;
+import io.netty.buffer.Unpooled;
+import io.netty.channel.*;
+import io.netty.channel.local.LocalAddress;
+import io.netty.channel.local.LocalChannel;
+import io.netty.channel.local.LocalEventLoopGroup;
+import io.netty.channel.local.LocalServerChannel;
+import io.netty.util.CharsetUtil;
+
+/**
+ * netty 基于jvm内部本地通信 server实现
+ *
+ * @author ming
+ * @date 2018-04-17 13:45
+ */
+public class NettyJvmLocalServer {
+
+
+    /**
+     * 启动方法
+     *
+     * @author ming
+     * @date 2018-04-17 13:50
+     */
+    public void Start() throws InterruptedException {
+        final ByteBuf byteBuf = Unpooled.unreleasableBuffer(Unpooled.copiedBuffer("hi ming ", CharsetUtil.UTF_8));
+        //注册 local 事件处理器
+        EventLoopGroup eventLoopGroup = new LocalEventLoopGroup();
+
+        try {
+            ServerBootstrap serverBootstrap = new ServerBootstrap();
+            serverBootstrap.group(eventLoopGroup)
+                    //使用Local server channel
+                    .channel(LocalServerChannel.class)
+                    //使用 local 地址
+                    .localAddress(new LocalAddress(NettyJvmLocal.LOCAL_ADDRESS))
+                    .childHandler(new ChannelInitializer<LocalChannel>() {
+                        @Override
+                        protected void initChannel(LocalChannel ch) throws Exception {
+                            ch.pipeline().addLast(new ChannelInboundHandlerAdapter() {
+                                @Override
+                                public void channelActive(ChannelHandlerContext ctx) throws Exception {
+                                    System.out.println("accept " + ctx);
+                                    ctx.writeAndFlush(byteBuf).addListener(ChannelFutureListener.CLOSE);
+                                }
+                            });
+                        }
+                    });
+            ChannelFuture future = serverBootstrap.bind().sync();
+            future.channel().closeFuture().sync();
+
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        } finally {
+            eventLoopGroup.shutdownGracefully().sync();
+        }
+
+
+    }
+
+}
+
+```
+2: jvm local client 
+```
+package com.ming.JvmLocal;
+
+import io.netty.bootstrap.Bootstrap;
+import io.netty.buffer.ByteBuf;
+import io.netty.buffer.Unpooled;
+import io.netty.channel.*;
+import io.netty.channel.local.LocalAddress;
+import io.netty.channel.local.LocalChannel;
+import io.netty.channel.local.LocalEventLoopGroup;
+import io.netty.util.CharsetUtil;
+
+/**
+ * netty 基于jvm内部本地通信 client 实现
+ *
+ * @author ming
+ * @date 2018-04-17 13:45
+ */
+public class NettyJvmLocalClient {
+
+
+    /**
+     * 启动方法
+     *
+     * @author ming
+     * @date 2018-04-17 13:50
+     */
+    public void Start() throws InterruptedException {
+        final ByteBuf byteBuf = Unpooled.unreleasableBuffer(Unpooled.copiedBuffer("hi ming client", CharsetUtil.UTF_8));
+        //注册 local 事件处理器
+        EventLoopGroup eventLoopGroup = new LocalEventLoopGroup();
+
+        try {
+            Bootstrap bootstrap = new Bootstrap();
+            bootstrap.group(eventLoopGroup)
+                    //使用 localChannel渠道
+                    .channel(LocalChannel.class)
+                    //注册 local模式的地址
+                    .remoteAddress(new LocalAddress(NettyJvmLocal.LOCAL_ADDRESS))
+                    .handler(new ChannelInitializer<LocalChannel>() {
+                        @Override
+                        protected void initChannel(LocalChannel ch) throws Exception {
+                            ch.pipeline().addLast(new ChannelInboundHandlerAdapter() {
+                                @Override
+                                public void channelActive(ChannelHandlerContext ctx) throws Exception {
+                                    System.out.println("connect " + ctx);
+                                    ctx.writeAndFlush(byteBuf).addListener(ChannelFutureListener.CLOSE);
+                                }
+                            });
+                        }
+                    });
+            ChannelFuture future = bootstrap.connect().sync();
+            future.channel().closeFuture().sync();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        } finally {
+            eventLoopGroup.shutdownGracefully().sync();
+        }
+    }
+
+}
+
+```
+3:jvm local demo 
+```
+package com.ming.JvmLocal;
+
+/**
+ * 调用 netty jvm  local server 和client 的客户端
+ *
+ * @author ming
+ * @date 2018-04-17 14:09
+ */
+public class NettyJvmLocal {
+    /**
+     * 本地地址
+     *
+     * @author ming
+     * @date 2018-04-17 14:16
+     */
+    public static final String LOCAL_ADDRESS = "ming";
+
+    public static void main(String[] args) throws InterruptedException {
+        // 启动 server
+        new Thread(() -> {
+            try {
+                new NettyJvmLocalServer().Start();
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        }).start();
+
+        //暂停 线程 1s 等待server 启动完毕
+        Thread.sleep(1000L);
+
+        //启动client
+        new Thread(() -> {
+            try {
+                new NettyJvmLocalClient().Start();
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        }).start();
+    }
+
+}
 
 ```
 #### 传输
@@ -425,6 +598,24 @@ netty 实现oio和nio 提供的api 基本相同 就是在使用发送方式和�
 例如 使用NioEventLoopGroup 那么传输渠道必须是NioServerChannelSocket   
 使用OioEventLoopGroup那么必须使用OioServerChannelSocket   
 
+
+传输支持的协议
+|传输类型|支持类型|
+|:-----|:-----|
+|NIO| tcp、udp、sctp、udt|
+|Epoll(linux)|tcp、udp|
+|OIO|tcp、udp、sctp、udt|
+
+sctp 增强版本的tcp
+udt  增强版本的udp
+
+传输类型选择:
+|需求类型|推荐传输类型|备注|
+|:-----|:---------|:--|
+|非阻塞代码、常规套路|nio、或者epoll| 如果不考虑跨平台等功能 并且只考虑linux 平台运行 那么 epoll 是肯定的 毕竟是个特殊优化的非阻塞模式|
+|阻塞代码|oio|处理遗留代码的时候选择|
+|同jvm通信|jvm local|在同一个jvm中 进行通信的话 选择jvm local 可以直接省掉网络io的开销|
+|测试ChannelHandler|Embedded|只有写单元测试用用 |
 
 零拷贝:
 ```

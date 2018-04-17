@@ -32,7 +32,9 @@ public class NettyJvmLocalClient {
         try {
             Bootstrap bootstrap = new Bootstrap();
             bootstrap.group(eventLoopGroup)
+                    //使用 localChannel渠道
                     .channel(LocalChannel.class)
+                    //注册 local模式的地址
                     .remoteAddress(new LocalAddress(NettyJvmLocal.LOCAL_ADDRESS))
                     .handler(new ChannelInitializer<LocalChannel>() {
                         @Override
