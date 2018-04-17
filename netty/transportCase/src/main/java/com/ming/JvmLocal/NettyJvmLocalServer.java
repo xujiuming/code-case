@@ -57,8 +57,6 @@ public class NettyJvmLocalServer {
         } finally {
             eventLoopGroup.shutdownGracefully().sync();
         }
-
-
     }
 
 }
