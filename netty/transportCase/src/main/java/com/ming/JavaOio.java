@@ -15,7 +15,7 @@ import java.nio.charset.Charset;
 public class JavaOio {
 
     public static void main(String[] args) throws IOException {
-        new JavaOio().StartJavaOio(20000);
+        new JavaOio().Start(20000);
     }
 
     /**
@@ -25,7 +25,7 @@ public class JavaOio {
      * @author ming
      * @date 2018-04-11 14:57
      */
-    public void StartJavaOio(int port) throws IOException {
+    public void Start(int port) throws IOException {
         final ServerSocket socket = new ServerSocket(port);
         for (; ; ) {
             //接受链接

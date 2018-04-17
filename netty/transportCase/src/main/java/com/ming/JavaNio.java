@@ -20,7 +20,7 @@ public class JavaNio {
 
 
     public static void main(String[] args) throws IOException {
-        new JavaNio().StartJavaNio(20000);
+        new JavaNio().Start(20000);
     }
 
     /**
@@ -30,7 +30,7 @@ public class JavaNio {
      * @author ming
      * @date 2018-04-11 15:09
      */
-    public void StartJavaNio(int port) throws IOException {
+    public void Start(int port) throws IOException {
         //打开 server socket channel
         ServerSocketChannel serverSocketChannel = ServerSocketChannel.open();
         //设置 为非阻塞队列
