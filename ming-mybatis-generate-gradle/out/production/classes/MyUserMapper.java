@@ -1,13 +1,12 @@
 package com.ming;
 
 import java.util.Collection;
-import com.ming.MyUser;
 
 
 /**脚本自动生成 mapper
  *
  * @author ming
- * @date 2018-04-22 14:58:49
+ * @date 2018-04-22 20:08:49
  */
 public interface  MyUserMapper{
 

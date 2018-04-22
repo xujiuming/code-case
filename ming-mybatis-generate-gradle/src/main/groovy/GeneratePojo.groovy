@@ -18,7 +18,7 @@ class GeneratePojo {
      * @author ming
      * @date 2018-04-22 12:06
      */
-    static generatePojo(String packageName, String className, Map<String, String> tableColumns, String outFilePath) {
+    static generate(String packageName, String className, Map<String, String> tableColumns, String outFilePath) {
         Map binding = [:]
         binding.put("packageName", generatePackageName(packageName))
         binding.put("importNameList", generateImport(tableColumns.values()))

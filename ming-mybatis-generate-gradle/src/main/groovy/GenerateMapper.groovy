@@ -15,7 +15,7 @@ class GenerateMapper {
      * @author ming
      * @date 2018-04-22 14:42
      */
-    static generateMapper(String packageName, String className, String idType, String outFilePath) {
+    static generate(String packageName, String className, String idType, String outFilePath) {
         Map binding = [:]
         binding.put("packageName", generatePackageName(packageName))
         binding.put("importNameList", generateImport(packageName, className))

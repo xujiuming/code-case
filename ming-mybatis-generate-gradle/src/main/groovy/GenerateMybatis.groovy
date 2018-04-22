@@ -19,9 +19,12 @@ class GenerateMybatis {
 
         String className = StringUtils.capitalize(DbUtils.changeStyle(tableName, true))
         Map<String, String> map = DbUtils.pgsqlGetTableColumns(tableName)
-        GeneratePojo.generatePojo(packageName, className, map, null)
-
-        GenerateMapper.generateMapper(packageName, className, "Integer", null)
+        //生成pojo
+        GeneratePojo.generate(packageName, className, map, null)
+        //生成mapper
+        GenerateMapper.generate(packageName, className, "Integer", null)
+        //生成xml
+        GenerateMapperXml.generate(packageName,className,map,null)
 
     }
 }

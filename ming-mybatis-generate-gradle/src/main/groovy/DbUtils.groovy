@@ -43,6 +43,7 @@ class DbUtils {
         map.put("boolean.*", "Boolean")
         map.put("timestamp.*", "Date")
         map.put("integer.*", "Integer")
+        map.put("int.*", "Integer")
         map.put("date.*", "Date")
         //默认类型为String
         String result = "String"

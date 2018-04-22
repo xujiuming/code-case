@@ -5,7 +5,7 @@ import java.util.Date;
 /**脚本自动生成 entity
  *
  * @author ming
- * @date 2018-04-22 14:58:49
+ * @date 2018-04-22 20:08:48
  */
 public class MyUser{
     

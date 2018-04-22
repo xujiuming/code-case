@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.ming.MyUserMapper">
+    
+<resultMap id="MyUserResultMap" type="com.ming.MyUser" >
+  <id column="id" property="id" jdbcType="INT" />
+  <result column="user_name" property="userName" jdbcType="VARCHAR" />
+  <result column="user_date" property="userDate" jdbcType="TIMESTAMP" />
+  <result column="user_boolean" property="userBoolean" jdbcType="VARCHAR" />
+</resultMap>
+
+
+        
+<insert id="insert" parameterType="com.ming.MyUser"  >
+insert into my_user
+<trim prefix="(" suffix=")" suffixOverrides="," >
+<set> 
+ <if test="id != null" >
+id,
+</if>
+ <if test="userName != null" >
+user_name,
+</if>
+ <if test="userDate != null" >
+user_date,
+</if>
+ <if test="userBoolean != null" >
+user_boolean,
+</if>
+</set> 
+</trim>
+<trim prefix="values (" suffix=")" suffixOverrides="," ><set> 
+ <if test="id != null" >
+ #{id,jdbcType=INT},
+</if>
+ <if test="userName != null" >
+ #{userName,jdbcType=VARCHAR},
+</if>
+ <if test="userDate != null" >
+ #{userDate,jdbcType=TIMESTAMP},
+</if>
+ <if test="userBoolean != null" >
+ #{userBoolean,jdbcType=VARCHAR},
+</if>
+</set> 
+</trim>
+</insert>
+
+
+        
+<insert id="insert" parameterType="com.ming.MyUser"  >
+insert into my_user
+<trim prefix="(" suffix=")" suffixOverrides="," >
+<set> 
+ <if test="id != null" >
+id,
+</if>
+ <if test="userName != null" >
+user_name,
+</if>
+ <if test="userDate != null" >
+user_date,
+</if>
+ <if test="userBoolean != null" >
+user_boolean,
+</if>
+</set> 
+</trim>
+values 
+<trim prefix=" (" suffix=")" suffixOverrides="," ><set> 
+ <if test="id != null" >
+ #{id,jdbcType=INT},
+</if>
+ <if test="userName != null" >
+ #{userName,jdbcType=VARCHAR},
+</if>
+ <if test="userDate != null" >
+ #{userDate,jdbcType=TIMESTAMP},
+</if>
+ <if test="userBoolean != null" >
+ #{userBoolean,jdbcType=VARCHAR},
+</if>
+</set> 
+</trim>
+</insert>
+
+
+        
+<update id="update" parameterType="com.ming.MyUser" >
+update my_user
+<set>
+<if test="id != null" >
+id = #{id,jdbcType=INT} ,
+</if> 
+<if test="userName != null" >
+user_name = #{userName,jdbcType=VARCHAR} ,
+</if> 
+<if test="userDate != null" >
+user_date = #{userDate,jdbcType=TIMESTAMP} ,
+</if> 
+<if test="userBoolean != null" >
+user_boolean = #{userBoolean,jdbcType=VARCHAR} ,
+</if> 
+</set>
+where   id = #{id,jdbcType=INT}
+</update>
+
+
+        
+<select id="findAll" resultMap="MyUserResultMap" parameterType="Integer" >
+select * from my_user 
+where id = #{id,jdbcType=INT} 
+</select>
+
+
+        <select id="findAll" resultMap="MyUserResultMap" >
+select * from my_user 
+</select>
+
+
+        
+<delete id="deleteById"  parameterType="Integer" >
+delete from my_user 
+where id = #{id,jdbcType=INT} 
+</delete>
+
+</mapper>
