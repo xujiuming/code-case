@@ -17,6 +17,7 @@ public class TimeServerChannelHandler extends ChannelInboundHandlerAdapter {
 
     /**
      * 当client 链接上来的时候
+     *
      * @author ming
      * @date 2018-04-09 10:00
      */
@@ -35,19 +36,23 @@ public class TimeServerChannelHandler extends ChannelInboundHandlerAdapter {
         super.exceptionCaught(ctx, cause);
     }
 
-    /**读取渠道
+    /**
+     * 读取渠道
+     *
      * @author ming
      * @date 2018-04-08 17:08
      */
     @Override
     public void channelRead(ChannelHandlerContext ctx, Object msg) throws Exception {
         ByteBuf in = (ByteBuf) msg;
-        System.out.println("server::"+in.toString(CharsetUtil.UTF_8));
+        System.out.println("server::" + in.toString(CharsetUtil.UTF_8));
         //将收到的消息 发送给发送者 不冲刷出站消息
         ctx.write(in);
     }
 
-    /**渠道读取 完整处理
+    /**
+     * 渠道读取 完整处理
+     *
      * @author ming
      * @date 2018-04-08 17:09
      */
