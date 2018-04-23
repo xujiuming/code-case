@@ -1,0 +1,24 @@
+${packageName}
+
+${importNameList}
+
+/**脚本自动生成 mapper
+ *
+ * @author ming
+ * @date ${date}
+ */
+public interface  ${className}{
+
+    int insert(${pojoClass} t);
+
+    int insertAll(${pojoClassAll} ts);
+
+    int update(${pojoClass} t);
+
+    ${pojoClass} findById(${idClass} id);
+
+    ${pojoClassAll} findAll();
+
+    int deleteById(${idClass} id);
+
+}

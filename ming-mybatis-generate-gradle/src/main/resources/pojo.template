@@ -1,0 +1,12 @@
+${packageName}
+${importNameList}
+
+/**脚本自动生成 entity
+ *
+ * @author ming
+ * @date ${date}
+ */
+public class ${className}{
+    ${attribute}
+    ${attributeSetterAndGettter}
+}
