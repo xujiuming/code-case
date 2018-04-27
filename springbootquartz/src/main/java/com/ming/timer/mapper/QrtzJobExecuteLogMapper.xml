@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.com.ming.timer.mapper.QrtzJobExecuteLogMapper">
+
+    <resultMap id="QrtzJobExecuteLogResultMap" type="com.com.ming.timer.mapper.QrtzJobExecuteLog">
+        <id column="id" property="id" jdbcType="INTEGER"/>
+        <result column="job_name" property="jobName" jdbcType="VARCHAR"/>
+        <result column="job_class" property="jobClass" jdbcType="VARCHAR"/>
+        <result column="content" property="content" jdbcType="VARCHAR"/>
+        <result column="execute_time_millis" property="executeTimeMillis" jdbcType="VARCHAR"/>
+    </resultMap>
+
+
+    <insert id="insert" parameterType="com.com.ming.timer.mapper.QrtzJobExecuteLog">
+        insert into qrtz_job_execute_log
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            id,
+            <if test="jobName != null">
+                job_name,
+            </if>
+            <if test="jobClass != null">
+                job_class,
+            </if>
+            <if test="content != null">
+                content,
+            </if>
+            <if test="executeTimeMillis != null">
+                execute_time_millis,
+            </if>
+            gmt_create,
+            gmt_modified,
+            is_deleted
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            DEFAULT,
+            <if test="jobName != null">
+                #{jobName,jdbcType=VARCHAR},
+            </if>
+            <if test="jobClass != null">
+                #{jobClass,jdbcType=VARCHAR},
+            </if>
+            <if test="content != null">
+                #{content,jdbcType=VARCHAR},
+            </if>
+            <if test="executeTimeMillis != null">
+                #{executeTimeMillis,jdbcType=VARCHAR},
+            </if>
+            CURRENT_TIMESTAMP,
+            CURRENT_TIMESTAMP,
+            false
+        </trim>
+    </insert>
+
+
+    <update id="update" parameterType="com.com.ming.timer.mapper.QrtzJobExecuteLog">
+        update qrtz_job_execute_log
+        <if test="id != null">
+            id = #{id,jdbcType=INTEGER} ,
+        </if>
+        <if test="jobName != null">
+            job_name = #{jobName,jdbcType=VARCHAR} ,
+        </if>
+        <if test="jobClass != null">
+            job_class = #{jobClass,jdbcType=VARCHAR} ,
+        </if>
+        <if test="content != null">
+            content = #{content,jdbcType=VARCHAR} ,
+        </if>
+        <if test="executeTimeMillis != null">
+            execute_time_millis = #{executeTimeMillis,jdbcType=VARCHAR} ,
+        </if>
+        gmt_modified =CURRENT_TIMESTAMP
+
+        where id = #{id}
+    </update>
+
+
+    <select id="findById" resultMap="QrtzJobExecuteLogResultMap" parameterType="java.lang.Integer">
+select * from qrtz_job_execute_log  qjel
+where id = #{id} and qjel.is_deleted=false
+</select>
+
+
+    <select id="findAll" resultMap="QrtzJobExecuteLogResultMap">
+select * from qrtz_job_execute_log qjel where  qjel.is_deleted=false
+</select>
+
+
+</mapper>

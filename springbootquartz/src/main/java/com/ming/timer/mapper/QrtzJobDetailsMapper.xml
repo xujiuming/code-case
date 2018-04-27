@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.com.ming.timer.mapper.QrtzJobDetailsMapper">
+
+    <resultMap id="QrtzJobDetailsResultMap" type="com.com.ming.timer.mapper.QrtzJobDetails">
+        <id column="sched_name" property="schedName" jdbcType="VARCHAR"/>
+        <result column="job_name" property="jobName" jdbcType="VARCHAR"/>
+        <result column="job_group" property="jobGroup" jdbcType="VARCHAR"/>
+        <result column="description" property="description" jdbcType="VARCHAR"/>
+        <result column="job_class_name" property="jobClassName" jdbcType="VARCHAR"/>
+        <result column="is_durable" property="isDurable" jdbcType="VARCHAR"/>
+        <result column="is_nonconcurrent" property="isNonconcurrent" jdbcType="VARCHAR"/>
+        <result column="is_update_data" property="isUpdateData" jdbcType="VARCHAR"/>
+        <result column="requests_recovery" property="requestsRecovery" jdbcType="VARCHAR"/>
+        <result column="job_data" property="jobData" jdbcType="VARCHAR"/>
+    </resultMap>
+
+
+    <select id="findById" resultMap="QrtzJobDetailsResultMap" parameterType="java.lang.String">
+select * from qrtz_job_details 
+where schedName = #{schedName,jdbcType=VARCHAR} 
+</select>
+
+
+    <select id="findAll" resultMap="QrtzJobDetailsResultMap">
+select * from qrtz_job_details 
+</select>
+
+</mapper>
