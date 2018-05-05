@@ -30,7 +30,7 @@ public class JobExecuteLogController {
      * @author ming
      * @date 2018-04-26 13:26
      */
-    @GetMapping
+    @GetMapping("page")
     public Page<QrtzJobExecuteLog> getJobLog(Page<QrtzJobExecuteLog> page) {
         return PageHelper.startPage(page.getPageNum(), page.getPageSize())
                 .doSelectPage(() -> qrtzJobExecuteLogMapper.findAll());
