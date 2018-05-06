@@ -16,17 +16,15 @@
         <el-table :data="logs" highlight-current-row v-loading="listLoading" @selection-change="selsChange" style="width: 100%;">
             <el-table-column type="selection" width="55">
             </el-table-column>
-            <el-table-column type="index" width="60">
+            <el-table-column prop="id" label="id" width="60" sortable>
             </el-table-column>
-            <el-table-column prop="id" label="id" width="120" sortable>
+            <el-table-column prop="jobName" label="任务名称" width="150" sortable>
             </el-table-column>
-            <el-table-column prop="jobName" label="任务名称" width="100" sortable>
+            <el-table-column prop="jobClass" label="任务实现类" width="250" sortable>
             </el-table-column>
-            <el-table-column prop="jobClass" label="任务实现类" width="100" sortable>
+            <el-table-column prop="content" label="任务执行结果" width="800" sortable>
             </el-table-column>
-            <el-table-column prop="content" label="任务执行结果" width="120" sortable>
-            </el-table-column>
-            <el-table-column prop="executeTimeMillis" label="任务执行耗时(ms)" min-width="180" sortable>
+            <el-table-column prop="executeTimeMillis" label="任务执行耗时(ms)" min-width="150" sortable>
             </el-table-column>
         </el-table>
 
@@ -35,7 +33,7 @@
 
 <script>
     //import NProgress from 'nprogress'
-    import { getJobExecuteLogList } from '../../api/api';
+    import { getJobExecuteLogPage } from '../../api/api';
 
     export default {
         data() {
@@ -45,7 +43,10 @@
                 },
                 logs: [],
                 total: 0,
-                page: 1,
+                page: {
+                    pageNum:1,
+                    pageSize:10
+                },
                 listLoading: false,
                 sels: [],//列表选中列
 
@@ -65,9 +66,10 @@
                 };
                 this.listLoading = true;
                 //NProgress.start();
-                getJobExecuteLogList(para).then((res) => {
+                getJobExecuteLogPage(para).then((res) => {
+                    console.log(res);
                     this.total = res.data.total;
-                    this.logs = res.data;
+                    this.logs = res.data.list;
                     this.listLoading = false;
                     //NProgress.done();
                 });

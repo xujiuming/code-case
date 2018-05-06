@@ -2,6 +2,7 @@ package com.ming.timer.controller;
 
 import com.github.pagehelper.Page;
 import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
 import com.ming.timer.base.TimerControllerConstant;
 import com.ming.timer.mapper.QrtzJobExecuteLog;
 import com.ming.timer.mapper.QrtzJobExecuteLogMapper;
@@ -31,8 +32,9 @@ public class JobExecuteLogController {
      * @date 2018-04-26 13:26
      */
     @GetMapping("page")
-    public Page<QrtzJobExecuteLog> getJobLog(Page<QrtzJobExecuteLog> page) {
-        return PageHelper.startPage(page.getPageNum(), page.getPageSize())
+    public PageInfo<QrtzJobExecuteLog> getJobLog(Page<QrtzJobExecuteLog> page) {
+        Page<QrtzJobExecuteLog> result = PageHelper.startPage(page.getPageNum(), page.getPageSize())
                 .doSelectPage(() -> qrtzJobExecuteLogMapper.findAll());
+        return result.toPageInfo();
     }
 }

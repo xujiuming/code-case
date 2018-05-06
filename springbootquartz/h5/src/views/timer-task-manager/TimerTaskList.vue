@@ -7,7 +7,7 @@
                     <el-input v-model="filters.name" placeholder="姓名"></el-input>
                 </el-form-item>
                 <el-form-item>
-                    <el-button type="primary" v-on:click="getUsers" plain>查询</el-button>
+                    <el-button type="primary" v-on:click="getjobList" plain>查询</el-button>
                 </el-form-item>
                 <el-form-item>
                     <el-button type="primary" @click="handleAdd" plain>新增</el-button>
@@ -16,24 +16,24 @@
         </el-col>
 
         <!--列表-->
-        <el-table :data="users" highlight-current-row v-loading="listLoading" @selection-change="selsChange" style="width: 100%;">
+        <el-table :data="jobList" highlight-current-row v-loading="listLoading" @selection-change="selsChange"
+                  style="width: 100%;">
             <el-table-column type="selection" width="55">
             </el-table-column>
-            <el-table-column type="index" width="60">
+            <el-table-column type="id" label="id" width="60">
             </el-table-column>
-            <el-table-column prop="name" label="姓名" width="120" sortable>
-            </el-table-column>
-            <el-table-column prop="sex" label="性别" width="100" :formatter="formatSex" sortable>
-            </el-table-column>
-            <el-table-column prop="age" label="年龄" width="100" sortable>
-            </el-table-column>
-            <el-table-column prop="birth" label="生日" width="120" sortable>
-            </el-table-column>
-            <el-table-column prop="addr" label="地址" min-width="180" sortable>
-            </el-table-column>
-            <el-table-column label="操作" width="150">
-                <template scope="scope">
+            <el-table-column prop="jobName" label="任务名称" width="200" sortable></el-table-column>
+            <el-table-column prop="triggerType" label="表达式类型" width="200" sortable></el-table-column>
+            <el-table-column prop="triggerExpression" label="表达式" width="250" sortable></el-table-column>
+            <el-table-column prop="jobDesc" label="任务描述" width="460" sortable></el-table-column>
+
+            <el-table-column label="操作" width="400">
+                <template slot-scope="scope">
+                    <el-button size="small" @click="handleEdit(scope.$index, scope.row)">查看</el-button>
                     <el-button size="small" @click="handleEdit(scope.$index, scope.row)">编辑</el-button>
+                    <el-button size="small" @click="handleEdit(scope.$index, scope.row)">暂停</el-button>
+                    <el-button size="small" @click="handleEdit(scope.$index, scope.row)">重启</el-button>
+                    <el-button size="small" @click="handleEdit(scope.$index, scope.row)">立即运行</el-button>
                     <el-button type="danger" size="small" @click="handleDel(scope.$index, scope.row)">删除</el-button>
                 </template>
             </el-table-column>
@@ -42,30 +42,30 @@
         <!--工具条-->
         <el-col :span="24" class="toolbar">
             <el-button type="danger" @click="batchRemove" :disabled="this.sels.length===0">批量删除</el-button>
-            <el-pagination layout="prev, pager, next" @current-change="handleCurrentChange" :page-size="20" :total="total" style="float:right;">
+            <el-pagination layout="prev, pager, next" @current-change="handleCurrentChange" :page-size="20"
+                           :total="total" style="float:right;">
             </el-pagination>
         </el-col>
+
 
         <!--编辑界面-->
         <el-dialog title="编辑" v-model="editFormVisible" :close-on-click-modal="false">
             <el-form :model="editForm" label-width="80px" :rules="editFormRules" ref="editForm">
-                <el-form-item label="姓名" prop="name">
-                    <el-input v-model="editForm.name" auto-complete="off"></el-input>
+                <el-form-item label="job名称" prop="jobName">
+                    <el-input v-model="addForm.jobName" auto-complete="off"></el-input>
                 </el-form-item>
-                <el-form-item label="性别">
-                    <el-radio-group v-model="editForm.sex">
-                        <el-radio class="radio" :label="1">男</el-radio>
-                        <el-radio class="radio" :label="0">女</el-radio>
+
+                <el-form-item label="定时器表达式类型">
+                    <el-radio-group v-model="addForm.triggerType">
+                        <el-radio class="radio" :label="SIMPLE">简单模式</el-radio>
+                        <el-radio class="radio" :label="CRON">CRON模式</el-radio>
                     </el-radio-group>
                 </el-form-item>
-                <el-form-item label="年龄">
-                    <el-input-number v-model="editForm.age" :min="0" :max="200"></el-input-number>
+                <el-form-item label="定时器表达式">
+                    <el-input v-model="addForm.triggerExpression"></el-input>
                 </el-form-item>
-                <el-form-item label="生日">
-                    <el-date-picker type="date" placeholder="选择日期" v-model="editForm.birth"></el-date-picker>
-                </el-form-item>
-                <el-form-item label="地址">
-                    <el-input type="textarea" v-model="editForm.addr"></el-input>
+                <el-form-item label="job描述" prop="jobDesc">
+                    <el-input type="textarea" v-model="addForm.jobDesc" auto-complete="off"></el-input>
                 </el-form-item>
             </el-form>
             <div slot="footer" class="dialog-footer">
@@ -77,23 +77,21 @@
         <!--新增界面-->
         <el-dialog title="新增" v-model="addFormVisible" :close-on-click-modal="false">
             <el-form :model="addForm" label-width="80px" :rules="addFormRules" ref="addForm">
-                <el-form-item label="姓名" prop="name">
-                    <el-input v-model="addForm.name" auto-complete="off"></el-input>
+                <el-form-item label="job名称" prop="jobName">
+                    <el-input v-model="addForm.jobName" auto-complete="off"></el-input>
                 </el-form-item>
-                <el-form-item label="性别">
-                    <el-radio-group v-model="addForm.sex">
-                        <el-radio class="radio" :label="1">男</el-radio>
-                        <el-radio class="radio" :label="0">女</el-radio>
+
+                <el-form-item label="表达式类型">
+                    <el-radio-group v-model="addForm.triggerType">
+                            <el-radio-button label="SIMPLE"></el-radio-button>
+                            <el-radio-button label="CRON"></el-radio-button>
                     </el-radio-group>
                 </el-form-item>
-                <el-form-item label="年龄">
-                    <el-input-number v-model="addForm.age" :min="0" :max="200"></el-input-number>
+                <el-form-item label="定时器表达式">
+                    <el-input v-model="addForm.triggerExpression"></el-input>
                 </el-form-item>
-                <el-form-item label="生日">
-                    <el-date-picker type="date" placeholder="选择日期" v-model="addForm.birth"></el-date-picker>
-                </el-form-item>
-                <el-form-item label="地址">
-                    <el-input type="textarea" v-model="addForm.addr"></el-input>
+                <el-form-item label="job描述" prop="jobDesc">
+                    <el-input type="textarea" v-model="addForm.jobDesc" auto-complete="off"></el-input>
                 </el-form-item>
             </el-form>
             <div slot="footer" class="dialog-footer">
@@ -107,7 +105,7 @@
 <script>
     import util from '../../common/js/util'
     //import NProgress from 'nprogress'
-    import { getUserListPage, removeUser, batchRemoveUser, editUser, addUser } from '../../api/api';
+    import {getJobPage} from '../../api/api';
 
     export default {
         data() {
@@ -115,7 +113,7 @@
                 filters: {
                     name: ''
                 },
-                users: [],
+                jobList: [],
                 total: 0,
                 page: 1,
                 listLoading: false,
@@ -125,33 +123,31 @@
                 editLoading: false,
                 editFormRules: {
                     name: [
-                        { required: true, message: '请输入姓名', trigger: 'blur' }
+                        {required: true, message: '请输入姓名', trigger: 'blur'}
                     ]
                 },
                 //编辑界面数据
                 editForm: {
                     id: 0,
-                    name: '',
-                    sex: -1,
-                    age: 0,
-                    birth: '',
-                    addr: ''
+                    jobName: '',
+                    jobDesc: '',
+                    triggerType: 'SIMPLE',
+                    triggerExpression: '',
                 },
 
                 addFormVisible: false,//新增界面是否显示
                 addLoading: false,
                 addFormRules: {
                     name: [
-                        { required: true, message: '请输入姓名', trigger: 'blur' }
+                        {required: true, message: '请输入姓名', trigger: 'blur'}
                     ]
                 },
                 //新增界面数据
                 addForm: {
-                    name: '',
-                    sex: -1,
-                    age: 0,
-                    birth: '',
-                    addr: ''
+                    jobName: '',
+                    jobDesc: '',
+                    triggerType: 'SIMPLE',
+                    triggerExpression: '',
                 }
 
             }
@@ -163,19 +159,19 @@
             },
             handleCurrentChange(val) {
                 this.page = val;
-                this.getUsers();
+                this.getjobList();
             },
             //获取用户列表
-            getUsers() {
+            getjobList() {
                 let para = {
                     page: this.page,
                     name: this.filters.name
                 };
                 this.listLoading = true;
                 //NProgress.start();
-                getUserListPage(para).then((res) => {
+                getJobPage(para).then((res) => {
                     this.total = res.data.total;
-                    this.users = res.data.users;
+                    this.jobList = res.data.list;
                     this.listLoading = false;
                     //NProgress.done();
                 });
@@ -187,7 +183,7 @@
                 }).then(() => {
                     this.listLoading = true;
                     //NProgress.start();
-                    let para = { id: row.id };
+                    let para = {id: row.id};
                     removeUser(para).then((res) => {
                         this.listLoading = false;
                         //NProgress.done();
@@ -195,7 +191,7 @@
                             message: '删除成功',
                             type: 'success'
                         });
-                        this.getUsers();
+                        this.getjobList();
                     });
                 }).catch(() => {
 
@@ -235,7 +231,7 @@
                                 });
                                 this.$refs['editForm'].resetFields();
                                 this.editFormVisible = false;
-                                this.getUsers();
+                                this.getjobList();
                             });
                         });
                     }
@@ -259,7 +255,7 @@
                                 });
                                 this.$refs['addForm'].resetFields();
                                 this.addFormVisible = false;
-                                this.getUsers();
+                                this.getjobList();
                             });
                         });
                     }
@@ -276,7 +272,7 @@
                 }).then(() => {
                     this.listLoading = true;
                     //NProgress.start();
-                    let para = { ids: ids };
+                    let para = {ids: ids};
                     batchRemoveUser(para).then((res) => {
                         this.listLoading = false;
                         //NProgress.done();
@@ -284,7 +280,7 @@
                             message: '删除成功',
                             type: 'success'
                         });
-                        this.getUsers();
+                        this.getjobList();
                     });
                 }).catch(() => {
 
@@ -292,7 +288,7 @@
             }
         },
         mounted() {
-            this.getUsers();
+            this.getjobList();
         }
     }
 

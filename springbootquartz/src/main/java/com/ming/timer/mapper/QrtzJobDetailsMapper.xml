@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.com.ming.timer.mapper.QrtzJobDetailsMapper">
+<mapper namespace="com.ming.timer.mapper.QrtzJobDetailsMapper">
 
-    <resultMap id="QrtzJobDetailsResultMap" type="com.com.ming.timer.mapper.QrtzJobDetails">
+    <resultMap id="QrtzJobDetailsResultMap" type="com.ming.timer.mapper.QrtzJobDetails">
         <id column="sched_name" property="schedName" jdbcType="VARCHAR"/>
         <result column="job_name" property="jobName" jdbcType="VARCHAR"/>
         <result column="job_group" property="jobGroup" jdbcType="VARCHAR"/>

@@ -1,5 +1,6 @@
 import axios from 'axios';
 
+//let base = 'http://localhost:11111';
 let base = '';
 
 export const requestLogin = params => { return axios.post(`${base}/login`, params).then(res => res.data); };
@@ -17,4 +18,5 @@ export const editUser = params => { return axios.get(`${base}/user/edit`, { para
 export const addUser = params => { return axios.get(`${base}/user/add`, { params: params }); };
 
 // 获取执行日志
-export const getJobExecuteLogList = params => { return axios.get(`${base}/api/timer/log/page`, { params: params }); };
+export const getJobExecuteLogPage = params => { return axios.get(`${base}/api/timer/log/page`, { params: params }); };
+export const getJobPage = params => { return axios.get(`${base}/api/timer/job/page`, { params: params }); };
