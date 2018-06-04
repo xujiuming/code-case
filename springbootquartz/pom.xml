@@ -73,6 +73,13 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
         </dependency>
+
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-data-jpa</artifactId>
+        </dependency>
+
+
         <!-- apache commons -->
         <dependency>
             <groupId>org.apache.commons</groupId>
@@ -103,11 +110,10 @@
             <artifactId>fastjson</artifactId>
             <version>${fastjson.version}</version>
         </dependency>
-        <!-- 放弃lombok
         <dependency>
              <groupId>org.projectlombok</groupId>
              <artifactId>lombok</artifactId>
-         </dependency>-->
+         </dependency>
         <!-- google-->
         <dependency>
             <groupId>com.google.guava</groupId>
@@ -131,19 +137,7 @@
             <version>${swagger.version}</version>
         </dependency>
 
-        <!-- spring boot mybatis支持 -->
-        <dependency>
-            <groupId>org.mybatis.spring.boot</groupId>
-            <artifactId>mybatis-spring-boot-starter</artifactId>
-            <version>${mybatis-spring-boot-starter.version}</version>
-        </dependency>
 
-        <!-- 分页插件 -->
-        <dependency>
-            <groupId>com.github.pagehelper</groupId>
-            <artifactId>pagehelper-spring-boot-starter</artifactId>
-            <version>${pagehelper.version}</version>
-        </dependency>
         <!-- alibaba的druid数据库连接池 -->
         <dependency>
             <groupId>com.alibaba</groupId>

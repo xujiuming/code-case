@@ -1,8 +1,6 @@
-package com.ming.timer.base;
+package com.ming.timer.base.quartz;
 
 import com.alibaba.fastjson.JSON;
-import com.ming.timer.mapper.QrtzJobExecuteLog;
-import com.ming.timer.mapper.QrtzJobExecuteLogMapper;
 import com.ming.timer.utils.SpringBeanManager;
 import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
@@ -25,7 +23,7 @@ public class ProxyJob extends BaseJob {
         JobDetail jobDetail = context.getJobDetail();
         String jobName = jobDetail.getKey().getName();
         BaseProxyJob job;
-        QrtzJobExecuteLog jobExecuteLog = new QrtzJobExecuteLog();
+       /* QrtzJobExecuteLog jobExecuteLog = new QrtzJobExecuteLog();
         // job 名称
         jobExecuteLog.setJobName(jobName);
         // job 开始时间
@@ -47,6 +45,6 @@ public class ProxyJob extends BaseJob {
             jobExecuteLog.setExecuteTimeMillis(System.currentTimeMillis() - beginTime);
             System.out.println(JSON.toJSONString(jobExecuteLog));
             SpringBeanManager.getBean(QrtzJobExecuteLogMapper.class).insert(jobExecuteLog);
-        }
+        }*/
     }
 }

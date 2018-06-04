@@ -1,4 +1,4 @@
-package com.ming.timer.base;
+package com.ming.timer.base.quartz;
 
 import org.quartz.DisallowConcurrentExecution;
 import org.quartz.JobExecutionContext;

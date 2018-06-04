@@ -1,13 +1,6 @@
 package com.ming.timer.controller;
 
-import com.github.pagehelper.Page;
-import com.github.pagehelper.PageHelper;
-import com.github.pagehelper.PageInfo;
-import com.ming.timer.base.TimerControllerConstant;
-import com.ming.timer.mapper.QrtzJobExecuteLog;
-import com.ming.timer.mapper.QrtzJobExecuteLogMapper;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
+import com.ming.timer.base.quartz.TimerControllerConstant;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -22,19 +15,19 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping(TimerControllerConstant.TIMER_BASE_URI + "log")
 public class JobExecuteLogController {
 
-    @Autowired
+  /*  @Autowired
     private QrtzJobExecuteLogMapper qrtzJobExecuteLogMapper;
 
-    /**
+    *//**
      * 分页查询 job 执行日志
      *
      * @author ming
      * @date 2018-04-26 13:26
-     */
+     *//*
     @GetMapping("page")
     public PageInfo<QrtzJobExecuteLog> getJobLog(Page<QrtzJobExecuteLog> page) {
         Page<QrtzJobExecuteLog> result = PageHelper.startPage(page.getPageNum(), page.getPageSize())
                 .doSelectPage(() -> qrtzJobExecuteLogMapper.findAll());
         return result.toPageInfo();
-    }
+    }*/
 }

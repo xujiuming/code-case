@@ -13,7 +13,7 @@ class DbUtils {
      * @author ming
      * @date 2018-04-22 11:53
      */
-    static def sql = Sql.newInstance('jdbc:postgresql://10.10.10.175:5432/boss',
+    static def sql = Sql.newInstance('jdbc:postgresql://10.10.10.177:5432/boss-dev',
             'postgres', 'mima', 'org.postgresql.Driver')
 
     /**pgsql 获取 表格字段信息

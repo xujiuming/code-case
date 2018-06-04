@@ -1,4 +1,4 @@
-package com.ming.timer.base;
+package com.ming.timer.base.quartz;
 
 
 /**

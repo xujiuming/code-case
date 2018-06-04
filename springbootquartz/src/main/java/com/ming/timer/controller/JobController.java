@@ -1,11 +1,7 @@
 package com.ming.timer.controller;
 
-import com.github.pagehelper.Page;
-import com.github.pagehelper.PageHelper;
-import com.github.pagehelper.PageInfo;
-import com.ming.timer.base.TimerControllerConstant;
+import com.ming.timer.base.quartz.TimerControllerConstant;
 import com.ming.timer.config.scheduler.SimpleScheduler;
-import com.ming.timer.mapper.QrtzJobDetailsMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -21,8 +17,6 @@ public class JobController {
 
     @Autowired
     private SimpleScheduler simpleScheduler;
-    @Autowired
-    private QrtzJobDetailsMapper qrtzJobDetailsMapper;
 
     /**
      * 创建 job
@@ -82,10 +76,10 @@ public class JobController {
      * @author ming
      * @date 2018-04-26 13:41
      */
-    @GetMapping("page")
+  /*  @GetMapping("page")
     public PageInfo<JobVO> getJobPage(Page<JobVO> page) {
         return PageHelper.startPage(page.getPageNum(),page.getPageSize()).doSelectPageInfo(()->qrtzJobDetailsMapper.findAll());
-    }
+    }*/
 
     /**
      * 暂停定时任务

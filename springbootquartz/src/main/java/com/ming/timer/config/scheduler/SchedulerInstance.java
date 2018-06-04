@@ -1,7 +1,7 @@
 package com.ming.timer.config.scheduler;
 
 import com.alibaba.fastjson.JSON;
-import com.ming.timer.base.ProxyJob;
+import com.ming.timer.base.quartz.ProxyJob;
 import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
 import org.junit.Assert;

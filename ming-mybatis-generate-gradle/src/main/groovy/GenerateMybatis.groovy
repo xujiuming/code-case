@@ -14,7 +14,7 @@ import org.apache.commons.lang3.StringUtils
 class GenerateMybatis {
     public static void main(String[] args) {
 
-        String tableName = "qrtz_job_details"
+        String tableName = "contract_refund"
         String packageName = "com.onlyedu.timer.mapper"
 
         String className = StringUtils.capitalize(DbUtils.changeStyle(tableName, true))

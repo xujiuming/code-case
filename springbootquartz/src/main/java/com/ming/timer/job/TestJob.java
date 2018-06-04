@@ -1,6 +1,6 @@
 package com.ming.timer.job;
 
-import com.ming.timer.base.BaseProxyJob;
+import com.ming.timer.base.quartz.BaseProxyJob;
 import org.springframework.stereotype.Component;
 
 /**
