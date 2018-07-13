@@ -42,6 +42,6 @@ public class SwaggerConfig {
 
     @GetMapping("/swagger")
     public String toSwagger(){
-        return "redirect:swagger/index.html";
+        return "redirect:/swagger/index.html";
     }
 }

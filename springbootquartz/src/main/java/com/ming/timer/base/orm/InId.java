@@ -8,7 +8,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.MappedSuperclass;
 import java.io.Serializable;
-import java.time.LocalDateTime;
+import java.util.Date;
 
 /**
  * 继承映射父类  所有entity 继承这个类
@@ -27,7 +27,7 @@ public class InId implements Serializable {
     private Long id;
 
 
-    private LocalDateTime gmtCreate;
-    private LocalDateTime gmtModified;
-    private Boolean isDeleted;
+    private Date gmtCreate;
+    private Date gmtModified = new Date();
+    private Boolean isDeleted = Boolean.FALSE;
 }

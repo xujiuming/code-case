@@ -8,6 +8,8 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
+import java.util.Date;
+
 @Service
 public class QrtzJobExecuteLogServiceImpl implements QrtzJobExecuteLogService {
     @Autowired
@@ -18,4 +20,10 @@ public class QrtzJobExecuteLogServiceImpl implements QrtzJobExecuteLogService {
         return qrtzJobExecuteLogRepository.findAll(pageable);
     }
 
+
+    @Override
+    public void save(QrtzJobExecuteLog qrtzJobExecuteLog) {
+        qrtzJobExecuteLog.setGmtCreate(new Date());
+        qrtzJobExecuteLogRepository.save(qrtzJobExecuteLog);
+    }
 }

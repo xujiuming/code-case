@@ -7,5 +7,7 @@ import org.springframework.data.domain.Pageable;
 public interface QrtzJobExecuteLogService {
 
 
+    void save(QrtzJobExecuteLog qrtzJobExecuteLog);
+
     Page<QrtzJobExecuteLog> findPage(Pageable pageable);
 }
