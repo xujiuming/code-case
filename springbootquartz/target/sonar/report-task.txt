@@ -1,0 +1,6 @@
+projectKey=com.ming:spring-boot-quartz
+serverUrl=http://localhost:9000
+serverVersion=7.1.0.11001
+dashboardUrl=http://localhost:9000/dashboard/index/com.ming:spring-boot-quartz
+ceTaskId=AWRFQ1VWKNC3UBEeU4Ih
+ceTaskUrl=http://localhost:9000/api/ce/task?id=AWRFQ1VWKNC3UBEeU4Ih
