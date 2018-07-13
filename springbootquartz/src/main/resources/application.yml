@@ -7,9 +7,9 @@ spring:
   datasource:
     #type: com.alibaba.druid.pool.DruidDataSource
     driver-class-name: org.postgresql.Driver
-    url: "jdbc:postgresql://10.10.10.177:5432/boss-dev"
+    url: "jdbc:postgresql://localhost:5432/postgres"
     username: postgres
-    password: mima
+    password: ming
     druid:
       # druid的监控页面 配置
       stat-view-servlet:
@@ -36,3 +36,8 @@ spring:
   #缓存设置  先采用guava 提供的缓存   可以切换到其他缓存技术 例如redis之类的
   cache:
     type: simple
+  jpa:
+    show-sql: true
+    hibernate:
+      naming:
+        physical-strategy: org.springframework.boot.orm.jpa.hibernate.SpringPhysicalNamingStrategy

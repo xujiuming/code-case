@@ -8,6 +8,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.MappedSuperclass;
 import java.io.Serializable;
+import java.time.LocalDateTime;
 
 /**
  * 继承映射父类  所有entity 继承这个类
@@ -18,13 +19,15 @@ import java.io.Serializable;
 @MappedSuperclass
 @Data
 public class InId implements Serializable {
+    private static final long serialVersionUID = 1L;
 
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private Long lastUpdateTimeMillis = System.currentTimeMillis();
 
-    private Long createTimeMillis;
+    private LocalDateTime gmtCreate;
+    private LocalDateTime gmtModified;
+    private Boolean isDeleted;
 }

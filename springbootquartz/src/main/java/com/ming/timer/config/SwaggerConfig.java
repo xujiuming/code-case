@@ -2,6 +2,8 @@ package com.ming.timer.config;
 
 import com.ming.Start;
 import org.springframework.context.annotation.Bean;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
 import springfox.documentation.builders.ApiInfoBuilder;
 import springfox.documentation.builders.PathSelectors;
 import springfox.documentation.builders.RequestHandlerSelectors;
@@ -14,6 +16,7 @@ import springfox.documentation.spring.web.plugins.Docket;
  * @author ming
  * @date 2018-04-27 09:41
  */
+@Controller
 public class SwaggerConfig {
 
     /**
@@ -36,4 +39,9 @@ public class SwaggerConfig {
                 .build();
     }
 
+
+    @GetMapping("/swagger")
+    public String toSwagger(){
+        return "redirect:swagger/index.html";
+    }
 }

@@ -24,8 +24,8 @@ public class BaseRepositoryImpl<T extends InId, ID extends Serializable> extends
 
     @Override
     @SuppressWarnings("unchecked")
-    public List<T> findListByNativeSql(String sql, Class<T> clzss) {
-        return entityManager.createNativeQuery(sql, clzss).getResultList();
+    public List<T> findListByNativeSql(String sql, Class<T> clazz) {
+        return entityManager.createNativeQuery(sql, clazz).getResultList();
     }
 
     @Override

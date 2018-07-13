@@ -27,4 +27,29 @@ public class InId implements Serializable {
     private Long lastUpdateTimeMillis = System.currentTimeMillis();
 
     private Long createTimeMillis;
+
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public Long getLastUpdateTimeMillis() {
+        return lastUpdateTimeMillis;
+    }
+
+    public void setLastUpdateTimeMillis(Long lastUpdateTimeMillis) {
+        this.lastUpdateTimeMillis = lastUpdateTimeMillis;
+    }
+
+    public Long getCreateTimeMillis() {
+        return createTimeMillis;
+    }
+
+    public void setCreateTimeMillis(Long createTimeMillis) {
+        this.createTimeMillis = createTimeMillis;
+    }
 }
