@@ -13,8 +13,8 @@ import org.springframework.http.HttpStatus;
 @Getter
 public enum ExceptionEnum {
     /**
-     *系统异常
-     * */
+     * 系统异常
+     */
     SYSTEM_ERROR(1, HttpStatus.INTERNAL_SERVER_ERROR, "系统异常");
 
     private Integer code;

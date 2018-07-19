@@ -12,12 +12,12 @@ public class UserController {
     private TestCacheService testCacheService;
 
     @GetMapping("user")
-    public String getUser(){
+    public String getUser() {
         return "ming";
     }
 
     @GetMapping("test-cache")
-    public String getTestCache(String id){
-      return   testCacheService.testCache(id);
+    public String getTestCache(String id) {
+        return testCacheService.testCache(id);
     }
 }

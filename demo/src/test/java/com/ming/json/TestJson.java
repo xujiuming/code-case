@@ -1,43 +1,47 @@
 package com.ming.json;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+
+import java.io.IOException;
+
 public interface TestJson {
 
     //测试 对象转换 json 字符串 -------------------------------------------------------------------------------------------
-    void testStringListObjToString();
+    void testStringListObjToString() throws JsonProcessingException;
 
-    void testStringMapObjToString();
+    void testStringMapObjToString() throws JsonProcessingException;
 
-    void testMyDataToString();
+    void testMyDataToString() throws JsonProcessingException;
 
-    void testMyDataListToString();
+    void testMyDataListToString() throws JsonProcessingException;
 
-    void testMyDataMapToString();
+    void testMyDataMapToString() throws JsonProcessingException;
 
-    void testCyclicDataToString();
+    void testCyclicDataToString() throws JsonProcessingException;
 
-    void testCyclicDataListToString();
+    void testCyclicDataListToString() throws JsonProcessingException;
 
-    void testCyclicDataMapToString();
+    void testCyclicDataMapToString() throws JsonProcessingException;
 
-    void testMyDataAndCyclicDataMapToString();
+    void testMyDataAndCyclicDataMapToString() throws JsonProcessingException;
 
 
     //json 字符串转换 对象测试方法------------------------------------------------------------------------------------------
-    void zTestStringListObjStringToObj();
+    void zTestStringListObjStringToObj() throws IOException;
 
-    void zTestStringMapObjStringToObj();
+    void zTestStringMapObjStringToObj() throws IOException;
 
-    void zTestMyDataStringToObj();
+    void zTestMyDataStringToObj() throws IOException;
 
-    void zTestMyDataListStringToObj();
+    void zTestMyDataListStringToObj() throws IOException;
 
-    void zTestMyDataMapStringToObj();
+    void zTestMyDataMapStringToObj() throws IOException;
 
-    void zTestCyclicDataStringToObj();
+    void zTestCyclicDataStringToObj() throws IOException;
 
-    void zTestCyclicDataListStringToObj();
+    void zTestCyclicDataListStringToObj() throws IOException;
 
-    void zTestCyclicDataMapStringToObj();
+    void zTestCyclicDataMapStringToObj() throws IOException;
 
-    void zTestMyDataAndCyclicDataMapStringToObj();
+    void zTestMyDataAndCyclicDataMapStringToObj() throws IOException;
 }

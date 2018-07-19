@@ -11,7 +11,7 @@ import org.springframework.data.repository.core.support.RepositoryFactorySupport
 import javax.persistence.EntityManager;
 import java.io.Serializable;
 
-public class BaseRepositoryFactoryBean<R extends JpaRepository<T , ID>, T, ID extends Serializable> extends JpaRepositoryFactoryBean<R, T, ID> {
+public class BaseRepositoryFactoryBean<R extends JpaRepository<T, ID>, T, ID extends Serializable> extends JpaRepositoryFactoryBean<R, T, ID> {
 
     public BaseRepositoryFactoryBean(Class<? extends R> repositoryInterface) {
         super(repositoryInterface);
@@ -37,7 +37,7 @@ public class BaseRepositoryFactoryBean<R extends JpaRepository<T , ID>, T, ID ex
         @SuppressWarnings("unchecked")
         @Override
         protected Object getTargetRepository(RepositoryInformation information) {
-            return new BaseRepositoryImpl<T , ID>((Class<T>) information.getDomainType(), em);
+            return new BaseRepositoryImpl<T, ID>((Class<T>) information.getDomainType(), em);
         }
 
         //设置具体的实现类的class

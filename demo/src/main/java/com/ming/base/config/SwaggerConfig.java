@@ -36,7 +36,7 @@ public class SwaggerConfig {
 
 
     @GetMapping("/swagger")
-    public String swagger(){
+    public String swagger() {
         return "redirect: /swagger/index.html";
     }
 

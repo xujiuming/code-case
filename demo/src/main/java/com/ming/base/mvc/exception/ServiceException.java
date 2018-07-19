@@ -26,6 +26,7 @@ public class ServiceException extends RuntimeException {
         this.exceptionEnum = exceptionEnum;
         this.error = error;
     }
+
     public ServiceException(ExceptionEnum exceptionEnum) {
         this.exceptionEnum = exceptionEnum;
     }
