@@ -14,8 +14,8 @@ import org.apache.commons.lang3.StringUtils
 class GenerateMybatis {
      static void main(String[] args) {
 
-        String tableName = "class_wallet_draft"
-        String packageName = "com.onlyedu.sell.contract.po"
+        String tableName = "contract_refund"
+        String packageName = "com.onlyedu.sell.contract.refund"
 
         String className = StringUtils.capitalize(DbUtils.changeStyle(tableName, true))
         Map<String, String> map = DbUtils.pgsqlGetTableColumns(tableName)

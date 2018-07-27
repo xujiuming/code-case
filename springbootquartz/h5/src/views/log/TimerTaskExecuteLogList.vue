@@ -28,6 +28,8 @@
             </el-table-column>
         </el-table>
 
+
+
     </section>
 </template>
 
@@ -54,10 +56,7 @@
         },
         methods: {
 
-            handleCurrentChange(val) {
-                this.page = val;
-                this.getLogs();
-            },
+
             //获取用户列表
             getLogs() {
                 let para = {
@@ -69,15 +68,17 @@
                 getJobExecuteLogPage(para).then((res) => {
                     console.log(res);
                     this.total = res.data.total;
-                    this.logs = res.data.list;
+                    this.logs = res.data.content;
                     this.listLoading = false;
                     //NProgress.done();
                 });
             },
+            //全选
             selsChange: function (sels) {
                 this.sels = sels;
             },
         },
+
         mounted() {
             this.getLogs();
         }
