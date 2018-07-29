@@ -2,336 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="8810d7b8-e0a9-4ada-8bd0-8dbff12f4e28" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/../quartz/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../quartz/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../quartz/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../quartz/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../quartz/h5/.babelrc" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../quartz/h5/LICENSE" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../quartz/h5/README.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../quartz/h5/build/build.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../quartz/h5/build/check-versions.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../quartz/h5/build/dev-client.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../quartz/h5/build/dev-server.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../quartz/h5/build/utils.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../quartz/h5/build/vue-loader.conf.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../quartz/h5/build/webpack.base.conf.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../quartz/h5/build/webpack.dev.conf.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../quartz/h5/build/webpack.prod.conf.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../quartz/h5/config/dev.env.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../quartz/h5/config/index.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../quartz/h5/config/prod.env.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../quartz/h5/index.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../quartz/h5/package.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../quartz/h5/src/App.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../quartz/h5/src/api/api.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../quartz/h5/src/api/index.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../quartz/h5/src/assets/bg1.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../quartz/h5/src/assets/logo.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../quartz/h5/src/assets/logo4.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../quartz/h5/src/assets/theme/theme-darkblue/alert.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../quartz/h5/src/assets/theme/theme-darkblue/autocomplete.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../quartz/h5/src/assets/theme/theme-darkblue/badge.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../quartz/h5/src/assets/theme/theme-darkblue/base.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../quartz/h5/src/assets/theme/theme-darkblue/breadcrumb-item.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../quartz/h5/src/assets/theme/theme-darkblue/breadcrumb.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../quartz/h5/src/assets/theme/theme-darkblue/button-group.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../quartz/h5/src/assets/theme/theme-darkblue/button.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../quartz/h5/src/assets/theme/theme-darkblue/card.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../quartz/h5/src/assets/theme/theme-darkblue/carousel-item.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../quartz/h5/src/assets/theme/theme-darkblue/carousel.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../quartz/h5/src/assets/theme/theme-darkblue/cascader.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../quartz/h5/src/assets/theme/theme-darkblue/checkbox-group.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../quartz/h5/src/assets/theme/theme-darkblue/checkbox.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../quartz/h5/src/assets/theme/theme-darkblue/col.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../quartz/h5/src/assets/theme/theme-darkblue/collapse-item.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../quartz/h5/src/assets/theme/theme-darkblue/collapse.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../quartz/h5/src/assets/theme/theme-darkblue/color-picker.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../quartz/h5/src/assets/theme/theme-darkblue/date-picker.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../quartz/h5/src/assets/theme/theme-darkblue/dialog.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../quartz/h5/src/assets/theme/theme-darkblue/dropdown-item.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../quartz/h5/src/assets/theme/theme-darkblue/dropdown-menu.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../quartz/h5/src/assets/theme/theme-darkblue/dropdown.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../quartz/h5/src/assets/theme/theme-darkblue/fonts/element-icons.ttf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../quartz/h5/src/assets/theme/theme-darkblue/fonts/element-icons.woff" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../quartz/h5/src/assets/theme/theme-darkblue/form-item.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../quartz/h5/src/assets/theme/theme-darkblue/form.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../quartz/h5/src/assets/theme/theme-darkblue/icon.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../quartz/h5/src/assets/theme/theme-darkblue/index.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../quartz/h5/src/assets/theme/theme-darkblue/input-number.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../quartz/h5/src/assets/theme/theme-darkblue/input.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../quartz/h5/src/assets/theme/theme-darkblue/loading.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../quartz/h5/src/assets/theme/theme-darkblue/menu-item-group.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../quartz/h5/src/assets/theme/theme-darkblue/menu-item.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../quartz/h5/src/assets/theme/theme-darkblue/menu.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../quartz/h5/src/assets/theme/theme-darkblue/message-box.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../quartz/h5/src/assets/theme/theme-darkblue/message.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../quartz/h5/src/assets/theme/theme-darkblue/notification.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../quartz/h5/src/assets/theme/theme-darkblue/option-group.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../quartz/h5/src/assets/theme/theme-darkblue/option.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../quartz/h5/src/assets/theme/theme-darkblue/pagination.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../quartz/h5/src/assets/theme/theme-darkblue/popover.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../quartz/h5/src/assets/theme/theme-darkblue/progress.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../quartz/h5/src/assets/theme/theme-darkblue/radio-button.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../quartz/h5/src/assets/theme/theme-darkblue/radio-group.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../quartz/h5/src/assets/theme/theme-darkblue/radio.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../quartz/h5/src/assets/theme/theme-darkblue/rate.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../quartz/h5/src/assets/theme/theme-darkblue/reset.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../quartz/h5/src/assets/theme/theme-darkblue/row.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../quartz/h5/src/assets/theme/theme-darkblue/scrollbar.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../quartz/h5/src/assets/theme/theme-darkblue/select-dropdown.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../quartz/h5/src/assets/theme/theme-darkblue/select.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../quartz/h5/src/assets/theme/theme-darkblue/slider.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../quartz/h5/src/assets/theme/theme-darkblue/spinner.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../quartz/h5/src/assets/theme/theme-darkblue/step.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../quartz/h5/src/assets/theme/theme-darkblue/steps.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../quartz/h5/src/assets/theme/theme-darkblue/submenu.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../quartz/h5/src/assets/theme/theme-darkblue/switch.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../quartz/h5/src/assets/theme/theme-darkblue/tab-pane.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../quartz/h5/src/assets/theme/theme-darkblue/table-column.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../quartz/h5/src/assets/theme/theme-darkblue/table.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../quartz/h5/src/assets/theme/theme-darkblue/tabs.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../quartz/h5/src/assets/theme/theme-darkblue/tag.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../quartz/h5/src/assets/theme/theme-darkblue/time-picker.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../quartz/h5/src/assets/theme/theme-darkblue/time-select.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../quartz/h5/src/assets/theme/theme-darkblue/tooltip.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../quartz/h5/src/assets/theme/theme-darkblue/tree.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../quartz/h5/src/assets/theme/theme-darkblue/upload.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../quartz/h5/src/assets/theme/theme-green/alert.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../quartz/h5/src/assets/theme/theme-green/autocomplete.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../quartz/h5/src/assets/theme/theme-green/badge.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../quartz/h5/src/assets/theme/theme-green/base.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../quartz/h5/src/assets/theme/theme-green/breadcrumb-item.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../quartz/h5/src/assets/theme/theme-green/breadcrumb.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../quartz/h5/src/assets/theme/theme-green/button-group.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../quartz/h5/src/assets/theme/theme-green/button.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../quartz/h5/src/assets/theme/theme-green/card.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../quartz/h5/src/assets/theme/theme-green/carousel-item.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../quartz/h5/src/assets/theme/theme-green/carousel.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../quartz/h5/src/assets/theme/theme-green/cascader.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../quartz/h5/src/assets/theme/theme-green/checkbox-group.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../quartz/h5/src/assets/theme/theme-green/checkbox.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../quartz/h5/src/assets/theme/theme-green/col.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../quartz/h5/src/assets/theme/theme-green/collapse-item.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../quartz/h5/src/assets/theme/theme-green/collapse.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../quartz/h5/src/assets/theme/theme-green/color-picker.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../quartz/h5/src/assets/theme/theme-green/date-picker.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../quartz/h5/src/assets/theme/theme-green/dialog.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../quartz/h5/src/assets/theme/theme-green/dropdown-item.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../quartz/h5/src/assets/theme/theme-green/dropdown-menu.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../quartz/h5/src/assets/theme/theme-green/dropdown.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../quartz/h5/src/assets/theme/theme-green/fonts/element-icons.ttf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../quartz/h5/src/assets/theme/theme-green/fonts/element-icons.woff" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../quartz/h5/src/assets/theme/theme-green/form-item.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../quartz/h5/src/assets/theme/theme-green/form.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../quartz/h5/src/assets/theme/theme-green/icon.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../quartz/h5/src/assets/theme/theme-green/index.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../quartz/h5/src/assets/theme/theme-green/input-number.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../quartz/h5/src/assets/theme/theme-green/input.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../quartz/h5/src/assets/theme/theme-green/loading.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../quartz/h5/src/assets/theme/theme-green/menu-item-group.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../quartz/h5/src/assets/theme/theme-green/menu-item.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../quartz/h5/src/assets/theme/theme-green/menu.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../quartz/h5/src/assets/theme/theme-green/message-box.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../quartz/h5/src/assets/theme/theme-green/message.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../quartz/h5/src/assets/theme/theme-green/notification.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../quartz/h5/src/assets/theme/theme-green/option-group.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../quartz/h5/src/assets/theme/theme-green/option.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../quartz/h5/src/assets/theme/theme-green/pagination.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../quartz/h5/src/assets/theme/theme-green/popover.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../quartz/h5/src/assets/theme/theme-green/progress.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../quartz/h5/src/assets/theme/theme-green/radio-button.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../quartz/h5/src/assets/theme/theme-green/radio-group.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../quartz/h5/src/assets/theme/theme-green/radio.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../quartz/h5/src/assets/theme/theme-green/rate.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../quartz/h5/src/assets/theme/theme-green/reset.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../quartz/h5/src/assets/theme/theme-green/row.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../quartz/h5/src/assets/theme/theme-green/scrollbar.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../quartz/h5/src/assets/theme/theme-green/select-dropdown.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../quartz/h5/src/assets/theme/theme-green/select.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../quartz/h5/src/assets/theme/theme-green/slider.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../quartz/h5/src/assets/theme/theme-green/spinner.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../quartz/h5/src/assets/theme/theme-green/step.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../quartz/h5/src/assets/theme/theme-green/steps.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../quartz/h5/src/assets/theme/theme-green/submenu.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../quartz/h5/src/assets/theme/theme-green/switch.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../quartz/h5/src/assets/theme/theme-green/tab-pane.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../quartz/h5/src/assets/theme/theme-green/table-column.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../quartz/h5/src/assets/theme/theme-green/table.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../quartz/h5/src/assets/theme/theme-green/tabs.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../quartz/h5/src/assets/theme/theme-green/tag.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../quartz/h5/src/assets/theme/theme-green/time-picker.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../quartz/h5/src/assets/theme/theme-green/time-select.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../quartz/h5/src/assets/theme/theme-green/tooltip.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../quartz/h5/src/assets/theme/theme-green/tree.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../quartz/h5/src/assets/theme/theme-green/upload.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../quartz/h5/src/assets/user.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../quartz/h5/src/common/js/util.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../quartz/h5/src/components/.gitkeep" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../quartz/h5/src/main.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../quartz/h5/src/routes.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../quartz/h5/src/styles/vars.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../quartz/h5/src/views/404.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../quartz/h5/src/views/Home.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../quartz/h5/src/views/Login.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../quartz/h5/src/views/Main.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../quartz/h5/src/views/charts/echarts.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../quartz/h5/src/views/log/TimerTaskExecuteLogList.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../quartz/h5/src/views/nav1/Form.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../quartz/h5/src/views/nav1/Table.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../quartz/h5/src/views/nav1/user.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../quartz/h5/src/views/nav2/Page4.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../quartz/h5/src/views/nav2/Page5.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../quartz/h5/src/views/nav3/Page6.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../quartz/h5/src/views/timer-task-manager/TimerTaskListBak.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../quartz/h5/src/vuex/actions.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../quartz/h5/src/vuex/getters.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../quartz/h5/src/vuex/store.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../quartz/h5/static/.gitkeep" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../quartz/pom.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../quartz/quartz.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../quartz/src/main/java/com/ming/Start.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../quartz/src/main/java/com/ming/timer/base/exception/ExceptionContians.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../quartz/src/main/java/com/ming/timer/base/exception/ServiceException.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../quartz/src/main/java/com/ming/timer/base/interceptor/AccessLogInterceptor.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../quartz/src/main/java/com/ming/timer/base/interceptor/ResponseHandler.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../quartz/src/main/java/com/ming/timer/base/interceptor/WebInterceptors.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../quartz/src/main/java/com/ming/timer/base/orm/DynamicSpecifications.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../quartz/src/main/java/com/ming/timer/base/orm/InId.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../quartz/src/main/java/com/ming/timer/base/orm/PageParam.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../quartz/src/main/java/com/ming/timer/base/orm/SearchFilter.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../quartz/src/main/java/com/ming/timer/base/orm/jpa/BaseRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../quartz/src/main/java/com/ming/timer/base/orm/jpa/BaseRepositoryFactoryBean.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../quartz/src/main/java/com/ming/timer/base/orm/jpa/BaseRepositoryImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../quartz/src/main/java/com/ming/timer/base/quartz/BaseJob.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../quartz/src/main/java/com/ming/timer/base/quartz/BaseProxyJob.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../quartz/src/main/java/com/ming/timer/base/quartz/ProxyJob.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../quartz/src/main/java/com/ming/timer/base/quartz/TimerControllerConstant.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../quartz/src/main/java/com/ming/timer/base/web/BaseAbstractController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../quartz/src/main/java/com/ming/timer/base/web/BaseControllerInterface.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../quartz/src/main/java/com/ming/timer/config/SwaggerConfig.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../quartz/src/main/java/com/ming/timer/config/scheduler/JobConnectionProvider.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../quartz/src/main/java/com/ming/timer/config/scheduler/SchedulerConfig.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../quartz/src/main/java/com/ming/timer/config/scheduler/SchedulerFactoryBean.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../quartz/src/main/java/com/ming/timer/config/scheduler/SchedulerInstance.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../quartz/src/main/java/com/ming/timer/config/scheduler/SimpleScheduler.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../quartz/src/main/java/com/ming/timer/controller/JobController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../quartz/src/main/java/com/ming/timer/controller/JobDTO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../quartz/src/main/java/com/ming/timer/controller/JobExecuteLogController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../quartz/src/main/java/com/ming/timer/controller/JobVO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../quartz/src/main/java/com/ming/timer/entity/QrtzCronTriggers.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../quartz/src/main/java/com/ming/timer/entity/QrtzJobDetails.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../quartz/src/main/java/com/ming/timer/entity/QrtzJobExecuteLog.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../quartz/src/main/java/com/ming/timer/entity/QrtzSimpleTriggers.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../quartz/src/main/java/com/ming/timer/entity/QrtzTriggers.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../quartz/src/main/java/com/ming/timer/job/TestJob.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../quartz/src/main/java/com/ming/timer/repository/QrtzCronTriggersRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../quartz/src/main/java/com/ming/timer/repository/QrtzJobDetailsRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../quartz/src/main/java/com/ming/timer/repository/QrtzJobExecuteLogRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../quartz/src/main/java/com/ming/timer/repository/QrtzSimpleTriggersRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../quartz/src/main/java/com/ming/timer/repository/QrtzTriggersRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../quartz/src/main/java/com/ming/timer/service/QrtzCronTriggersService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../quartz/src/main/java/com/ming/timer/service/QrtzJobDetailsService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../quartz/src/main/java/com/ming/timer/service/QrtzJobExecuteLogService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../quartz/src/main/java/com/ming/timer/service/QrtzSimpleTriggersService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../quartz/src/main/java/com/ming/timer/service/QrtzTriggersService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../quartz/src/main/java/com/ming/timer/service/impl/QrtzCronTriggerServiceImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../quartz/src/main/java/com/ming/timer/service/impl/QrtzJobDetailsServiceImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../quartz/src/main/java/com/ming/timer/service/impl/QrtzJobExecuteLogServiceImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../quartz/src/main/java/com/ming/timer/service/impl/QrtzSimpleTriggersServiceImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../quartz/src/main/java/com/ming/timer/service/impl/QrtzTriggersServiceImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../quartz/src/main/java/com/ming/timer/utils/CollectionUtils.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../quartz/src/main/java/com/ming/timer/utils/SpringBeanManager.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../quartz/src/main/resources/application.yml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../quartz/src/main/resources/banner.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../quartz/src/main/resources/quartz.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../quartz/src/main/resources/quartz_init_tables_postgres.sql" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../quartz/src/main/resources/springbootquartz.sql" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../quartz/src/main/resources/static/fff" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../quartz/src/main/resources/static/manager/index.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../quartz/src/main/resources/static/manager/static/css/app.16b1ba6dac08779e0b7ffe7044c4014c.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../quartz/src/main/resources/static/manager/static/css/app.16b1ba6dac08779e0b7ffe7044c4014c.css.map" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../quartz/src/main/resources/static/manager/static/fonts/element-icons.b02bdc1.ttf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../quartz/src/main/resources/static/manager/static/fonts/fontawesome-webfont.674f50d.eot" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../quartz/src/main/resources/static/manager/static/fonts/fontawesome-webfont.af7ae50.woff2" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../quartz/src/main/resources/static/manager/static/fonts/fontawesome-webfont.b06871f.ttf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../quartz/src/main/resources/static/manager/static/fonts/fontawesome-webfont.fee66e7.woff" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../quartz/src/main/resources/static/manager/static/img/fontawesome-webfont.912ec66.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../quartz/src/main/resources/static/manager/static/js/app.6c46d788ad6afb76dc5d.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../quartz/src/main/resources/static/manager/static/js/app.6c46d788ad6afb76dc5d.js.map" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../quartz/src/main/resources/static/manager/static/js/manifest.57043f20c6ad3be5667a.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../quartz/src/main/resources/static/manager/static/js/manifest.57043f20c6ad3be5667a.js.map" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../quartz/src/main/resources/static/manager/static/js/vendor.85c7f68caa49aeb2d0a7.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../quartz/src/main/resources/static/manager/static/js/vendor.85c7f68caa49aeb2d0a7.js.map" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../quartz/src/main/resources/static/swagger/css/print.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../quartz/src/main/resources/static/swagger/css/reset.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../quartz/src/main/resources/static/swagger/css/screen.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../quartz/src/main/resources/static/swagger/css/style.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../quartz/src/main/resources/static/swagger/css/typography.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../quartz/src/main/resources/static/swagger/fonts/DroidSans-Bold.ttf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../quartz/src/main/resources/static/swagger/fonts/DroidSans.ttf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../quartz/src/main/resources/static/swagger/images/collapse.gif" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../quartz/src/main/resources/static/swagger/images/expand.gif" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../quartz/src/main/resources/static/swagger/images/explorer_icons.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../quartz/src/main/resources/static/swagger/images/favicon-16x16.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../quartz/src/main/resources/static/swagger/images/favicon-32x32.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../quartz/src/main/resources/static/swagger/images/favicon.ico" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../quartz/src/main/resources/static/swagger/images/logo_small.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../quartz/src/main/resources/static/swagger/images/pet_store_api.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../quartz/src/main/resources/static/swagger/images/throbber.gif" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../quartz/src/main/resources/static/swagger/images/wordnik_api.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../quartz/src/main/resources/static/swagger/index.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../quartz/src/main/resources/static/swagger/lang/ca.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../quartz/src/main/resources/static/swagger/lang/el.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../quartz/src/main/resources/static/swagger/lang/en.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../quartz/src/main/resources/static/swagger/lang/es.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../quartz/src/main/resources/static/swagger/lang/fr.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../quartz/src/main/resources/static/swagger/lang/geo.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../quartz/src/main/resources/static/swagger/lang/it.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../quartz/src/main/resources/static/swagger/lang/ja.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../quartz/src/main/resources/static/swagger/lang/ko-kr.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../quartz/src/main/resources/static/swagger/lang/pl.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../quartz/src/main/resources/static/swagger/lang/pt.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../quartz/src/main/resources/static/swagger/lang/ru.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../quartz/src/main/resources/static/swagger/lang/tr.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../quartz/src/main/resources/static/swagger/lang/translator.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../quartz/src/main/resources/static/swagger/lang/zh-cn.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../quartz/src/main/resources/static/swagger/lib/backbone-min.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../quartz/src/main/resources/static/swagger/lib/es5-shim.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../quartz/src/main/resources/static/swagger/lib/handlebars-4.0.5.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../quartz/src/main/resources/static/swagger/lib/highlight.9.1.0.pack.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../quartz/src/main/resources/static/swagger/lib/highlight.9.1.0.pack_extended.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../quartz/src/main/resources/static/swagger/lib/jquery-1.8.0.min.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../quartz/src/main/resources/static/swagger/lib/jquery.ba-bbq.min.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../quartz/src/main/resources/static/swagger/lib/jquery.slideto.min.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../quartz/src/main/resources/static/swagger/lib/jquery.wiggle.min.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../quartz/src/main/resources/static/swagger/lib/js-yaml.min.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../quartz/src/main/resources/static/swagger/lib/jsoneditor.min.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../quartz/src/main/resources/static/swagger/lib/lodash.min.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../quartz/src/main/resources/static/swagger/lib/marked.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../quartz/src/main/resources/static/swagger/lib/md5.min.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../quartz/src/main/resources/static/swagger/lib/object-assign-pollyfill.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../quartz/src/main/resources/static/swagger/lib/sanitize-html.min.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../quartz/src/main/resources/static/swagger/lib/swagger-oauth.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../quartz/src/main/resources/static/swagger/lib/vue.min.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../quartz/src/main/resources/static/swagger/o2c.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../quartz/src/main/resources/static/swagger/swagger-ui.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../quartz/.idea/compiler.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/45c957af-1aa4-4210-a273-03cb984f5798.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/45c957af-1aa4-4210-a273-03cb984f5798/storage_v2/_src_/database/postgres.edMnLQ.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/45c957af-1aa4-4210-a273-03cb984f5798/storage_v2/_src_/database/postgres.edMnLQ/schema/public.abK9xQ.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../quartz/.idea/encodings.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/uiDesigner.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/h5/npm-debug.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/springbootquartz.iml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/ming/timer/base/exception/ServiceException.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ming/timer/base/exception/ServiceException.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/ming/timer/entity/QrtzJobExecuteLog.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ming/timer/entity/QrtzJobExecuteLog.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../quartz/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../quartz/.idea/workspace.xml" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/target/" />
     <ignored path="$PROJECT_DIR$/.gradle/" />
@@ -458,11 +129,12 @@
     <session id="-2102298560">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="1" />
+          <entry key="project.closed" value="2" />
           <entry key="project.open.time.1" value="1" />
           <entry key="project.open.time.16" value="1" />
           <entry key="project.open.time.25" value="1" />
-          <entry key="project.opened" value="3" />
+          <entry key="project.open.time.28" value="1" />
+          <entry key="project.opened" value="4" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
@@ -916,7 +588,6 @@
     <panes>
       <pane id="AndroidView" />
       <pane id="PackagesPane" />
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -946,6 +617,7 @@
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -960,7 +632,7 @@
     <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1532836015574" />
     <property name="com.intellij.database.dataSource.DataSourceTemplate" value="PostgreSQL" />
     <property name="database.console.LAST_STATE" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/.." />
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
@@ -1145,6 +817,7 @@
       <workItem from="1532831005365" duration="4080000" />
       <workItem from="1532836735441" duration="599000" />
       <workItem from="1532840652917" duration="997000" />
+      <workItem from="1532875886441" duration="12000" />
     </task>
     <task id="LOCAL-00001" summary="f">
       <created>1531463597171</created>
@@ -1157,7 +830,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="30677000" />
+    <option name="totallyTimeSpent" value="30689000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -1171,7 +844,7 @@
   <component name="ToolWindowManager">
     <frame x="67" y="25" width="1853" height="1055" extended-state="6" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.2600773" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.2628382" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Designer" order="2" />
       <window_info id="Image Layers" order="3" />
