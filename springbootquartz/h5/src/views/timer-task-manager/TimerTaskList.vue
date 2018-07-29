@@ -22,10 +22,10 @@
             </el-table-column>
             <el-table-column type="id" label="id" width="60">
             </el-table-column>
-            <el-table-column prop="jobName" label="任务名称" width="200" sortable></el-table-column>
-            <el-table-column prop="triggerType" label="表达式类型" width="200" sortable></el-table-column>
-            <el-table-column prop="triggerExpression" label="表达式" width="250" sortable></el-table-column>
-            <el-table-column prop="jobDesc" label="任务描述" width="460" sortable></el-table-column>
+            <el-table-column prop="jobname" label="任务名称" width="200" sortable></el-table-column>
+            <el-table-column prop="triggertype" label="表达式类型" width="200" sortable></el-table-column>
+            <el-table-column prop="triggerexpression" label="表达式" width="250" sortable></el-table-column>
+            <el-table-column prop="jobdesc" label="任务描述" width="460" sortable></el-table-column>
 
             <el-table-column label="操作" width="400">
                 <template slot-scope="scope">
@@ -170,8 +170,7 @@
                 this.listLoading = true;
                 //NProgress.start();
                 getJobPage(para).then((res) => {
-                    this.total = res.data.total;
-                    this.jobList = res.data.list;
+                    this.jobList = res.data;
                     this.listLoading = false;
                     //NProgress.done();
                 });

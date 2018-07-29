@@ -1,18 +1,7 @@
 spring:
-  datasource:
-    driver-class-name: org.h2.Driver
-    url: jdbc:h2:mem:ming
-    data-username: ming
-    data-password: ming
-  jpa:
-    database: h2
-    show-sql: true
-    hibernate:
-      ddl-auto: create-drop
-      naming:
-        physical-strategy: org.springframework.boot.orm.jpa.hibernate.SpringPhysicalNamingStrategy
-  h2:
-    console:
-      enabled: true
-server:
-  port: 9090
+  redis:
+    host: 10.10.10.175
+    port: 6379
+  cache:
+    type: redis
+

@@ -1,9 +1,18 @@
 package com.ming.timer.controller;
 
 import com.ming.timer.base.quartz.TimerControllerConstant;
+import com.ming.timer.base.web.BaseAbstractController;
 import com.ming.timer.config.scheduler.SimpleScheduler;
+import com.ming.timer.entity.QrtzJobDetails;
+import com.ming.timer.entity.QrtzTriggers;
+import com.ming.timer.service.QrtzJobDetailsService;
+import com.ming.timer.service.QrtzTriggersService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
+import java.util.Map;
 
 /**
  * job 控制器
@@ -13,11 +22,12 @@ import org.springframework.web.bind.annotation.*;
  */
 @RestController
 @RequestMapping(TimerControllerConstant.TIMER_BASE_URI + "job")
-public class JobController {
+public class JobController extends BaseAbstractController {
 
     @Autowired
     private SimpleScheduler simpleScheduler;
-
+    @Autowired
+    private QrtzTriggersService qrtzTriggersService;
     /**
      * 创建 job
      * 前提:
@@ -76,10 +86,11 @@ public class JobController {
      * @author ming
      * @date 2018-04-26 13:41
      */
-  /*  @GetMapping("page")
-    public PageInfo<JobVO> getJobPage(Page<JobVO> page) {
-        return PageHelper.startPage(page.getPageNum(),page.getPageSize()).doSelectPageInfo(()->qrtzJobDetailsMapper.findAll());
-    }*/
+    @GetMapping("page")
+    public List<Map<String,Object>> getJobPage() {
+        return  simpleScheduler.page(1,1);
+
+    }
 
     /**
      * 暂停定时任务

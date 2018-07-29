@@ -24,11 +24,12 @@ import java.util.List;
 @Configuration
 public class WebConfig implements WebMvcConfigurer {
 
-    /**拦截器设置
+    /**
+     * 拦截器设置
      *
      * @author ming
      * @date 2018-06-18 18:27:22
-     * */
+     */
     @Override
     public void addInterceptors(InterceptorRegistry registry) {
         registry.addInterceptor(new AuthInterceptor());

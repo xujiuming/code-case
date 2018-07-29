@@ -75,7 +75,7 @@
 	export default {
 		data() {
 			return {
-				sysName:'TIMER-CNETER',
+				sysName:'TIMER-CENTER',
 				collapsed:false,
 				sysUserName: '',
 				sysUserAvatar: '',

@@ -12,10 +12,10 @@ import org.apache.commons.lang3.StringUtils
  * @date 2018-04-21 22:16
  */
 class GenerateMybatis {
-    public static void main(String[] args) {
+     static void main(String[] args) {
 
         String tableName = "contract_refund"
-        String packageName = "com.onlyedu.timer.mapper"
+        String packageName = "com.onlyedu.sell.contract.refund"
 
         String className = StringUtils.capitalize(DbUtils.changeStyle(tableName, true))
         Map<String, String> map = DbUtils.pgsqlGetTableColumns(tableName)

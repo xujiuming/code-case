@@ -10,11 +10,13 @@ import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.servlet.mvc.method.annotation.ResponseBodyAdvice;
 
 import java.util.Set;
-/**全局返回内容增强
+
+/**
+ * 全局返回内容增强
  *
  * @author ming
  * @date 2018-06-18 19:07:51
- * */
+ */
 @ControllerAdvice
 public class GlobalResponseBodyAdvice implements ResponseBodyAdvice<Object> {
 
