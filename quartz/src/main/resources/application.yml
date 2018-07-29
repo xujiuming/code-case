@@ -1,0 +1,43 @@
+server:
+  port: 11111
+# dev环境配置  使用本地 mysql   guava做缓存
+spring:
+  # 关系数据库数据源配置
+  # 使用 阿里的  druid 连接池  使用mysql 数据库
+  datasource:
+    #type: com.alibaba.druid.pool.DruidDataSource
+    driver-class-name: org.postgresql.Driver
+    url: "jdbc:postgresql://127.0.0.1:5432/postgres"
+    username: postgres
+    password: ming
+    druid:
+      # druid的监控页面 配置
+      stat-view-servlet:
+       url-pattern: /druid/*
+       login-username: root
+       login-password: root
+      # druid 连接池配置
+      initial-size: 2
+      min-idle: 2
+      max-active: 3
+      max-wait: 6000
+      time-between-eviction-runs-millis: 60000
+      min-evictable-idle-time-millis: 30000
+      #validation-query: "SELECT 1 FROM DUAL"
+      test-while-idle: true
+      test-on-borrow: false
+      test-on-return: false
+      pool-prepared-statements: true
+      max-pool-prepared-statement-per-connection-size: 20
+      filters: "stat,wall,log4j2"
+      connection-properties: "druid.stat.mergeSql=true;druid.stat.slowSqlMillis=5000"
+      # 合并多个DruidDataSource的监控数据
+      #spring.datasource.useGlobalDataSourceStat=true
+  #缓存设置  先采用guava 提供的缓存   可以切换到其他缓存技术 例如redis之类的
+  cache:
+    type: simple
+  jpa:
+    show-sql: true
+    hibernate:
+      naming:
+        physical-strategy: org.springframework.boot.orm.jpa.hibernate.SpringPhysicalNamingStrategy
