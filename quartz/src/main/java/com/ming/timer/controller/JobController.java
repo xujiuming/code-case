@@ -1,5 +1,6 @@
 package com.ming.timer.controller;
 
+import com.google.common.base.Preconditions;
 import com.ming.timer.base.quartz.TimerControllerConstant;
 import com.ming.timer.base.web.BaseAbstractController;
 import com.ming.timer.config.scheduler.SimpleScheduler;
@@ -7,6 +8,7 @@ import com.ming.timer.entity.QrtzJobDetails;
 import com.ming.timer.entity.QrtzTriggers;
 import com.ming.timer.service.QrtzJobDetailsService;
 import com.ming.timer.service.QrtzTriggersService;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
@@ -75,8 +77,11 @@ public class JobController extends BaseAbstractController {
      * @date 2018-04-26 10:45
      */
     @GetMapping
-    public JobVO getJobDetail() {
-        return new JobVO();
+    public Map<String, Object> getJobDetail(String jobName) {
+        Preconditions.checkArgument(StringUtils.isNotEmpty(jobName),"jobName 不能为null " );
+
+        return  simpleScheduler.detail(jobName);
+
     }
 
     /**

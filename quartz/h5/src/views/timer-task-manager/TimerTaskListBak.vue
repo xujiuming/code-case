@@ -45,21 +45,11 @@
                 :total="totalSize">
         </el-pagination>
 
-
-        <!--工具条-->
-        <!--  <el-col :span="24" class="toolbar">
-              <el-button type="danger" @click="batchRemove" :disabled="this.sels.length===0">批量删除</el-button>
-              <el-pagination layout="prev, pager, next" @current-change="handleCurrentChange" :page-size="20"
-                             :total="total" style="float:right;">
-              </el-pagination>
-          </el-col>-->
-
-
         <!--编辑界面-->
         <el-dialog title="编辑" v-model="editFormVisible" :close-on-click-modal="false">
             <el-form :model="editForm" label-width="80px" :rules="editFormRules" ref="editForm">
                 <el-form-item label="job名称" prop="jobName">
-                    <el-input v-model="addForm.jobName" auto-complete="off"></el-input>
+                    <el-input v-model="addForm.jobName"  auto-complete="off"></el-input>
                 </el-form-item>
 
                 <el-form-item label="定时器表达式类型">
@@ -85,7 +75,7 @@
         <el-dialog title="新增" v-model="addFormVisible" :close-on-click-modal="false">
             <el-form :model="addForm" label-width="80px" :rules="addFormRules" ref="addForm">
                 <el-form-item label="job名称" prop="jobName">
-                    <el-input v-model="addForm.jobName" auto-complete="off"></el-input>
+                    <el-input v-model="addForm.jobName"  auto-complete="off"></el-input>
                 </el-form-item>
 
                 <el-form-item label="表达式类型">
@@ -112,9 +102,7 @@
 </template>
 
 <script>
-    import util from '../../common/js/util'
-    //import NProgress from 'nprogress'
-    import {getJobPage, createJob, deleteJob} from '../../api/api';
+    import {getJobPage, createJob, deleteJob, updateJob, resumeJob, pauseJob, runJob, detailJob} from '../../api/api';
 
     export default {
         data() {
@@ -188,10 +176,7 @@
             selsChange: function (sels) {
                 this.sels = sels;
             },
-            //性别显示转换
-            formatSex: function (row, column) {
-                return row.sex == 1 ? '男' : row.sex == 0 ? '女' : '未知';
-            },
+
             //删除
             handleDel: function (index, row) {
                 this.$confirm('确认删除该记录吗?', '提示', {
@@ -216,8 +201,12 @@
             },
             //显示编辑界面
             handleEdit: function (index, row) {
+                let para ={jobName:row.jobname} ;
+                detailJob(para).then((res)=>{
+                    this.editForm.jobName = res.data.jobname;
+                });
+                console.log(this.editForm);
                 this.editFormVisible = true;
-                this.editForm = Object.assign({}, row);
             },
             //显示新增界面
             handleAdd: function () {
@@ -270,29 +259,6 @@
                     }
                 });
             },
-
-            //批量删除
-            batchRemove: function () {
-                var ids = this.sels.map(item => item.id).toString();
-                this.$confirm('确认删除选中记录吗？', '提示', {
-                    type: 'warning'
-                }).then(() => {
-                    this.listLoading = true;
-                    //NProgress.start();
-                    let para = {ids: ids};
-                    batchRemoveUser(para).then((res) => {
-                        this.listLoading = false;
-                        //NProgress.done();
-                        this.$message({
-                            message: '删除成功',
-                            type: 'success'
-                        });
-                        this.getJobList();
-                    });
-                }).catch(() => {
-
-                });
-            }
         },
         mounted() {
             this.getJobList();

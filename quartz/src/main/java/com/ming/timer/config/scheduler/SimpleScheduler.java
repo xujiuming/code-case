@@ -5,9 +5,12 @@ import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.DependsOn;
+import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Component;
 
+import java.util.Collections;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -111,12 +114,37 @@ public class SimpleScheduler {
      * @author ming
      * @date 2018-07-24 16:11:12
      */
+    @SuppressWarnings("unchecked")
     public List<Map<String,Object>> page(Integer number, Integer size) {
+        //pgsql 的offset 从0 开始
+        number = number -1;
+        return  jdbcTemplate.queryForList("select qt.job_name     as jobName, " +
+                "       qt.description  as jobDesc, " +
+                "       qt.trigger_type as triggerType, " +
+                "       qsct.expression as triggerExpression " +
+                "from qrtz_triggers qt " +
+                "       left join (select qst.trigger_name, ''||qst.repeat_interval as expression from qrtz_simple_triggers qst " +
+                "                  union all " +
+                "                  select qct.trigger_name, qct.cron_expression as expression from qrtz_cron_triggers qct) qsct " +
+                "         on qt.trigger_name = qsct.trigger_name " +
+                "limit " + size+
+                "offset "+number+";");
 
-        return  jdbcTemplate.queryForList("select job_name as jobName ,description as jobDesc, trigger_type as triggerType ,  cron_expression as triggerExpression from qrtz_triggers qt  " +
-                "left join qrtz_cron_triggers  qct on qt.sched_name = qct.sched_name  and qt.trigger_name = qct.trigger_name and qt.trigger_group = qct.trigger_group  " +
-                "left join qrtz_simple_triggers qst on qt.sched_name = qst.sched_name and qt.trigger_name = qst.trigger_name and qt.trigger_group = qst.trigger_group  " +
-                "limit 100 offset 0;");
+    }
 
+
+    @SuppressWarnings("unchecked")
+    public Map<String,Object> detail(String jobName){
+
+        return jdbcTemplate.queryForMap("select qt.job_name     as jobName, " +
+                "       qt.description  as jobDesc, " +
+                "       qt.trigger_type as triggerType, " +
+                "       qsct.expression as triggerExpression " +
+                "from qrtz_triggers qt " +
+                "       left join (select qst.trigger_name, ''||qst.repeat_interval as expression from qrtz_simple_triggers qst " +
+                "                  union all " +
+                "                  select qct.trigger_name, qct.cron_expression as expression from qrtz_cron_triggers qct) qsct " +
+                "         on qt.trigger_name = qsct.trigger_name " +
+                "where qt.job_name =  '"+jobName+"';");
     }
 }
