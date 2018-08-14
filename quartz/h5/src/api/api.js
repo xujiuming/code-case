@@ -55,14 +55,14 @@ export const updateJob = params => {
     return axios.put(`${base}/api/timer/job`, {params: params});
 };
 //暂停job
-export const pauseJob = params =>{
-    return axios.put(`${base}/api/timer/job/pause`),{params:params};
+export const pauseJob = params => {
+    return axios.get(`${base}/api/timer/job/pause`,  {params: params});
 };
 //重启job
-export const resumeJob = params =>{
-    return axios.put(`${base}/api/timer/job/resume`),{params:params};
+export const resumeJob = params => {
+    return axios.get(`${base}/api/timer/job/resume`, {params: params});
 };
 //立即执行job
-export const runJob = params =>{
-    return axios.put(`${base}/api/timer/job/run`),{params:params};
+export const runJob = params => {
+    return axios.get(`${base}/api/timer/job/run`,  {params: params});
 };

@@ -26,11 +26,11 @@
             <el-table-column prop="jobdesc" label="任务描述" width="460" sortable></el-table-column>
             <el-table-column label="操作" width="400">
                 <template slot-scope="scope">
-                    <el-button size="small" @click="handleEdit(scope.$index, scope.row)">查看</el-button>
-                    <el-button size="small" @click="handleEdit(scope.$index, scope.row)">编辑</el-button>
-                    <el-button size="small" @click="handleEdit(scope.$index, scope.row)">暂停</el-button>
-                    <el-button size="small" @click="handleEdit(scope.$index, scope.row)">重启</el-button>
-                    <el-button size="small" @click="handleEdit(scope.$index, scope.row)">立即运行</el-button>
+                    <!-- <el-button size="small" @click="handleEdit(scope.$index, scope.row)">查看</el-button>
+                     <el-button size="small" @click="handleEdit(scope.$index, scope.row)">编辑</el-button>-->
+                    <el-button size="small" @click="handlePause(scope.$index, scope.row)">暂停</el-button>
+                    <el-button size="small" @click="handleResume(scope.$index, scope.row)">重启</el-button>
+                    <el-button size="small" @click="handleRun(scope.$index, scope.row)">立即运行</el-button>
                     <el-button type="danger" size="small" @click="handleDel(scope.$index, scope.row)">删除</el-button>
                 </template>
             </el-table-column>
@@ -49,7 +49,7 @@
         <el-dialog title="编辑" v-model="editFormVisible" :close-on-click-modal="false">
             <el-form :model="editForm" label-width="80px" :rules="editFormRules" ref="editForm">
                 <el-form-item label="job名称" prop="jobName">
-                    <el-input v-model="addForm.jobName"  auto-complete="off"></el-input>
+                    <el-input v-model="addForm.jobName" auto-complete="off"></el-input>
                 </el-form-item>
 
                 <el-form-item label="定时器表达式类型">
@@ -75,7 +75,7 @@
         <el-dialog title="新增" v-model="addFormVisible" :close-on-click-modal="false">
             <el-form :model="addForm" label-width="80px" :rules="addFormRules" ref="addForm">
                 <el-form-item label="job名称" prop="jobName">
-                    <el-input v-model="addForm.jobName"  auto-complete="off"></el-input>
+                    <el-input v-model="addForm.jobName" auto-complete="off"></el-input>
                 </el-form-item>
 
                 <el-form-item label="表达式类型">
@@ -102,7 +102,7 @@
 </template>
 
 <script>
-    import {getJobPage, createJob, deleteJob, updateJob, resumeJob, pauseJob, runJob, detailJob} from '../../api/api';
+    import {createJob, deleteJob, detailJob, getJobPage,runJob,pauseJob,resumeJob} from '../../api/api';
 
     export default {
         data() {
@@ -185,7 +185,7 @@
                     this.listLoading = true;
                     //NProgress.start();
                     let para = {jobName: row.jobname};
-                    console.log(para)
+                    console.log(para);
                     deleteJob(para).then((res) => {
                         this.listLoading = false;
                         //NProgress.done();
@@ -193,16 +193,59 @@
                             message: '删除成功',
                             type: 'success'
                         });
-                        this.getJobList();
+                        this.reload();
                     });
                 }).catch(() => {
 
                 });
             },
+
+            handleRun: function (index, row) {
+                let para = {jobName: row.jobname};
+                console.log(para);
+                runJob(para).then((res) => {
+                    this.listLoading = false;
+                    //NProgress.done();
+                    this.$message({
+                        message: '点火成功',
+                        type: 'success'
+                    });
+                    this.reload();
+                });
+
+            },
+            handlePause:function (index, row) {
+                let para = {jobName: row.jobname};
+                console.log(para);
+                pauseJob(para).then((res) => {
+                    this.listLoading = false;
+                    //NProgress.done();
+                    this.$message({
+                        message: '暂停成功',
+                        type: 'success'
+                    });
+                    this.reload();
+                });
+
+            },
+            handleResume:function (index, row) {
+                let para = {jobName: row.jobname};
+                console.log(para);
+                resumeJob(para).then((res) => {
+                    this.listLoading = false;
+                    //NProgress.done();
+                    this.$message({
+                        message: '重启成功',
+                        type: 'success'
+                    });
+                    this.reload();
+                });
+
+            },
             //显示编辑界面
             handleEdit: function (index, row) {
-                let para ={jobName:row.jobname} ;
-                detailJob(para).then((res)=>{
+                let para = {jobName: row.jobname};
+                detailJob(para).then((res) => {
                     this.editForm.jobName = res.data.jobname;
                 });
                 console.log(this.editForm);
@@ -229,7 +272,7 @@
                                 });
                                 this.$refs['editForm'].resetFields();
                                 this.editFormVisible = false;
-                                this.getJobList();
+                                this.reload();
                             });
                         });
                     }
@@ -253,7 +296,7 @@
                                 });
                                 this.$refs['addForm'].resetFields();
                                 this.addFormVisible = false;
-                                this.getJobList();
+                                this.reload();
                             });
                         });
                     }
