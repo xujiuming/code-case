@@ -1,7 +1,0 @@
-spring:
-  redis:
-    host: 10.10.10.175
-    port: 6379
-  cache:
-    type: redis
-
