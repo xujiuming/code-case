@@ -58,6 +58,7 @@ public class GlobalControllerResultHandler extends AbstractMessageWriterResultHa
     public Mono<Void> handleResult(ServerWebExchange exchange, HandlerResult result) {
         ResponseResultBody<?> responseResultBody = new ResponseResultBody<>(result.getReturnValue());
         MethodParameter bodyTypeParameter = result.getReturnTypeSource();
+
         return writeBody(responseResultBody, bodyTypeParameter, exchange);
     }
 }
