@@ -28,6 +28,8 @@
         <spring.boot.version>2.1.3.RELEASE</spring.boot.version>
         <!--spring io platform-->
         <spring.io.platform.version>Cairo-SR7</spring.io.platform.version>
+
+        <pgsql.version>42.2.5.jre7</pgsql.version>
     </properties>
 
     <dependencies>
@@ -35,14 +37,10 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-actuator</artifactId>
         </dependency>
-        <!--<dependency>-->
-        <!--<groupId>org.springframework.boot</groupId>-->
-        <!--<artifactId>spring-boot-starter-data-jpa</artifactId>-->
-        <!--</dependency>-->
-        <!--<dependency>-->
-        <!--<groupId>org.springframework.boot</groupId>-->
-        <!--<artifactId>spring-boot-starter-data-mongodb-reactive</artifactId>-->
-        <!--</dependency>-->
+        <dependency>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-data-jpa</artifactId>
+        </dependency>
 
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -72,6 +70,11 @@
             <groupId>commons-lang</groupId>
             <artifactId>commons-lang</artifactId>
         </dependency>
+        <dependency>
+            <groupId>org.postgresql</groupId>
+            <artifactId>postgresql</artifactId>
+            <version>${pgsql.version}</version>
+        </dependency>
     </dependencies>
 
     <dependencyManagement>
@@ -95,6 +98,8 @@
                 <scope>import</scope>
             </dependency>
 
+
+
         </dependencies>
     </dependencyManagement>
 
@@ -106,8 +111,6 @@
                 <artifactId>spring-boot-maven-plugin</artifactId>
                 <version>${spring.boot.version}</version>
             </plugin>
-
-
             <!--maven编译jdk版本配置-->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
@@ -117,20 +120,10 @@
                     <target>11</target>
                 </configuration>
             </plugin>
-
-
         </plugins>
 
-        <!--编译复制xml配置-->
+        <!--编译复制所有额外文件-->
         <resources>
-            <resource>
-                <directory>src/main/java</directory>
-                <includes>
-                    <include>**/*.xml</include>
-                </includes>
-                <filtering>false</filtering>
-            </resource>
-
             <resource>
                 <directory>src/main/resources</directory>
                 <includes>

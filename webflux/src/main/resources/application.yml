@@ -1,1 +1,31 @@
-
+spring:
+  datasource:
+    #type: com.alibaba.druid.pool.DruidDataSource
+    driver-class-name: org.postgresql.Driver
+    url: "jdbc:postgresql://localhost:5432/postgres"
+    username: postgres
+    password: ming
+    #使用 hikari连接池
+    type: com.zaxxer.hikari.HikariDataSource
+    hikari:
+      minimum-idle: 20
+      maximum-pool-size: 100
+      auto-commit: true
+      idle-timeout: 30000
+      pool-name: "ming-hikari"
+      max-lifetime: 1800000
+      connection-timeout: 30000
+      connection-test-query: "select 1;"
+  #缓存设置  先采用guava 提供的缓存   可以切换到其他缓存技术 例如redis之类的
+  cache:
+    type: simple
+  jpa:
+    properties:
+      hibernate:
+        jdbc:
+          lob:
+            non_contextual_creation: true
+    hibernate:
+      ddl-auto: create
+    show-sql: true
+    database-platform: org.hibernate.dialect.PostgresPlusDialect

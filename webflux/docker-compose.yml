@@ -1,0 +1,26 @@
+version: '3.3'
+services:
+  postgres-service:
+    image: "postgres:11.2-alpine"
+    restart: always
+    ports:
+      - 5432:5432
+    environment:
+      POSTGRES_PASSWORD: ming
+    networks:
+    - ming
+    deploy:
+      replicas: 1
+      update_config:
+        parallelism: 1
+        delay: 10s
+      restart_policy:
+        condition: on-failure
+
+networks:
+  ming:
+    driver: overlay
+    ipam:
+      driver: default
+      config:
+        - subnet: 10.88.0.0/16
