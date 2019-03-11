@@ -29,3 +29,6 @@ spring:
       ddl-auto: create
     show-sql: true
     database-platform: org.hibernate.dialect.PostgresPlusDialect
+
+server:
+  port: 10000

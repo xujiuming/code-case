@@ -16,7 +16,7 @@ import reactor.core.publisher.Mono;
  */
 @RestControllerAdvice
 @Slf4j
-public class GlobalControllerExceptionAdvice {
+public class GlobalExceptionAdvice {
 
     @ExceptionHandler(value = Exception.class)
     @ResponseBody

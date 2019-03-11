@@ -20,7 +20,7 @@ import java.util.Map;
 public class IndexController {
 
     @Autowired
-    private UserRepository userRepository;
+    private StaffRepository userRepository;
 
     @GetMapping(value = {"","/","/index"})
     public String index(){
@@ -46,17 +46,17 @@ public class IndexController {
 
 
     @GetMapping(value = "/user/list")
-    public List<User> userList (){
+    public List<Staff> userList (){
         return  userRepository.findAll();
     }
 
     @PostMapping(value = "/user")
-    public User addUser(User user){
+    public Staff addUser(Staff user){
         return userRepository.save(user);
     }
 
     @PutMapping(value = "/user")
-    public User updateUser(User user){
+    public Staff updateUser(Staff user){
         return userRepository.save(user);
     }
 

@@ -6,11 +6,22 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
+import com.fasterxml.jackson.datatype.jsr310.deser.LocalDateTimeDeserializer;
+import com.fasterxml.jackson.datatype.jsr310.deser.LocalTimeDeserializer;
+import com.fasterxml.jackson.datatype.jsr310.ser.LocalDateSerializer;
+import com.fasterxml.jackson.datatype.jsr310.ser.LocalDateTimeSerializer;
+import com.fasterxml.jackson.datatype.jsr310.ser.LocalTimeSerializer;
 import com.google.common.base.Preconditions;
+import com.ming.base.GlobalConstant;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang.StringUtils;
 
 import java.io.IOException;
+import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.LocalTime;
+import java.time.format.DateTimeFormatter;
 
 /**
  * jackson 单例对象  双检锁模式
@@ -39,18 +50,18 @@ public class JacksonSingleton {
                 if (null == objectMapper) {
                     //添加jackson 针对于jdk8的time包的序列化
                     JavaTimeModule javaTimeModule = new JavaTimeModule();
-//                    javaTimeModule.addSerializer(LocalDateTime.class, new LocalDateTimeSerializer(DateTimeFormatter.ofPattern(GlobalConstant.LOCAL_DATE_TIME_FORMAT_PATTERN)));
-//                    javaTimeModule.addDeserializer(LocalDateTime.class, new LocalDateTimeDeserializer(DateTimeFormatter.ofPattern(GlobalConstant.LOCAL_DATE_TIME_FORMAT_PATTERN)));
-//
-//                    javaTimeModule.addSerializer(LocalDate.class, new LocalDateSerializer(DateTimeFormatter.ofPattern(GlobalConstant.LOCAL_DATE_FORMAT_PATTERN)));
-//
-//                    javaTimeModule.addSerializer(LocalTime.class, new LocalTimeSerializer(DateTimeFormatter.ofPattern(GlobalConstant.LOCAL_TIME_FORMAT_PATTERN)));
-//                    javaTimeModule.addDeserializer(LocalTime.class, new LocalTimeDeserializer(DateTimeFormatter.ofPattern(GlobalConstant.LOCAL_TIME_FORMAT_PATTERN)));
+                    javaTimeModule.addSerializer(LocalDateTime.class, new LocalDateTimeSerializer(DateTimeFormatter.ofPattern(GlobalConstant.LOCAL_DATE_TIME_FORMAT_PATTERN)));
+                    javaTimeModule.addDeserializer(LocalDateTime.class, new LocalDateTimeDeserializer(DateTimeFormatter.ofPattern(GlobalConstant.LOCAL_DATE_TIME_FORMAT_PATTERN)));
+
+                    javaTimeModule.addSerializer(LocalDate.class, new LocalDateSerializer(DateTimeFormatter.ofPattern(GlobalConstant.LOCAL_DATE_FORMAT_PATTERN)));
+
+                    javaTimeModule.addSerializer(LocalTime.class, new LocalTimeSerializer(DateTimeFormatter.ofPattern(GlobalConstant.LOCAL_TIME_FORMAT_PATTERN)));
+                    javaTimeModule.addDeserializer(LocalTime.class, new LocalTimeDeserializer(DateTimeFormatter.ofPattern(GlobalConstant.LOCAL_TIME_FORMAT_PATTERN)));
                     objectMapper = new ObjectMapper();
                     //添加javaTimeModule
                     objectMapper.registerModules(javaTimeModule);
                     //指定格式化时间
-//                    objectMapper.setDateFormat(new SimpleDateFormat(GlobalConstant.DATE_FORMAT_PATTERN));
+                    objectMapper.setDateFormat(new SimpleDateFormat(GlobalConstant.DATE_FORMAT_PATTERN));
                     //关闭 未知属性的校验
                     objectMapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
                     //null值不输出
@@ -105,8 +116,8 @@ public class JacksonSingleton {
     /**
      * 将json字符串转化为对象  增加泛型类型选择
      *
-     * @param jsonStr
-     * @param valueTypeRef
+     * @param jsonStr String
+     * @param valueTypeRef TypeReference
      * @return T
      * @author ming
      * @date 2018-10-17 20:48:37
