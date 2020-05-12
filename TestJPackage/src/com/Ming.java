@@ -15,7 +15,7 @@ import java.net.InetSocketAddress;
  * @date 2020-05-09 14:00
  */
 public class Ming {
-    public static void main(String[] args) throws IOException {
+    public static void main(String[] args) throws IOException, InterruptedException {
         //创建http服务器，绑定本地8888端口
         HttpServer httpServer = HttpServer.create(new InetSocketAddress(8080), 0);
         //创建上下文监听,拦截包含/
