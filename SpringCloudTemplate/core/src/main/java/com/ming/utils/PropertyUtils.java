@@ -28,7 +28,7 @@ public class PropertyUtils {
     public static @NotNull
     String getProperty(@NotNull String key) {
         Preconditions.checkArgument(StringUtils.isNotEmpty(key), "key 不能为null ");
-        String property = SpringBeanManager.getBean(Environment.class).getProperty(key);
+        String property = SpringBeanManagerUtils.getBean(Environment.class).getProperty(key);
         Preconditions.checkArgument(StringUtils.isNotEmpty(property), "无法获取" + key + "配置。。。。");
         return property;
     }
