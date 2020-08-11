@@ -12,6 +12,12 @@
 
     <artifactId>user-service</artifactId>
 
+    <dependencies>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+        </dependency>
+    </dependencies>
     <build>
         <plugins>
             <!-- 打包成为可执行的jar-->
