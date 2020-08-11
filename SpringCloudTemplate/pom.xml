@@ -4,9 +4,210 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>org.example</groupId>
+    <groupId>com.ming</groupId>
     <artifactId>SpringCloudTemplate</artifactId>
     <version>1.0-SNAPSHOT</version>
+    <modules>
+        <module>user</module>
+        <module>base</module>
+        <module>core</module>
+    </modules>
+
+    <packaging>pom</packaging>
+    <name>Spring Cloud Template</name>
+    <description>
+        ming spring cloud template
+    </description>
+    <repositories>
+        <repository>
+            <id>aliyun</id>
+            <name>aliyun repository</name>
+            <url>http://maven.aliyun.com/nexus/content/groups/public/</url>
+        </repository>
+        <repository>
+            <id>spring-milestones</id>
+            <name>Spring Milestones</name>
+            <url>https://repo.spring.io/milestone</url>
+        </repository>
+        <repository>
+            <id>swagger</id>
+            <name>swagger</name>
+            <url>http://oss.jfrog.org/artifactory/oss-snapshot-local/</url>
+        </repository>
+    </repositories>
+    <pluginRepositories>
+        <pluginRepository>
+            <id>spring-milestones</id>
+            <name>Spring Milestones</name>
+            <url>https://repo.spring.io/milestone</url>
+        </pluginRepository>
+    </pluginRepositories>
+    <properties>
+        <java.version>14</java.version>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+        <!-- spring boot 版本 -->
+        <spring.boot.version>2.3.2.RELEASE</spring.boot.version>
+        <!-- spring cloud 版本-->
+        <spring-cloud.version>Hoxton.SR7</spring-cloud.version>
+        <!--spring io platform-->
+        <spring.io.platform.version>Cairo-SR8</spring.io.platform.version>
+        <!--swagger boot version -->
+        <springfox.boot.version>3.0.0</springfox.boot.version>
+    </properties>
+    <dependencies>
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.google.guava</groupId>
+            <artifactId>guava</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>commons-lang</groupId>
+            <artifactId>commons-lang</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>commons-codec</groupId>
+            <artifactId>commons-codec</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>commons-io</groupId>
+            <artifactId>commons-io</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.codehaus.groovy</groupId>
+            <artifactId>groovy</artifactId>
+        </dependency>
+    </dependencies>
+
+    <dependencyManagement>
+        <dependencies>
+            <!-- spring boot -->
+            <dependency>
+                <!-- Import dependency management from Spring Boot -->
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-dependencies</artifactId>
+                <version>${spring.boot.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+            <!-- spring  io platform -->
+            <dependency>
+                <groupId>io.spring.platform</groupId>
+                <artifactId>platform-bom</artifactId>
+                <version>${spring.io.platform.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework.cloud</groupId>
+                <artifactId>spring-cloud-dependencies</artifactId>
+                <version>${spring-cloud.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+            <!--swagger boot starter -->
+            <dependency>
+                <groupId>io.springfox</groupId>
+                <artifactId>springfox-boot-starter</artifactId>
+                <version>${springfox.boot.version}</version>
+            </dependency>
+
+        </dependencies>
+    </dependencyManagement>
 
 
+    <build>
+        <pluginManagement>
+            <plugins>
+                <plugin>
+                    <groupId>org.springframework.boot</groupId>
+                    <artifactId>spring-boot-maven-plugin</artifactId>
+                    <version>${spring.boot.version}</version>
+                </plugin>
+                <!-- 打包成不可执行的jar      -->
+                <!--                <plugin>-->
+                <!--                      <groupId>org.springframework.boot</groupId>-->
+                <!--                      <artifactId>spring-boot-maven-plugin</artifactId>-->
+                <!--                      <version>${spring.boot.version}</version>-->
+                <!--                      <configuration>-->
+                <!--                          <classifier>exec</classifier>-->
+                <!--                      </configuration>-->
+                <!--                  </plugin>-->
+
+                <!-- 打包成为可执行的jar                -->
+                <!--                <plugin>-->
+                <!--                    <groupId>org.springframework.boot</groupId>-->
+                <!--                    <artifactId>spring-boot-maven-plugin</artifactId>-->
+                <!--                    <executions>-->
+                <!--                        <execution>-->
+                <!--                            <goals>-->
+                <!--                                <goal>repackage</goal>-->
+                <!--                            </goals>-->
+                <!--                        </execution>-->
+                <!--                    </executions>-->
+                <!--                </plugin>-->
+            </plugins>
+        </pluginManagement>
+        <plugins>
+            <!--maven编译jdk版本配置-->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <configuration>
+                    <source>${java.version}</source>
+                    <target>${java.version}</target>
+                </configuration>
+            </plugin>
+
+
+            <!-- 指定启动类，将依赖打成外部jar包  -->
+            <!--            <plugin>-->
+            <!--                <groupId>org.apache.maven.plugins</groupId>-->
+            <!--                <artifactId>maven-jar-plugin</artifactId>-->
+            <!--                <configuration>-->
+            <!--                    <archive>-->
+            <!--                        &lt;!&ndash; 生成的jar中，不要包含pom.xml和pom.properties这两个文件 &ndash;&gt;-->
+            <!--                        <addMavenDescriptor>false</addMavenDescriptor>-->
+            <!--                        <manifest>-->
+            <!--                            &lt;!&ndash; 是否要把第三方jar加入到类构建路径 &ndash;&gt;-->
+            <!--                            <addClasspath>true</addClasspath>-->
+            <!--                            &lt;!&ndash; 外部依赖jar包的最终位置 &ndash;&gt;-->
+            <!--                            <classpathPrefix>lib/</classpathPrefix>-->
+            <!--                            &lt;!&ndash; 项目启动类 &ndash;&gt;-->
+            <!--                            <mainClass>com.ming.Start</mainClass>-->
+            <!--                            &lt;!&ndash;强制可以使用快照版本&ndash;&gt;-->
+            <!--                            <useUniqueVersions>false</useUniqueVersions>-->
+            <!--                        </manifest>-->
+            <!--                        <manifestEntries>-->
+            <!--                            <Class-Path>./</Class-Path>-->
+            <!--                        </manifestEntries>-->
+            <!--                    </archive>-->
+            <!--                </configuration>-->
+            <!--            </plugin>-->
+            <!--            &lt;!&ndash;拷贝依赖到jar外面的lib目录&ndash;&gt;-->
+            <!--            <plugin>-->
+            <!--                <groupId>org.apache.maven.plugins</groupId>-->
+            <!--                <artifactId>maven-dependency-plugin</artifactId>-->
+            <!--                <executions>-->
+            <!--                    <execution>-->
+            <!--                        <id>copy-lib</id>-->
+            <!--                        <phase>package</phase>-->
+            <!--                        <goals>-->
+            <!--                            <goal>copy-dependencies</goal>-->
+            <!--                        </goals>-->
+            <!--                        <configuration>-->
+            <!--                            <outputDirectory>target/lib</outputDirectory>-->
+            <!--                            &lt;!&ndash;不重写lib  如果存在lib不处理&ndash;&gt;-->
+            <!--                            <overWriteIfNewer>false</overWriteIfNewer>-->
+            <!--                            <includeScope>compile</includeScope>-->
+            <!--                        </configuration>-->
+            <!--                    </execution>-->
+            <!--                </executions>-->
+            <!--            </plugin>-->
+        </plugins>
+
+    </build>
 </project>
