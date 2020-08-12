@@ -56,6 +56,7 @@
         <spring.io.platform.version>Cairo-SR8</spring.io.platform.version>
         <!--swagger boot version -->
         <springfox.boot.version>3.0.0</springfox.boot.version>
+        <spring.boot.admin.version>2.2.4</spring.boot.admin.version>
     </properties>
 
     <dependencyManagement>
@@ -91,6 +92,16 @@
                 <version>${springfox.boot.version}</version>
             </dependency>
 
+            <dependency>
+                <groupId>de.codecentric</groupId>
+                <artifactId>spring-boot-admin-starter-server</artifactId>
+                <version>${spring.boot.admin.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>de.codecentric</groupId>
+                <artifactId>spring-boot-admin-starter-client</artifactId>
+                <version>${spring.boot.admin.version}</version>
+            </dependency>
         </dependencies>
     </dependencyManagement>
 
