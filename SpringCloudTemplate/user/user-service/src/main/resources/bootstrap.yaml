@@ -3,6 +3,11 @@ server:
 spring:
   application:
     name: user
+  cloud:
+    sentinel:
+      transport:
+        port:
+        dashboard: localhost:30000
 eureka:
   client:
     # 向注册中心注册
@@ -26,7 +31,7 @@ management:
     health:
       show-details: always
 feign:
-  hystrix:
-    enabled: true
   httpclient:
+    enabled: true
+  sentinel:
     enabled: true

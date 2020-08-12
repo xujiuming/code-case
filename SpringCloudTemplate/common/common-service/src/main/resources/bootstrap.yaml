@@ -17,7 +17,6 @@ eureka:
     health-check-url-path: /actuator/health
     instance-id: ${spring.application.name}-${spring.cloud.client.ip-address}-${server.port}
     lease-renewal-interval-in-seconds: 10
-    appname: common
 management:
   endpoints:
     web:
@@ -27,5 +26,7 @@ management:
     health:
       show-details: always
 feign:
-  hystrix:
+  httpclient:
+    enabled: true
+  sentinel:
     enabled: true
