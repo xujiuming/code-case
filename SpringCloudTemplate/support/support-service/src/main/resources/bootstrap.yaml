@@ -10,8 +10,8 @@ spring:
   boot:
     admin:
       context-path: /admin-server
-#      client:
-#        url: http://localhost:10000/admin-server
+      client:
+        url: http://localhost:10000/admin-server
 #        auto-registration: true
       ui:
         brand: SpringCloudTemplate
@@ -33,7 +33,7 @@ eureka:
     #关闭自我保护
     enable-self-preservation: true
     #剔除节点 时间
-    eviction-interval-timer-in-ms: 30000
+    eviction-interval-timer-in-ms: 3000
   dashboard:
     # 设置 eureka 管理
     path: eureka-admin
