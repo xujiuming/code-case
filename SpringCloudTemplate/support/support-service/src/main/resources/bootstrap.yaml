@@ -1,0 +1,52 @@
+server:
+  port: 10000
+spring:
+  application:
+    name: support
+  freemarker:
+    prefer-file-system-access: false
+  resources:
+    add-mappings: true
+  boot:
+    admin:
+      context-path: /admin-server
+#      client:
+#        url: http://localhost:10000/admin-server
+#        auto-registration: true
+      ui:
+        brand: SpringCloudTemplate
+        title: SpringCloudTemplate
+      discovery:
+        enabled: true
+
+eureka:
+  client:
+    # 向注册中心注册
+    register-with-eureka: true
+    # 同步注册表
+    fetch-registry: false
+    # 默认服务路径
+    service-url:
+      defaultZone: http://localhost:10000/eureka
+    registry-fetch-interval-seconds: 5
+  server:
+    #关闭自我保护
+    enable-self-preservation: true
+    #剔除节点 时间
+    eviction-interval-timer-in-ms: 30000
+  dashboard:
+    # 设置 eureka 管理
+    path: eureka-admin
+    enabled: true
+  instance:
+    health-check-url-path: /actuator/health
+    instance-id: ${spring.application.name}-${spring.cloud.client.ip-address}-${server.port}
+    lease-renewal-interval-in-seconds: 10
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+  endpoint:
+    health:
+      show-details: always

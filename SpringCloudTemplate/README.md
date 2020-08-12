@@ -24,7 +24,7 @@
 |user|user模块|业务模块-用户相关模块|  
 |common|common|业务模块-基础模块|  
 |gateway|网关模块|流量入口、swagger聚合|   
-|support|支持模块 考虑拆分|zipkin、admin、mq center、sentinel admin、全局公共服务管理、Seata|  
+|support|支持模块 考虑拆分|eureka、zipkin、admin、mq center、sentinel admin、全局公共服务管理、Seata|  
  
  
 大体结构如下 
