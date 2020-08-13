@@ -7,9 +7,9 @@ spring:
     prefer-file-system-access: false
   resources:
     add-mappings: true
-#  boot:
-#    admin:
-#      context-path: /admin-server
+  boot:
+    admin:
+      context-path: /admin-server
 #      client:
 #        url: http://localhost:10000/admin-server
 ##        auto-registration: true
@@ -22,9 +22,9 @@ spring:
 eureka:
   client:
     # 向注册中心注册
-    register-with-eureka: false
-    # 同步注册表
-    fetch-registry: false
+    register-with-eureka: true
+    # 同步注册表  同步自己注册信息 提供给spring boot admin 监控
+    fetch-registry: true
     # 默认服务路径
     service-url:
       defaultZone: http://localhost:10000/eureka
