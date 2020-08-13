@@ -13,6 +13,7 @@
         <module>core</module>
         <module>common</module>
         <module>support</module>
+        <module>eureka</module>
     </modules>
 
     <packaging>pom</packaging>

@@ -3,11 +3,9 @@ server:
 spring:
   application:
     name: user
-  cloud:
-    sentinel:
-      transport:
-        port:
-        dashboard: localhost:30000
+  redis:
+    host: 10.10.10.52
+    database: 9
 eureka:
   client:
     # 向注册中心注册
@@ -17,7 +15,7 @@ eureka:
     # 默认服务路径
     service-url:
       defaultZone: http://localhost:10000/eureka
-    registry-fetch-interval-seconds: 5
+      registry-fetch-interval-seconds: 5
   instance:
     health-check-url-path: /actuator/health
     instance-id: ${spring.application.name}-${spring.cloud.client.ip-address}-${server.port}
@@ -33,5 +31,6 @@ management:
 feign:
   httpclient:
     enabled: true
-  sentinel:
+  hystrix:
     enabled: true
+
