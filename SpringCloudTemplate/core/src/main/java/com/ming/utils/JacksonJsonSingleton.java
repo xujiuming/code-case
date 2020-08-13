@@ -49,18 +49,18 @@ public class JacksonJsonSingleton {
                 if (null == objectMapper) {
                     //添加jackson 针对于jdk8的time包的序列化
                     JavaTimeModule javaTimeModule = new JavaTimeModule();
-                    javaTimeModule.addSerializer(LocalDateTime.class, new LocalDateTimeSerializer(DateTimeFormatter.ofPattern(GlobalConstant.LOCAL_DATE_TIME_FORMAT_PATTERN)));
-                    javaTimeModule.addDeserializer(LocalDateTime.class, new LocalDateTimeDeserializer(DateTimeFormatter.ofPattern(GlobalConstant.LOCAL_DATE_TIME_FORMAT_PATTERN)));
+                    javaTimeModule.addSerializer(LocalDateTime.class, new LocalDateTimeSerializer(DateTimeFormatter.ofPattern(GlobalCoreConstant.LOCAL_DATE_TIME_FORMAT_PATTERN)));
+                    javaTimeModule.addDeserializer(LocalDateTime.class, new LocalDateTimeDeserializer(DateTimeFormatter.ofPattern(GlobalCoreConstant.LOCAL_DATE_TIME_FORMAT_PATTERN)));
 
-                    javaTimeModule.addSerializer(LocalDate.class, new LocalDateSerializer(DateTimeFormatter.ofPattern(GlobalConstant.LOCAL_DATE_FORMAT_PATTERN)));
+                    javaTimeModule.addSerializer(LocalDate.class, new LocalDateSerializer(DateTimeFormatter.ofPattern(GlobalCoreConstant.LOCAL_DATE_FORMAT_PATTERN)));
 
-                    javaTimeModule.addSerializer(LocalTime.class, new LocalTimeSerializer(DateTimeFormatter.ofPattern(GlobalConstant.LOCAL_TIME_FORMAT_PATTERN)));
-                    javaTimeModule.addDeserializer(LocalTime.class, new LocalTimeDeserializer(DateTimeFormatter.ofPattern(GlobalConstant.LOCAL_TIME_FORMAT_PATTERN)));
+                    javaTimeModule.addSerializer(LocalTime.class, new LocalTimeSerializer(DateTimeFormatter.ofPattern(GlobalCoreConstant.LOCAL_TIME_FORMAT_PATTERN)));
+                    javaTimeModule.addDeserializer(LocalTime.class, new LocalTimeDeserializer(DateTimeFormatter.ofPattern(GlobalCoreConstant.LOCAL_TIME_FORMAT_PATTERN)));
                     objectMapper = new ObjectMapper();
                     //添加javaTimeModule
                     objectMapper.registerModules(javaTimeModule);
                     //指定格式化时间
-                    objectMapper.setDateFormat(new SimpleDateFormat(GlobalConstant.DATE_FORMAT_PATTERN));
+                    objectMapper.setDateFormat(new SimpleDateFormat(GlobalCoreConstant.DATE_FORMAT_PATTERN));
                     //关闭 未知属性的校验
                     objectMapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
                     //null值不输出

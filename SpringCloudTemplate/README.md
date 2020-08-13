@@ -16,23 +16,25 @@
 |alibaba Sentinel|稳定版|流量监控、熔断|
 
 ### 模块划分    
-
 |名称|功能|备注|    
 |:---|:--|:--|  
 |core|核心模块|各种无状态工具类、对象|
 |base|基础模块|各种公共配置  如mvc、orm等配置|
 |user|user模块|业务模块-用户相关模块|  
 |common|common|业务模块-基础模块|  
-|gateway|网关模块|流量入口、swagger聚合|   
-|support|支持模块 考虑拆分|eureka、zipkin、admin、mq center、sentinel admin、全局公共服务管理、Seata|  
- 
- 
+|support|支持模块 |mq center、全局公共服务管理、定时器调度模块|  
+|gateway|网关模块|流量入口、swagger聚合|
+|commonMiddleware|公共中间件模块|eureka、zipkin、Seata admin、sentinel admin|
+
+
 大体结构如下 
 1. microService
    1. xxxModule  功能模块
       1. api    rpc接口定义  
       2. service  controller层 、rpc接口实现层、dao层
-     
+   2. xxxModule 功能模块
+     1. src 
+           
 命名规则:
 * controller  XxxController    
 * rpc接口: IXxxService    
@@ -43,7 +45,15 @@
 
 
 
-     
+#### uri规范
+* 内部调用
+/service/{模块名称}/{模块子业务名称}/**
+* 提供给网关暴露给外部服务接口 
+/api/{模块名称}/** 
+
+
+#### 分包规范  
+com.ming.{模块名称}.{模块子业务名称}.**
      
 
 
