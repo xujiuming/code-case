@@ -7,5 +7,5 @@ import org.springframework.web.bind.annotation.RequestParam;
 @FeignClient(name = "COMMON")
 public interface ICommonTestService {
     @GetMapping("/common/test")
-    String testCommon(@RequestParam(value = "str",required = false) String str);
+    String testCommon(@RequestParam(value = "str", required = false) String str);
 }

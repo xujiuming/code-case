@@ -1,6 +1,5 @@
 package com.ming;
 
-import de.codecentric.boot.admin.server.config.EnableAdminServer;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
@@ -11,6 +10,7 @@ import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
  * 开启admin server功能
  * 本身自己提供自身监控
  * 注册本身服务
+ *
  * @author ming
  * @date 2020-08-11 14:44
  */

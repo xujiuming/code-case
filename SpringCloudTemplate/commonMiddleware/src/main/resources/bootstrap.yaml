@@ -10,14 +10,13 @@ spring:
   boot:
     admin:
       context-path: /admin-server
-#      client:
-#        url: http://localhost:10000/admin-server
-##        auto-registration: true
-#      ui:
-#        brand: SpringCloudTemplate
-#        title: SpringCloudTemplate
-#      discovery:
-#        enabled: true
+      ui:
+        brand: SpringCloudTemplate
+        title: SpringCloudTemplate
+        available-languages:
+          - zh
+      discovery:
+        enabled: true
 
 eureka:
   client:
@@ -50,3 +49,4 @@ management:
   endpoint:
     health:
       show-details: always
+

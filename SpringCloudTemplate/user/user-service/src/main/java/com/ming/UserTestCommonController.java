@@ -11,6 +11,6 @@ public class UserTestCommonController {
 
     @GetMapping("/user-test-common")
     public String userTestCommon() {
-       return iCommonTestService.testCommon("userTest");
+        return iCommonTestService.testCommon("userTest");
     }
 }
